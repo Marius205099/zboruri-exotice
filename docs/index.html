@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zboruri exotice de iarnă</title>
+<meta name="description" content="Prețuri scanate de două ori pe zi: Timișoara, Cluj, Budapesta, Belgrad → Maldive, Bali, Thailanda, Mauritius. 26 dec 2026 – 12 ian 2027, 2 adulți + 2 copii.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌴</text></svg>">
+<style>
+:root{
+  --bg:#f6f4ef; --surface:#fff; --surface-2:#f0ede6; --text:#1d2321; --muted:#66706c; --line:#e2ddd2;
+  --accent:#0f766e; --accent-ink:#fff; --good:#15803d; --mid:#b45309; --bad:#b91c1c;
+  --heat-1:#d1fae5; --heat-2:#a7f3d0; --heat-3:#fde68a; --heat-4:#fdba74; --heat-5:#fca5a5;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 4px 16px rgba(0,0,0,.04);
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#111614; --surface:#1a201e; --surface-2:#222a27; --text:#e7ece9; --muted:#9aa5a0; --line:#2d3633;
+  --accent:#2dd4bf; --accent-ink:#04211e; --good:#4ade80; --mid:#fbbf24; --bad:#f87171;
+  --heat-1:#134e4a; --heat-2:#166534; --heat-3:#713f12; --heat-4:#7c2d12; --heat-5:#7f1d1d;
+  --shadow:none;
+}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--accent)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+header{padding:32px 0 8px}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:0 0 6px;letter-spacing:-.01em}
+h2{font-size:19px;margin:36px 0 12px}
+.sub{color:var(--muted);margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0}
+.pill{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:13px;color:var(--muted)}
+.pill b{color:var(--text);font-weight:600}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:6px}
+.card .country{font-weight:650;font-size:16px;display:flex;justify-content:space-between;align-items:center}
+.card .price{font-size:28px;font-weight:700;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.card .pp{color:var(--muted);font-size:13px}
+.card .det{font-size:13px;color:var(--muted)}
+.card .det b{color:var(--text);font-weight:600}
+.card a.btn{margin-top:auto}
+.btn{display:inline-block;text-align:center;background:var(--accent);color:var(--accent-ink);text-decoration:none;border-radius:9px;padding:8px 12px;font-weight:600;font-size:14px}
+.empty{color:var(--muted);font-size:14px}
+.filters{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:grid;gap:12px}
+.frow{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.flabel{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);min-width:96px}
+.chip{border:1px solid var(--line);background:var(--surface-2);color:var(--text);border-radius:999px;padding:5px 12px;font-size:14px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.gridwrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line);font-size:14px;white-space:nowrap}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;background:var(--surface)}
+tr:last-child td{border-bottom:0}
+.heat td.cell{text-align:center;padding:0}
+.heat td.cell a{display:block;padding:9px 6px;color:var(--text);text-decoration:none;font-weight:600}
+.heat td.cell a:hover{outline:2px solid var(--accent);outline-offset:-2px}
+.heat td.cell small{display:block;font-weight:400;color:var(--muted);font-size:11px}
+.h1{background:var(--heat-1)}.h2{background:var(--heat-2)}.h3{background:var(--heat-3)}.h4{background:var(--heat-4)}.h5{background:var(--heat-5)}
+.legend{display:flex;gap:4px;align-items:center;font-size:12px;color:var(--muted);margin:8px 0 0}
+.legend span{width:22px;height:12px;border-radius:3px;display:inline-block}
+.tag{font-size:12px;border-radius:6px;padding:1px 7px;background:var(--surface-2);color:var(--muted)}
+.tag.low{color:var(--good)}.tag.high{color:var(--bad)}
+.note{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 18px;color:var(--muted);font-size:14px}
+.note li{margin:4px 0}
+footer{color:var(--muted);font-size:13px;padding:32px 0 48px}
+svg text{fill:var(--muted);font-size:11px}
+.hist{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px}
+@media (max-width:560px){.flabel{min-width:100%}th,td{padding:7px 8px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>🌴 Zboruri exotice de iarnă</h1>
+  <p class="sub">Timișoara · Cluj-Napoca · Budapesta · Belgrad → Maldive · Bali · Thailanda · Mauritius</p>
+  <div class="meta" id="meta"></div>
+</header>
+
+<h2>Cel mai bun preț pe destinație</h2>
+<div class="cards" id="cards"><p class="empty">Se încarcă…</p></div>
+
+<h2>Filtre</h2>
+<div class="filters">
+  <div class="frow"><span class="flabel">Destinație</span><div id="f-country" class="frow"></div></div>
+  <div class="frow"><span class="flabel">Plecare din</span><div id="f-origin" class="frow"></div></div>
+  <div class="frow"><span class="flabel">Nopți</span><div id="f-nights" class="frow"></div></div>
+  <div class="frow"><span class="flabel">Escale max</span><div id="f-stops" class="frow"></div></div>
+</div>
+
+<h2 id="heat-title">Calendar prețuri</h2>
+<div class="gridwrap"><table class="heat" id="heat"></table></div>
+<div class="legend" id="legend"></div>
+
+<h2>Toate ofertele găsite <span class="tag" id="count"></span></h2>
+<div class="gridwrap"><table id="list"></table></div>
+
+<h2>Evoluția celui mai bun preț</h2>
+<div class="hist" id="hist"><p class="empty">Istoricul apare după câteva scanări.</p></div>
+
+<h2>Cum funcționează</h2>
+<div class="note"><ul>
+  <li>Un robot caută pe Google Flights de două ori pe zi (≈07:00 și 19:00, ora României) toate combinațiile: 4 aeroporturi × 5 aeroporturi de destinație × 9 zile de plecare (26 dec – 3 ian) × 7, 8 sau 9 nopți.</li>
+  <li>Prețurile sunt <b>totale pentru 4 persoane</b> (2 adulți + 2 copii de 3 și 5 ani), dus-întors, clasa economic, în EUR.</li>
+  <li>Se păstrează doar zborurile cu durata zborului dus de <b>maxim 25 de ore</b>. Durata la întoarcere se verifică pe Google Flights, apăsând pe ofertă.</li>
+  <li>Prețurile se schimbă des — confirmă întotdeauna pe Google Flights / la compania aeriană înainte de rezervare.</li>
+  <li>Thailanda = Bangkok (BKK) și Phuket (HKT). Maldive = Malé (MLE). Bali = Denpasar (DPS). Mauritius = MRU.</li>
+</ul></div>
+
+<footer>Date actualizate automat prin GitHub Actions. Sursa: Google Flights.</footer>
+</div>
+
+<script>
+const fmtEUR = n => n.toLocaleString('ro-RO') + ' €';
+const RO_DAY = new Intl.DateTimeFormat('ro-RO', {weekday:'short', day:'numeric', month:'short'});
+const fmtDate = s => RO_DAY.format(new Date(s + 'T12:00:00'));
+const fmtDur = m => `${Math.floor(m/60)}h ${String(m%60).padStart(2,'0')}m`;
+const stopsTxt = s => s === 0 ? 'direct' : s === 1 ? '1 escală' : s == null ? '?' : `${s} escale`;
+const LEVEL = {low:'preț mic', typical:'preț obișnuit', high:'preț mare'};
+const COUNTRIES = ['Maldive','Bali','Thailanda','Mauritius'];
+const FLAG = {Maldive:'🇲🇻', Bali:'🇮🇩', Thailanda:'🇹🇭', Mauritius:'🇲🇺'};
+
+const state = {country:'Toate', origins:new Set(), nights:new Set([7,8,9]), stops:9};
+let DATA, ROWS = [];
+
+function el(tag, attrs={}, html=''){const e=document.createElement(tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));e.innerHTML=html;return e}
+
+function chips(container, items, isOn, onClick){
+  container.innerHTML='';
+  items.forEach(([val,label])=>{
+    const b=el('button',{class:'chip',type:'button','aria-pressed':String(isOn(val))},label);
+    b.onclick=()=>{onClick(val);render()};
+    container.appendChild(b);
+  });
+}
+
+function filtered(allCountries=false){
+  return ROWS.filter(r =>
+    (allCountries || state.country==='Toate' || r.country===state.country) &&
+    state.origins.has(r.origin) && state.nights.has(r.nights) &&
+    (r.best.stops==null || r.best.stops<=state.stops));
+}
+
+function bestOption(r){
+  // cea mai ieftină opțiune care respectă filtrul de escale
+  return r.options.find(o => o.stops==null || o.stops<=state.stops);
+}
+
+function renderMeta(){
+  const t = new Date(DATA.scanned_at);
+  const when = t.toLocaleString('ro-RO',{timeZone:'Europe/Bucharest',day:'numeric',month:'long',hour:'2-digit',minute:'2-digit'});
+  const s = DATA.stats;
+  document.getElementById('meta').innerHTML =
+    `<span class="pill">Ultima scanare: <b>${when}</b></span>`+
+    `<span class="pill">👨‍👩‍👧‍👦 <b>2 adulți + 2 copii</b> (3 și 5 ani)</span>`+
+    `<span class="pill">Plecare <b>26 dec – 3 ian</b>, <b>7–9 nopți</b></span>`+
+    `<span class="pill">Zbor dus <b>≤ 25 h</b></span>`+
+    `<span class="pill"><b>${s.with_price}</b> din ${s.total} combinații au ofertă</span>`;
+}
+
+function renderCards(rows){
+  const box=document.getElementById('cards'); box.innerHTML='';
+  COUNTRIES.forEach(c=>{
+    const best = rows.filter(r=>r.country===c).sort((a,b)=>a.best.price-b.best.price)[0];
+    const card=el('div',{class:'card'});
+    if(!best){card.innerHTML=`<div class="country">${FLAG[c]} ${c}</div><p class="empty">Nicio ofertă ≤ 25h cu filtrele actuale.</p>`;box.appendChild(card);return}
+    const o=best.best;
+    card.innerHTML=`<div class="country"><span>${FLAG[c]} ${c}</span>${best.price_level?`<span class="tag ${best.price_level}">${LEVEL[best.price_level]||best.price_level}</span>`:''}</div>
+      <div class="price">${fmtEUR(o.price)}</div>
+      <div class="pp">total 4 persoane · ≈ ${fmtEUR(Math.round(o.price/4))} / pers.</div>
+      <div class="det"><b>${DATA.origins[best.origin]}</b> → ${DATA.destinations[best.dest].city} (${best.dest})</div>
+      <div class="det"><b>${fmtDate(best.depart)}</b> → <b>${fmtDate(best.return)}</b> · ${best.nights} nopți</div>
+      <div class="det">${o.airlines||'—'} · ${fmtDur(o.duration_min)} · ${stopsTxt(o.stops)}</div>
+      <a class="btn" href="${best.link}" target="_blank" rel="noopener">Vezi pe Google Flights ↗</a>`;
+    box.appendChild(card);
+  });
+}
+
+function heatClass(p, min, max){
+  if(max===min) return 'h1';
+  const k=(p-min)/(max-min);
+  return k<.2?'h1':k<.4?'h2':k<.6?'h3':k<.8?'h4':'h5';
+}
+
+function renderHeat(rows){
+  const t=document.getElementById('heat');
+  const dates=[...new Set(DATA.results.map(r=>r.depart))].sort();
+  const nights=[7,8,9].filter(n=>state.nights.has(n));
+  document.getElementById('heat-title').textContent = 'Calendar prețuri — ' + (state.country==='Toate'?'toate destinațiile':state.country) + ' (cel mai mic preț pe zi)';
+  const cell={};
+  rows.forEach(r=>{const k=r.depart+'|'+r.nights; if(!cell[k]||r.best.price<cell[k].best.price) cell[k]=r});
+  const prices=Object.values(cell).map(r=>r.best.price);
+  const min=Math.min(...prices), max=Math.max(...prices);
+  let h='<thead><tr><th>Plecare</th>'+nights.map(n=>`<th style="text-align:center">${n} nopți</th>`).join('')+'</tr></thead><tbody>';
+  dates.forEach(d=>{
+    h+=`<tr><td>${fmtDate(d)}</td>`;
+    nights.forEach(n=>{
+      const r=cell[d+'|'+n];
+      h+= r ? `<td class="cell ${heatClass(r.best.price,min,max)}"><a href="${r.link}" target="_blank" rel="noopener" title="${DATA.origins[r.origin]} → ${r.dest}, ${r.best.airlines}">${fmtEUR(r.best.price)}<small>${r.origin}→${r.dest} · ${fmtDur(r.best.duration_min)}</small></a></td>`
+             : `<td class="cell"><a style="color:var(--muted);font-weight:400">—</a></td>`;
+    });
+    h+='</tr>';
+  });
+  t.innerHTML=h+'</tbody>';
+  document.getElementById('legend').innerHTML = prices.length ? `ieftin <span class="h1"></span><span class="h2"></span><span class="h3"></span><span class="h4"></span><span class="h5"></span> scump · ${fmtEUR(min)} – ${fmtEUR(max)}` : '';
+}
+
+function renderList(rows){
+  const t=document.getElementById('list');
+  const sorted=[...rows].sort((a,b)=>a.best.price-b.best.price).slice(0,150);
+  document.getElementById('count').textContent = rows.length + ' combinații';
+  if(!sorted.length){t.innerHTML='<tbody><tr><td class="empty">Nicio ofertă pentru filtrele alese.</td></tr></tbody>';return}
+  t.innerHTML='<thead><tr><th>Preț (4 pers.)</th><th>Destinație</th><th>Din</th><th>Plecare</th><th>Întoarcere</th><th>Nopți</th><th>Durată dus</th><th>Escale</th><th>Companii</th><th></th></tr></thead><tbody>'+
+    sorted.map(r=>`<tr><td><b>${fmtEUR(r.best.price)}</b></td><td>${FLAG[r.country]} ${r.country} <span class="tag">${r.dest}</span></td><td>${DATA.origins[r.origin]}</td><td>${fmtDate(r.depart)}</td><td>${fmtDate(r.return)}</td><td>${r.nights}</td><td>${fmtDur(r.best.duration_min)}</td><td>${stopsTxt(r.best.stops)}</td><td>${r.best.airlines||'—'}</td><td><a href="${r.link}" target="_blank" rel="noopener">Google Flights ↗</a></td></tr>`).join('')+'</tbody>';
+}
+
+function renderHist(hist){
+  const box=document.getElementById('hist');
+  if(!hist || hist.length<2) return;
+  const W=Math.max(320, box.clientWidth-24), H=180, P=36;
+  const colors={Maldive:'#0ea5e9',Bali:'#16a34a',Thailanda:'#d97706',Mauritius:'#db2777'};
+  const all=hist.flatMap(h=>Object.values(h.best)); const min=Math.min(...all), max=Math.max(...all);
+  const x=i=>P+i*(W-P-10)/(hist.length-1), y=v=>max===min?H/2:10+(max-v)*(H-40)/(max-min);
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="Evoluția prețurilor">`;
+  [min,max].forEach(v=>s+=`<text x="2" y="${y(v)+4}">${Math.round(v/100)/10}k</text>`);
+  COUNTRIES.forEach(c=>{
+    const pts=hist.map((h,i)=>h.best[c]!=null?`${x(i)},${y(h.best[c])}`:null).filter(Boolean);
+    if(pts.length) s+=`<polyline fill="none" stroke="${colors[c]}" stroke-width="2.5" points="${pts.join(' ')}"/>`;
+  });
+  s+=`<text x="${P}" y="${H-4}">${new Date(hist[0].t).toLocaleDateString('ro-RO')}</text><text x="${W-10}" y="${H-4}" text-anchor="end">${new Date(hist.at(-1).t).toLocaleDateString('ro-RO')}</text></svg>`;
+  s+='<div class="legend">'+COUNTRIES.map(c=>`<span style="background:${colors[c]}"></span>${c} `).join(' ')+'</div>';
+  box.innerHTML=s;
+}
+
+function render(){
+  chips(document.getElementById('f-country'), [['Toate','Toate'],...COUNTRIES.map(c=>[c,FLAG[c]+' '+c])], v=>state.country===v, v=>state.country=v);
+  chips(document.getElementById('f-origin'), Object.entries(DATA.origins), v=>state.origins.has(v), v=>{state.origins.has(v)&&state.origins.size>1?state.origins.delete(v):state.origins.add(v)});
+  chips(document.getElementById('f-nights'), [[7,'7'],[8,'8'],[9,'9']], v=>state.nights.has(v), v=>{state.nights.has(v)&&state.nights.size>1?state.nights.delete(v):state.nights.add(v)});
+  chips(document.getElementById('f-stops'), [[0,'Direct'],[1,'Max 1'],[2,'Max 2'],[9,'Oricâte']], v=>state.stops===v, v=>state.stops=v);
+  ROWS.forEach(r=>r.best=bestOption(r)||r.options[0]);
+  const rows=filtered().filter(r=>bestOption(r));
+  renderCards(filtered(true).filter(r=>bestOption(r)));
+  renderHeat(rows); renderList(rows);
+}
+
+Promise.all([
+  fetch('data/results.json',{cache:'no-store'}).then(r=>r.json()),
+  fetch('data/history.json',{cache:'no-store'}).then(r=>r.ok?r.json():[]).catch(()=>[])
+]).then(([data,hist])=>{
+  DATA=data;
+  ROWS=data.results.filter(r=>r.options && r.options.length);
+  state.origins=new Set(Object.keys(data.origins));
+  renderMeta(); render(); renderHist(hist);
+}).catch(e=>{document.getElementById('cards').innerHTML='<p class="empty">Încă nu există date. Prima scanare rulează în curând.</p>'});
+</script>
+</body>
+</html>
