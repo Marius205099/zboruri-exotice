@@ -11,6 +11,14 @@ Un GitHub Action ([scan.yml](.github/workflows/scan.yml)) rulează [scanner/scan
 (≈07:00 și 19:00 ora României), caută pe Google Flights toate cele 540 de combinații și salvează rezultatele în
 `docs/data/`. Site-ul din `docs/` este publicat cu GitHub Pages.
 
+## Combinații cu oprire 1–2 zile (bilete separate)
+
+[scanner/scan_stopover.py](scanner/scan_stopover.py) caută și variante mai ieftine cu bilete separate:
+casă → oraș-hub (ex. Timișoara → Milano cu Wizz Air), 1–2 nopți acolo, apoi hub ⇄ destinație exotică
+dus-întors, iar la întoarcere încă 1–2 nopți în hub și zbor spre casă. Hub-uri: Milano, Roma, Madrid,
+Barcelona, Londra, Paris, München, Viena, Atena, Istanbul, Dubai, Abu Dhabi, Doha.
+Rezultatele sunt în `docs/data/stopovers.json` și apar în primul tab al site-ului.
+
 Scanare manuală: tab-ul **Actions** → *Scanare zboruri* → **Run workflow**.
 
 Rulare locală:

@@ -64,6 +64,29 @@ tr:last-child td{border-bottom:0}
 footer{color:var(--muted);font-size:13px;padding:32px 0 48px}
 svg text{fill:var(--muted);font-size:11px}
 .hist{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px}
+.tabs{display:flex;gap:6px;margin:22px 0 0;border-bottom:1px solid var(--line);overflow-x:auto}
+.tab{border:0;background:none;color:var(--muted);font:inherit;font-weight:600;padding:10px 14px;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap}
+.tab[aria-selected="true"]{color:var(--text);border-bottom-color:var(--accent)}
+.warn{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--mid);border-radius:10px;padding:12px 16px;font-size:14px;color:var(--muted);margin:16px 0 0}
+.warn b{color:var(--text)}
+.save{color:var(--good);font-weight:600;font-size:13px}
+.combo{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;box-shadow:var(--shadow);display:grid;gap:10px}
+.combo-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:baseline}
+.combo-head .route{font-weight:650;font-size:16px}
+.combo-head .tot{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums}
+.combo-head .tot small{display:block;font-size:12px;font-weight:400;color:var(--muted);text-align:right}
+.legs{display:grid;gap:6px}
+.lg{display:grid;grid-template-columns:110px 1fr auto;gap:10px;align-items:center;font-size:14px;padding:8px 10px;border-radius:10px;background:var(--surface-2)}
+.lg .d{color:var(--muted);font-size:13px}
+.lg .what b{font-weight:600}
+.lg .what small{display:block;color:var(--muted);font-size:12px}
+.lg .p{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+.lg .p a{display:block;font-size:12px;font-weight:400}
+.stay{font-size:13px;color:var(--muted);padding:0 10px}
+.stay b{color:var(--text)}
+.combos{display:grid;gap:12px}
+.more{margin:12px 0 0}
+@media (max-width:560px){.lg{grid-template-columns:1fr auto}.lg .d{grid-column:1/-1}}
 @media (max-width:560px){.flabel{min-width:100%}th,td{padding:7px 8px}}
 </style>
 </head>
@@ -75,6 +98,44 @@ svg text{fill:var(--muted);font-size:11px}
   <div class="meta" id="meta"></div>
 </header>
 
+<nav class="tabs" role="tablist">
+  <button class="tab" role="tab" data-tab="stop" aria-selected="true">✈️ Cu oprire 1–2 zile (bilete separate)</button>
+  <button class="tab" role="tab" data-tab="direct" aria-selected="false">🎫 Bilet întreg (fără oprire)</button>
+</nav>
+
+<section id="tab-stop">
+<div class="warn"><b>Bilete separate:</b> zbori întâi spre un oraș european sau din Golf (ex. Timișoara → Milano cu Wizz Air), stai 1–2 nopți și îl vizitezi, apoi iei un zbor separat dus-întors spre destinația exotică. La întoarcere, iar 1–2 nopți în același oraș, apoi acasă. Bagajele nu se transferă automat, iar dacă un zbor întârzie, celălalt bilet nu e protejat — de aceea există mereu cel puțin o noapte de rezervă.</div>
+
+<h2>Cea mai ieftină combinație pe destinație</h2>
+<div class="cards" id="s-cards"><p class="empty">Se încarcă…</p></div>
+
+<h2>Filtre</h2>
+<div class="filters">
+  <div class="frow"><span class="flabel">Destinație</span><div id="s-country" class="frow"></div></div>
+  <div class="frow"><span class="flabel">Plecare din</span><div id="s-origin" class="frow"></div></div>
+  <div class="frow"><span class="flabel">Oraș de oprire</span><div id="s-hub" class="frow"></div></div>
+  <div class="frow"><span class="flabel">Preț</span><div id="s-bags" class="frow"></div></div>
+</div>
+
+<h2>Cel mai bun preț pe oraș de oprire</h2>
+<div class="gridwrap"><table class="heat" id="s-hubs"></table></div>
+<div class="legend">Click pe un preț ca să filtrezi după acel oraș și acea destinație.</div>
+
+<h2>Combinații <span class="tag" id="s-count"></span></h2>
+<div class="combos" id="s-list"></div>
+<div class="more" id="s-more"></div>
+
+<h2>De știut</h2>
+<div class="note"><ul>
+  <li>Prețurile sunt <b>totale pentru 4 persoane</b> (2 adulți + 2 copii), în EUR: zbor spre oraș + zbor lung dus-întors + zbor spre casă.</li>
+  <li>La zborurile low-cost (Wizz Air, Ryanair, Pegasus etc.) prețul nu include bagaj de cală. Am adăugat o <b>estimare de <span id="s-bagfee">100</span> € pe zbor</b> pentru 2 bagaje de 20 kg — poți vedea prețul și fără.</li>
+  <li><b>Nu sunt incluse</b> cazarea în orașul de oprire și transferurile între aeroporturi (ex. la Londra sau Milano zborul low-cost poate ateriza pe alt aeroport decât cel al zborului lung — verifică pe link).</li>
+  <li>Londra: din 2025 cetățenii UE au nevoie de autorizația electronică <b>UK ETA</b>, inclusiv copiii. Dubai, Doha, Abu Dhabi, Istanbul: fără viză pentru cetățeni români.</li>
+  <li>Fiecare zbor are link separat spre Google Flights; rezervă-le separat, începând cu zborul lung.</li>
+</ul></div>
+</section>
+
+<section id="tab-direct" hidden>
 <h2>Cel mai bun preț pe destinație</h2>
 <div class="cards" id="cards"><p class="empty">Se încarcă…</p></div>
 
@@ -105,10 +166,19 @@ svg text{fill:var(--muted);font-size:11px}
   <li>Thailanda = Bangkok (BKK) și Phuket (HKT). Maldive = Malé (MLE). Bali = Denpasar (DPS). Mauritius = MRU.</li>
 </ul></div>
 
+</section>
+
 <footer>Date actualizate automat prin GitHub Actions. Sursa: Google Flights.</footer>
 </div>
 
 <script>
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',String(x===b)));
+  document.getElementById('tab-stop').hidden = b.dataset.tab!=='stop';
+  document.getElementById('tab-direct').hidden = b.dataset.tab!=='direct';
+  try{localStorage.setItem('tab',b.dataset.tab)}catch(e){}
+  if(b.dataset.tab==='direct' && window.HIST) renderHist(window.HIST);
+});
 const fmtEUR = n => n.toLocaleString('ro-RO') + ' €';
 const RO_DAY = new Intl.DateTimeFormat('ro-RO', {weekday:'short', day:'numeric', month:'short'});
 const fmtDate = s => RO_DAY.format(new Date(s + 'T12:00:00'));
@@ -248,8 +318,10 @@ Promise.all([
   DATA=data;
   ROWS=data.results.filter(r=>r.options && r.options.length);
   state.origins=new Set(Object.keys(data.origins));
-  renderMeta(); render(); renderHist(hist);
+  renderMeta(); render(); window.HIST=hist; renderHist(hist);
 }).catch(e=>{document.getElementById('cards').innerHTML='<p class="empty">Încă nu există date. Prima scanare rulează în curând.</p>'});
+try{const t=localStorage.getItem('tab'); if(t) document.querySelector(`.tab[data-tab="${t}"]`)?.click()}catch(e){}
 </script>
+<script src="stopover.js"></script>
 </body>
 </html>

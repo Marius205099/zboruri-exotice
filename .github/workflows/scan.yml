@@ -16,7 +16,7 @@ concurrency:
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 150
     steps:
       - uses: actions/checkout@v4
 
@@ -28,8 +28,11 @@ jobs:
 
       - run: pip install -r scanner/requirements.txt
 
-      - name: Scanează zborurile
+      - name: Scanează zborurile cu bilet întreg
         run: python scanner/scan.py
+
+      - name: Scanează combinațiile cu oprire 1–2 zile
+        run: python scanner/scan_stopover.py
 
       - name: Salvează rezultatele
         run: |

@@ -12,17 +12,12 @@ iar istoricul celor mai bune prețuri în docs/data/history.json.
 """
 
 import json
-import re
 import sys
-import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
-from fast_flights import FlightData, Passengers
-from fast_flights.core import parse_response
-from fast_flights.filter import TFSData
-from primp import Client
+import gf
 
 ORIGINS = {
     "TSR": "Timișoara",
@@ -43,110 +38,25 @@ FIRST_DEPARTURE = date(2026, 12, 26)
 LAST_DEPARTURE = date(2027, 1, 3)
 NIGHTS = (7, 8, 9)
 MAX_DURATION_MIN = 25 * 60
-PASSENGERS = dict(adults=2, children=2)
-CURRENCY = "EUR"
+CURRENCY = gf.CURRENCY
 
 WORKERS = 3
-RETRIES = 2
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "docs" / "data"
 
-# Cookie de consimțământ Google, ca să nu primim pagina de cookie-uri din UE.
-COOKIES = {"SOCS": "CAESEwgDEgk0ODE3Nzk3MjQaAmVuIAEaBgiA_LyaBg"}
-
-
-def build_filter(origin, dest, dep, ret):
-    return TFSData.from_interface(
-        flight_data=[
-            FlightData(date=dep.isoformat(), from_airport=origin, to_airport=dest),
-            FlightData(date=ret.isoformat(), from_airport=dest, to_airport=origin),
-        ],
-        trip="round-trip",
-        seat="economy",
-        passengers=Passengers(**PASSENGERS),
-    )
-
-
-def google_link(tfs_b64):
-    return f"https://www.google.com/travel/flights?tfs={tfs_b64}&hl=ro&curr={CURRENCY}"
-
-
-def parse_duration(text):
-    """'23 hr 45 min' -> 1425"""
-    h = re.search(r"(\d+)\s*hr", text)
-    m = re.search(r"(\d+)\s*min", text)
-    if not h and not m:
-        return None
-    return (int(h.group(1)) if h else 0) * 60 + (int(m.group(1)) if m else 0)
-
-
-def parse_price(text):
-    digits = re.sub(r"[^\d]", "", text or "")
-    return int(digits) if digits else None
-
 
 def search(origin, dest, dep, nights):
     ret = dep + timedelta(days=nights)
-    tfs = build_filter(origin, dest, dep, ret).as_b64().decode()
-    combo = {
+    r = gf.query([(origin, dest, dep), (dest, origin, ret)], "round-trip", MAX_DURATION_MIN)
+    return {
         "origin": origin,
         "dest": dest,
         "country": DESTINATIONS[dest]["country"],
         "depart": dep.isoformat(),
         "return": ret.isoformat(),
         "nights": nights,
-        "link": google_link(tfs),
-    }
-
-    last_error = None
-    for attempt in range(RETRIES + 1):
-        try:
-            client = Client(impersonate="chrome_126")
-            res = client.get(
-                "https://www.google.com/travel/flights",
-                params={"tfs": tfs, "hl": "en", "tfu": "EgQIABABIgA", "curr": CURRENCY},
-                cookies=COOKIES,
-            )
-            if res.status_code != 200:
-                raise RuntimeError(f"HTTP {res.status_code}")
-            result = parse_response(res)
-            break
-        except Exception as e:  # noqa: BLE001
-            last_error = str(e).splitlines()[0][:200]
-            if "No flights found" in last_error:
-                return {**combo, "status": "none", "options": []}
-            time.sleep(3 * (attempt + 1))
-    else:
-        return {**combo, "status": "error", "error": last_error, "options": []}
-
-    options = []
-    seen = set()
-    for f in result.flights:
-        price = parse_price(f.price)
-        minutes = parse_duration(f.duration)
-        if not price or minutes is None or minutes > MAX_DURATION_MIN:
-            continue
-        key = (f.name, f.departure, f.arrival, price)
-        if key in seen:
-            continue
-        seen.add(key)
-        options.append(
-            {
-                "price": price,
-                "duration_min": minutes,
-                "stops": f.stops if isinstance(f.stops, int) else None,
-                "airlines": f.name,
-                "departure": f.departure,
-                "arrival": f.arrival,
-            }
-        )
-    options.sort(key=lambda o: (o["price"], o["duration_min"]))
-    return {
-        **combo,
-        "status": "ok" if options else "too_long",
-        "price_level": result.current_price or None,
-        "options": options[:5],
+        **r,
     }
 
 
