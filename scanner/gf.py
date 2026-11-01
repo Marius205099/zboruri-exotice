@@ -11,6 +11,7 @@ from primp import Client
 PASSENGERS = dict(adults=2, children=2)
 CURRENCY = "EUR"
 RETRIES = 2
+NONE_RETRIES = 1
 
 # Cookie de consimțământ Google, ca să nu primim pagina de cookie-uri din UE.
 COOKIES = {"SOCS": "CAESEwgDEgk0ODE3Nzk3MjQaAmVuIAEaBgiA_LyaBg"}
@@ -77,8 +78,12 @@ def query(legs, trip, max_duration_min=None, keep=5):
             break
         except Exception as e:  # noqa: BLE001
             last_error = str(e).splitlines()[0][:200]
+            # Pe serverele GitHub, Google dă uneori o pagină fără zboruri pentru rute care au zboruri.
             if "No flights found" in last_error:
-                return {**out, "status": "none", "options": []}
+                if attempt >= NONE_RETRIES:
+                    return {**out, "status": "none", "options": []}
+                time.sleep(5)
+                continue
             time.sleep(3 * (attempt + 1))
     else:
         return {**out, "status": "error", "error": last_error, "options": []}
