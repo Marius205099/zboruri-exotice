@@ -16,6 +16,20 @@ RETRIES = 2
 COOKIES = {"SOCS": "CAESEwgDEgk0ODE3Nzk3MjQaAmVuIAEaBgiA_LyaBg"}
 
 
+class Blocked(Exception):
+    """Prea multe erori consecutive: Google refuză cererile, nu are rost să continuăm."""
+
+
+class Breaker:
+    def __init__(self, limit=30):
+        self.limit, self.streak = limit, 0
+
+    def record(self, result):
+        self.streak = self.streak + 1 if result["status"] == "error" else 0
+        if self.streak >= self.limit:
+            raise Blocked(f"{self.limit} erori consecutive, ultima: {result.get('error')}")
+
+
 def parse_duration(text):
     """'23 hr 45 min' -> 1425"""
     h = re.search(r"(\d+)\s*hr", text)

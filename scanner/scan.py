@@ -77,13 +77,20 @@ def main():
     print(f"Scanez {len(combos)} combinații…", flush=True)
 
     results = []
+    breaker = gf.Breaker()
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
         futures = [pool.submit(search, *c) for c in combos]
-        for i, fut in enumerate(as_completed(futures), 1):
-            r = fut.result()
-            results.append(r)
-            best = r["options"][0]["price"] if r["options"] else "-"
-            print(f"[{i}/{len(combos)}] {r['origin']}->{r['dest']} {r['depart']} {r['nights']}n: {r['status']} {best}", flush=True)
+        try:
+            for i, fut in enumerate(as_completed(futures), 1):
+                r = fut.result()
+                results.append(r)
+                best = r["options"][0]["price"] if r["options"] else "-"
+                print(f"[{i}/{len(combos)}] {r['origin']}->{r['dest']} {r['depart']} {r['nights']}n: {r['status']} {best} {r.get('error', '')}", flush=True)
+                breaker.record(r)
+        except gf.Blocked as e:
+            pool.shutdown(wait=False, cancel_futures=True)
+            print(f"::error::Scanare oprită, datele vechi rămân: {e}", flush=True)
+            return 1
 
     results.sort(key=lambda r: (r["options"][0]["price"] if r["options"] else 10**9))
     ok = [r for r in results if r["options"]]

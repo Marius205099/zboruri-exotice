@@ -105,11 +105,18 @@ def main():
 
     out, ret, lh = {}, {}, {}
     errors = 0
+    breaker = gf.Breaker()
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
         futures = [pool.submit(run, t) for t in all_tasks]
         for i, fut in enumerate(as_completed(futures), 1):
             (kind, a, b, d, n), r = fut.result()
             errors += r["status"] == "error"
+            try:
+                breaker.record(r)
+            except gf.Blocked as e:
+                pool.shutdown(wait=False, cancel_futures=True)
+                print(f"::error::Scanare oprită, datele vechi rămân: {e}", flush=True)
+                return 1
             if i % 100 == 0:
                 print(f"[{i}/{len(all_tasks)}] erori: {errors}", flush=True)
             if not r["options"]:
