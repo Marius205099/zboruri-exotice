@@ -16,7 +16,7 @@ NONE_RETRIES = 1
 
 # Prețurile low-cost de pe Google Flights nu includ bagajul de cală.
 LOW_COST = ("Wizz", "Ryanair", "easyJet", "Pegasus", "flydubai", "Air Arabia", "Vueling",
-            "Transavia", "Eurowings", "AJet", "Volotea", "SkyUp", "HiSky")
+            "Transavia", "Eurowings", "AJet", "Volotea", "SkyUp", "HiSky", "Norse", "Scoot", "AirAsia")
 # Low-cost care transferă bagajele între zborurile de pe același bilet.
 THROUGH_LOW_COST = ("flydubai",)
 
