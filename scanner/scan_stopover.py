@@ -22,7 +22,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta, timezone
 
 import gf
-from scan import DATA_DIR, DESTINATIONS, FIRST_DEPARTURE, LAST_DEPARTURE, NIGHTS, ORIGINS
+from scan import DATA_DIR, DESTINATIONS, FIRST_DEPARTURE, LAST_DEPARTURE, ORIGINS, STAY_NIGHTS, TRIP_DAYS
 
 HUBS = {
     "MIL": "Milano",
@@ -73,7 +73,7 @@ def tasks():
     lh_first = FIRST_DEPARTURE + timedelta(days=min(STOP_OUT_DAYS))
     lh_last = LAST_DEPARTURE + timedelta(days=max(STOP_OUT_DAYS))
     lh_dates = [lh_first + timedelta(days=i) for i in range((lh_last - lh_first).days + 1)]
-    ret_dates = sorted({d + timedelta(days=n + s) for d in lh_dates for n in NIGHTS for s in STOP_RET_DAYS})
+    ret_dates = sorted({d + timedelta(days=n + s) for d in lh_dates for n in TRIP_DAYS for s in STOP_RET_DAYS})
     home_dates = [FIRST_DEPARTURE + timedelta(days=i) for i in range((LAST_DEPARTURE - FIRST_DEPARTURE).days + 1)]
 
     for h in HUBS:
@@ -84,14 +84,14 @@ def tasks():
                 yield ("ret", h, o, d, None)
         for dest in DESTINATIONS:
             for d in lh_dates:
-                for n in NIGHTS:
+                for n in TRIP_DAYS:
                     yield ("lh", h, dest, d, n)
 
 
 def run(task):
     kind, a, b, d, n = task
     if kind == "lh":
-        r = gf.query([(a, b, d), (b, a, d + timedelta(days=n))], "round-trip", MAX_LONGHAUL_MIN, keep=1)
+        r = gf.query([(a, b, d), (b, a, d + timedelta(days=n))], "round-trip", MAX_LONGHAUL_MIN, keep=1, stay_nights=STAY_NIGHTS)
     else:
         r = gf.query([(a, b, d)], "one-way", MAX_POSITIONING_MIN, keep=1)
     return task, r
@@ -128,9 +128,9 @@ def main():
             else:
                 lh[(a, b, d, n)] = leg(r, origin=a, to=b, date=d.isoformat(),
                                        return_date=(d + timedelta(days=n)).isoformat(),
-                                       nights=n, price_level=r.get("price_level"))
+                                       nights=STAY_NIGHTS, price_level=r.get("price_level"))
 
-    # Combinăm: casă → hub (+1–2 nopți) → destinație (7–9 nopți) → hub (+1–2 nopți) → casă
+    # Combinăm: casă → hub (+1–2 nopți) → destinație (7 nopți de la aterizare) → hub (+1–2 nopți) → casă
     groups = defaultdict(list)
     for (h, dest, lh_dep, n), long_leg in lh.items():
         lh_ret = lh_dep + timedelta(days=n)
@@ -153,7 +153,7 @@ def main():
                         "country": DESTINATIONS[dest]["country"],
                         "depart": first["date"],
                         "home": last["date"],
-                        "nights": n,
+                        "nights": STAY_NIGHTS,
                         "stop_out": s_out,
                         "stop_ret": s_ret,
                         "tickets": tickets,
@@ -188,6 +188,7 @@ def main():
         "currency": gf.CURRENCY,
         "hubs": HUBS,
         "bag_fee_per_leg": BAG_FEE_PER_LEG,
+        "stay_nights": STAY_NIGHTS,
         "stats": {
             "searches": len(all_tasks),
             "errors": errors,

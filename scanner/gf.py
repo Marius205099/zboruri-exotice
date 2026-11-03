@@ -2,6 +2,7 @@
 
 import re
 import time
+from datetime import datetime
 
 from fast_flights import FlightData, Passengers
 from fast_flights.core import parse_response
@@ -45,6 +46,15 @@ def parse_price(text):
     return int(digits) if digits else None
 
 
+def arrival_date(text, departure):
+    """'2:20 PM on Sun, Jan 3' -> data aterizării (anul se deduce din data plecării)."""
+    m = re.search(r"on \w+, (\w+) (\d+)", text or "")
+    if not m:
+        return None
+    d = datetime.strptime(f"{m.group(1)} {m.group(2)} {departure.year}", "%b %d %Y").date()
+    return d if d >= departure else d.replace(year=departure.year + 1)
+
+
 def build_tfs(legs, trip):
     """legs: [(from, to, date), ...]"""
     return TFSData.from_interface(
@@ -59,8 +69,12 @@ def google_link(tfs):
     return f"https://www.google.com/travel/flights?tfs={tfs}&hl=ro&curr={CURRENCY}"
 
 
-def query(legs, trip, max_duration_min=None, keep=5):
-    """Întoarce {status, link, price_level, options:[...]}; status: ok / none / too_long / error."""
+def query(legs, trip, max_duration_min=None, keep=5, stay_nights=None):
+    """Întoarce {status, link, price_level, options:[...]}; status: ok / none / too_long / error.
+
+    Cu stay_nights, la dus-întors păstrează doar zborurile care aterizează exact cu atâtea
+    nopți înainte de zborul de întoarcere.
+    """
     tfs = build_tfs(legs, trip)
     out = {"link": google_link(tfs)}
 
@@ -97,6 +111,9 @@ def query(legs, trip, max_duration_min=None, keep=5):
             continue
         if max_duration_min and minutes > max_duration_min:
             continue
+        arrives = arrival_date(f.arrival, legs[0][2])
+        if stay_nights and (not arrives or (legs[1][2] - arrives).days != stay_nights):
+            continue
         key = (f.name, f.departure, f.arrival, price)
         if key in seen:
             continue
@@ -109,6 +126,7 @@ def query(legs, trip, max_duration_min=None, keep=5):
                 "airlines": f.name,
                 "departure": f.departure,
                 "arrival": f.arrival,
+                "arrival_date": arrives.isoformat() if arrives else None,
             }
         )
     options.sort(key=lambda o: (o["price"], o["duration_min"]))

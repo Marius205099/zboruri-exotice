@@ -3,9 +3,13 @@
 Caută pe Google Flights (prin biblioteca fast-flights) toate combinațiile:
   plecare din TSR / CLJ / BUD / BEG
   către Maldive, Bali, Thailanda, Mauritius
-  plecare 26 dec 2026 – 3 ian 2027, sejur 7–9 nopți
+  plecare 26 dec 2026 – 18 ian 2027, 7 nopți de cazare la destinație
   2 adulți + 2 copii (3 și 5 ani)
 și păstrează doar zborurile cu durata dus de maxim 25 de ore.
+
+Cele 7 nopți se numără de la aterizare: plecare 10 ian, aterizare 11 ian, retur 18 ian.
+De aceea căutăm returul la 7, 8 și 9 zile de la plecare și păstrăm doar zborurile
+care aterizează exact cu 7 nopți înainte de retur.
 
 Rezultatul se scrie în docs/data/results.json (citit de site),
 iar istoricul celor mai bune prețuri în docs/data/history.json.
@@ -35,8 +39,10 @@ DESTINATIONS = {
 }
 
 FIRST_DEPARTURE = date(2026, 12, 26)
-LAST_DEPARTURE = date(2027, 1, 3)
-NIGHTS = (7, 8, 9)
+LAST_DEPARTURE = date(2027, 1, 18)
+STAY_NIGHTS = 7
+# zile între plecare și retur: aterizare în aceeași zi, a doua zi sau a treia zi
+TRIP_DAYS = (STAY_NIGHTS, STAY_NIGHTS + 1, STAY_NIGHTS + 2)
 MAX_DURATION_MIN = 25 * 60
 CURRENCY = gf.CURRENCY
 
@@ -46,16 +52,16 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "docs" / "data"
 
 
-def search(origin, dest, dep, nights):
-    ret = dep + timedelta(days=nights)
-    r = gf.query([(origin, dest, dep), (dest, origin, ret)], "round-trip", MAX_DURATION_MIN)
+def search(origin, dest, dep, trip_days):
+    ret = dep + timedelta(days=trip_days)
+    r = gf.query([(origin, dest, dep), (dest, origin, ret)], "round-trip", MAX_DURATION_MIN, stay_nights=STAY_NIGHTS)
     return {
         "origin": origin,
         "dest": dest,
         "country": DESTINATIONS[dest]["country"],
         "depart": dep.isoformat(),
         "return": ret.isoformat(),
-        "nights": nights,
+        "nights": STAY_NIGHTS,
         **r,
     }
 
@@ -65,8 +71,8 @@ def all_combos():
     while d <= LAST_DEPARTURE:
         for origin in ORIGINS:
             for dest in DESTINATIONS:
-                for n in NIGHTS:
-                    yield origin, dest, d, n
+                for days in TRIP_DAYS:
+                    yield origin, dest, d, days
         d += timedelta(days=1)
 
 
@@ -85,7 +91,7 @@ def main():
                 r = fut.result()
                 results.append(r)
                 best = r["options"][0]["price"] if r["options"] else "-"
-                print(f"[{i}/{len(combos)}] {r['origin']}->{r['dest']} {r['depart']} {r['nights']}n: {r['status']} {best} {r.get('error', '')}", flush=True)
+                print(f"[{i}/{len(combos)}] {r['origin']}->{r['dest']} {r['depart']}–{r['return']}: {r['status']} {best} {r.get('error', '')}", flush=True)
                 breaker.record(r)
         except gf.Blocked as e:
             pool.shutdown(wait=False, cancel_futures=True)
@@ -110,6 +116,7 @@ def main():
         "currency": CURRENCY,
         "passengers": "2 adulți + 2 copii (3 și 5 ani)",
         "max_duration_h": MAX_DURATION_MIN // 60,
+        "stay_nights": STAY_NIGHTS,
         "origins": ORIGINS,
         "destinations": DESTINATIONS,
         "stats": {"total": len(results), "with_price": len(ok), "errors": errors},
