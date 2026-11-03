@@ -2,7 +2,7 @@
 
 Caută pe Google Flights (prin biblioteca fast-flights) toate combinațiile:
   plecare din TSR / CLJ / BUD / BEG
-  către Phuket (Thailanda), cu întoarcerea tot din Phuket
+  către Maldive, Bali, Thailanda (Phuket), Mauritius
   plecare 26 dec 2026 – 18 ian 2027, 7 nopți de cazare la destinație
   2 adulți + 2 copii (3 și 5 ani)
 și păstrează doar zborurile dus de maxim 20 de ore, cu cel mult o escală.
@@ -31,7 +31,10 @@ ORIGINS = {
 }
 
 DESTINATIONS = {
-    "HKT": {"city": "Phuket", "country": "Phuket"},
+    "MLE": {"city": "Malé", "country": "Maldive"},
+    "DPS": {"city": "Denpasar", "country": "Bali"},
+    "HKT": {"city": "Phuket", "country": "Thailanda"},
+    "MRU": {"city": "Port Louis", "country": "Mauritius"},
 }
 
 FIRST_DEPARTURE = date(2026, 12, 26)

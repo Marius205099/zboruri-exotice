@@ -1,11 +1,11 @@
 """Combinații cu bilete separate și oprire de 1–3 zile într-un oraș-hub.
 
-Exemplu: Timișoara → Milano cu Wizz Air, 1–2 nopți în Milano, apoi Milano → Phuket
+Exemplu: Timișoara → Milano cu Wizz Air, 1–2 nopți în Milano, apoi Milano → Maldive
 dus-întors, iar la întoarcere încă 1–2 nopți în Milano și zbor separat spre casă.
 
 Se caută separat, pe Google Flights:
   1. zborurile de poziționare dus:   casă → hub   (o singură direcție)
-  2. zborurile lungi dus-întors:     hub → Phuket
+  2. zborurile lungi dus-întors:     hub → destinație exotică
   3. zborurile de poziționare întors: hub → casă  (o singură direcție)
 apoi se combină toate variantele și se păstrează cele mai ieftine.
 
@@ -43,7 +43,7 @@ HUBS = {
 
 # nopți în hub la plecare (zborul spre hub e scurt, ajungi în aceeași zi)
 STOP_OUT_DAYS = (1, 2)
-# zile între plecarea din Phuket și zborul spre casă;
+# zile între plecarea din destinația exotică și zborul spre casă;
 # zborurile lungi de noapte aterizează adesea a doua zi, deci 2–3 zile = 1–2 nopți în hub
 STOP_RET_DAYS = (2, 3)
 
