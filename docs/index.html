@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Zboruri exotice de iarnă</title>
-<meta name="description" content="Prețuri scanate de două ori pe zi: Timișoara, Cluj, Budapesta, Belgrad → Maldive, Bali, Thailanda, Mauritius. plecare 26 dec 2026 – 18 ian 2027, 7 nopți de cazare, 2 adulți + 2 copii.">
+<meta name="description" content="Prețuri scanate de două ori pe zi: Timișoara, Cluj, Budapesta, Belgrad → Maldive, Bali, Thailanda, Mauritius. plecare 26 dec 2026 – 18 ian 2027, 7 nopți de cazare, maxim 20 de ore și o escală, cu transfer automat sau manual de bagaje.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌴</text></svg>">
 <style>
 :root{
@@ -69,6 +69,13 @@ svg text{fill:var(--muted);font-size:11px}
 .tab[aria-selected="true"]{color:var(--text);border-bottom-color:var(--accent)}
 .warn{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--mid);border-radius:10px;padding:12px 16px;font-size:14px;color:var(--muted);margin:16px 0 0}
 .warn b{color:var(--text)}
+.bag{display:inline-block;font-size:12px;font-weight:600;border-radius:6px;padding:2px 8px;white-space:nowrap}
+.bag.auto{background:var(--heat-1);color:var(--text)}
+.bag.manual{background:var(--heat-3);color:var(--text)}
+.warn.ok{border-left-color:var(--good)}
+.compare td a{font-weight:600}
+.compare th,.compare td{white-space:normal}
+.compare small{display:block;color:var(--muted);font-weight:400;font-size:12px}
 .save{color:var(--good);font-weight:600;font-size:13px}
 .combo{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;box-shadow:var(--shadow);display:grid;gap:10px}
 .combo-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:baseline}
@@ -98,13 +105,18 @@ svg text{fill:var(--muted);font-size:11px}
   <div class="meta" id="meta"></div>
 </header>
 
+<section id="compare-box" hidden>
+<h2>Cine mută bagajele? Cel mai bun preț</h2>
+<div class="gridwrap"><table class="compare" id="compare"></table></div>
+</section>
+
 <nav class="tabs" role="tablist">
-  <button class="tab" role="tab" data-tab="stop" aria-selected="true">✈️ Cu oprire 1–2 zile (bilete separate)</button>
-  <button class="tab" role="tab" data-tab="direct" aria-selected="false">🎫 Bilet întreg (fără oprire)</button>
+  <button class="tab" role="tab" data-tab="direct" aria-selected="true">🧳 Transfer automat</button>
+  <button class="tab" role="tab" data-tab="stop" aria-selected="false">🖐️ Transfer manual</button>
 </nav>
 
-<section id="tab-stop">
-<div class="warn"><b>Bilete separate:</b> zbori întâi spre un oraș european sau din Golf (ex. Timișoara → Milano cu Wizz Air), stai 1–2 nopți și îl vizitezi, apoi iei un zbor separat dus-întors spre destinația exotică. La întoarcere, iar 1–2 nopți în același oraș, apoi acasă. Bagajele nu se transferă automat, iar dacă un zbor întârzie, celălalt bilet nu e protejat — de aceea există mereu cel puțin o noapte de rezervă.</div>
+<section id="tab-stop" hidden>
+<div class="warn"><b>Transfer manual, bilete separate:</b> ridici bagajele și le predai din nou în orașul de oprire, la dus și la întors. Zbori întâi spre un oraș european sau din Golf (ex. Timișoara → Milano cu Wizz Air), stai 1–2 nopți și îl vizitezi, apoi iei un zbor separat dus-întors spre destinația exotică. La întoarcere, iar 1–2 nopți în același oraș, apoi acasă. Bagajele nu se transferă automat, iar dacă un zbor întârzie, celălalt bilet nu e protejat — de aceea există mereu cel puțin o noapte de rezervă.</div>
 
 <h2>Cea mai ieftină combinație pe destinație</h2>
 <div class="cards" id="s-cards"><p class="empty">Se încarcă…</p></div>
@@ -125,8 +137,15 @@ svg text{fill:var(--muted);font-size:11px}
 <div class="combos" id="s-list"></div>
 <div class="more" id="s-more"></div>
 
+<section id="verify-box" hidden>
+<h2>Un singur bilet, dar transfer nesigur <span class="tag" id="verify-count"></span></h2>
+<p class="sub">Escala implică o companie low-cost, deci e posibil să muți bagajele singur. Verifică înainte de rezervare.</p>
+<div class="gridwrap"><table id="verify"></table></div>
+</section>
+
 <h2>De știut</h2>
 <div class="note"><ul>
+  <li>Limitele se aplică fiecărui bilet: zborul lung are maxim <b>20 de ore și o escală</b> la dus, iar zborurile spre și dinspre orașul de oprire maxim 12 ore și o escală.</li>
   <li>Prețurile sunt <b>totale pentru 4 persoane</b> (2 adulți + 2 copii), în EUR: zbor spre oraș + zbor lung dus-întors + zbor spre casă.</li>
   <li>La zborurile low-cost (Wizz Air, Ryanair, Pegasus etc.) prețul nu include bagaj de cală. Am adăugat o <b>estimare de <span id="s-bagfee">100</span> € pe zbor</b> pentru 2 bagaje de 20 kg — poți vedea prețul și fără.</li>
   <li><b>Nu sunt incluse</b> cazarea în orașul de oprire și transferurile între aeroporturi (ex. la Londra sau Milano zborul low-cost poate ateriza pe alt aeroport decât cel al zborului lung — verifică pe link).</li>
@@ -135,7 +154,9 @@ svg text{fill:var(--muted);font-size:11px}
 </ul></div>
 </section>
 
-<section id="tab-direct" hidden>
+<section id="tab-direct">
+<div class="warn ok"><b>Transfer automat:</b> tot drumul e pe un singur bilet (Emirates, Qatar, Turkish etc.). Predai bagajele la plecare și le ridici la destinație, iar dacă pierzi legătura, compania te mută pe alt zbor. Confirmă la rezervare că bagajele sunt etichetate până la destinație.</div>
+
 <h2>Cel mai bun preț pe destinație</h2>
 <div class="cards" id="cards"><p class="empty">Se încarcă…</p></div>
 
@@ -161,7 +182,7 @@ svg text{fill:var(--muted);font-size:11px}
   <li>Un robot caută pe Google Flights de două ori pe zi toate combinațiile: 4 aeroporturi × 5 aeroporturi de destinație × 24 de zile de plecare (26 dec – 18 ian). Scanarea începe în jur de 07:30 și 19:30, ora României, și durează câteva ore.</li>
   <li><b>7 nopți de cazare, numărate de la aterizare.</b> Exemplu: plecare 10 ian, aterizare 11 ian în Phuket, retur 18 ian. Dacă aterizezi în aceeași zi sau cu două zile mai târziu, returul se mută corespunzător.</li>
   <li>Prețurile sunt <b>totale pentru 4 persoane</b> (2 adulți + 2 copii de 3 și 5 ani), dus-întors, clasa economic, în EUR.</li>
-  <li>Se păstrează doar zborurile cu durata zborului dus de <b>maxim 25 de ore</b>. Durata la întoarcere se verifică pe Google Flights, apăsând pe ofertă.</li>
+  <li>Se păstrează doar zborurile dus de <b>maxim 20 de ore, cu cel mult o escală</b>. Google Flights arată în scanare doar zborul dus, deci durata și escalele la întoarcere se verifică apăsând pe ofertă.</li>
   <li>Prețurile se schimbă des — confirmă întotdeauna pe Google Flights / la compania aeriană înainte de rezervare.</li>
   <li>Thailanda = Bangkok (BKK) și Phuket (HKT). Maldive = Malé (MLE). Bali = Denpasar (DPS). Mauritius = MRU.</li>
 </ul></div>
@@ -188,8 +209,8 @@ const LEVEL = {low:'preț mic', typical:'preț obișnuit', high:'preț mare'};
 const COUNTRIES = ['Maldive','Bali','Thailanda','Mauritius'];
 const FLAG = {Maldive:'🇲🇻', Bali:'🇮🇩', Thailanda:'🇹🇭', Mauritius:'🇲🇺'};
 
-const state = {country:'Toate', origins:new Set(), stops:9};
-const UPDATING='<p class="empty">Se scanează prețurile pentru noile date (plecare 26 dec – 18 ian, 7 nopți de cazare). Rezultatele apar aici în cel mult câteva ore.</p>';
+const state = {country:'Toate', origins:new Set(), stops:1};
+const UPDATING='<p class="empty">Se scanează prețurile pentru noile date (maxim 20 de ore și o escală). Rezultatele apar aici în cel mult câteva ore.</p>';
 let DATA, ROWS = [];
 
 function el(tag, attrs={}, html=''){const e=document.createElement(tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));e.innerHTML=html;return e}
@@ -204,15 +225,14 @@ function chips(container, items, isOn, onClick){
 }
 
 function filtered(allCountries=false){
-  return ROWS.filter(r =>
-    (allCountries || state.country==='Toate' || r.country===state.country) &&
-    state.origins.has(r.origin) &&
-    (r.best.stops==null || r.best.stops<=state.stops));
+  return ROWS.filter(r => r.best &&
+    ((allCountries || state.country==='Toate' || r.country===state.country) &&
+    state.origins.has(r.origin)));
 }
 
 function bestOption(r){
   // cea mai ieftină opțiune care respectă filtrul de escale
-  return r.options.find(o => o.stops==null || o.stops<=state.stops);
+  return r.options.find(o => o.bag_transfer==='auto' && o.stops<=state.stops);
 }
 
 function renderMeta(){
@@ -223,7 +243,7 @@ function renderMeta(){
     `<span class="pill">Ultima scanare: <b>${when}</b></span>`+
     `<span class="pill">👨‍👩‍👧‍👦 <b>2 adulți + 2 copii</b> (3 și 5 ani)</span>`+
     `<span class="pill">Plecare <b>26 dec – 18 ian</b>, <b>7 nopți de cazare</b></span>`+
-    `<span class="pill">Zbor dus <b>≤ 25 h</b></span>`+
+    `<span class="pill">Zbor dus <b>≤ 20 h, max 1 escală</b></span>`+
     `<span class="pill"><b>${s.with_price}</b> oferte găsite</span>`;
 }
 
@@ -232,7 +252,7 @@ function renderCards(rows){
   COUNTRIES.forEach(c=>{
     const best = rows.filter(r=>r.country===c).sort((a,b)=>a.best.price-b.best.price)[0];
     const card=el('div',{class:'card'});
-    if(!best){card.innerHTML=`<div class="country">${FLAG[c]} ${c}</div><p class="empty">Nicio ofertă ≤ 25h cu filtrele actuale.</p>`;box.appendChild(card);return}
+    if(!best){card.innerHTML=`<div class="country">${FLAG[c]} ${c}</div><p class="empty">Nicio ofertă cu transfer automat pentru filtrele actuale.</p>`;box.appendChild(card);return}
     const o=best.best;
     card.innerHTML=`<div class="country"><span>${FLAG[c]} ${c}</span>${best.price_level?`<span class="tag ${best.price_level}">${LEVEL[best.price_level]||best.price_level}</span>`:''}</div>
       <div class="price">${fmtEUR(o.price)}</div>
@@ -241,6 +261,7 @@ function renderCards(rows){
       <div class="det">Plecare <b>${fmtDate(best.depart)}</b> · aterizare <b>${fmtDate(o.arrival_date)}</b></div>
       <div class="det">Retur <b>${fmtDate(best.return)}</b> · ${best.nights} nopți de cazare</div>
       <div class="det">${o.airlines||'—'} · ${fmtDur(o.duration_min)} · ${stopsTxt(o.stops)}</div>
+      <div><span class="bag auto">🧳 Bagaje transferate automat</span></div>
       <a class="btn" href="${best.link}" target="_blank" rel="noopener">Vezi pe Google Flights ↗</a>`;
     box.appendChild(card);
   });
@@ -302,13 +323,21 @@ function renderHist(hist){
   box.innerHTML=s;
 }
 
+function renderVerify(){
+  const rows=DATA.results.flatMap(r=>r.options.filter(o=>o.bag_transfer==='verify').slice(0,1).map(o=>({...r,o}))).sort((a,b)=>a.o.price-b.o.price);
+  document.getElementById('verify-box').hidden=!rows.length;
+  document.getElementById('verify-count').textContent=rows.length+' oferte';
+  document.getElementById('verify').innerHTML='<thead><tr><th>Preț (4 pers.)</th><th>Rută</th><th>Plecare</th><th>Retur</th><th>Companii</th><th></th></tr></thead><tbody>'+
+    rows.slice(0,50).map(r=>`<tr><td><b>${fmtEUR(r.o.price)}</b></td><td>${r.origin} → ${r.dest}</td><td>${fmtDate(r.depart)}</td><td>${fmtDate(r.return)}</td><td>${r.o.airlines} <span class="bag manual">verifică</span></td><td><a href="${r.link}" target="_blank" rel="noopener">Google Flights ↗</a></td></tr>`).join('')+'</tbody>';
+}
+
 function render(){
   chips(document.getElementById('f-country'), [['Toate','Toate'],...COUNTRIES.map(c=>[c,FLAG[c]+' '+c])], v=>state.country===v, v=>state.country=v);
   chips(document.getElementById('f-origin'), Object.entries(DATA.origins), v=>state.origins.has(v), v=>{state.origins.has(v)&&state.origins.size>1?state.origins.delete(v):state.origins.add(v)});
-  chips(document.getElementById('f-stops'), [[0,'Direct'],[1,'Max 1'],[2,'Max 2'],[9,'Oricâte']], v=>state.stops===v, v=>state.stops=v);
-  ROWS.forEach(r=>r.best=bestOption(r)||r.options[0]);
-  const rows=filtered().filter(r=>bestOption(r));
-  renderCards(filtered(true).filter(r=>bestOption(r)));
+  chips(document.getElementById('f-stops'), [[0,'Direct'],[1,'Max 1']], v=>state.stops===v, v=>state.stops=v);
+  ROWS.forEach(r=>r.best=bestOption(r));
+  const rows=filtered();
+  renderCards(filtered(true));
   renderHeat(rows); renderList(rows);
 }
 
@@ -317,11 +346,11 @@ Promise.all([
   fetch('data/history.json',{cache:'no-store'}).then(r=>r.ok?r.json():[]).catch(()=>[])
 ]).then(([data,hist])=>{
   // Datele scanate după regulile vechi nu se mai afișează.
-  if(!data.stay_nights){document.getElementById('cards').innerHTML=UPDATING;return}
+  if(!data.max_stops){document.getElementById('cards').innerHTML=UPDATING;return}
   DATA=data;
   ROWS=data.results.filter(r=>r.options && r.options.length);
   state.origins=new Set(Object.keys(data.origins));
-  renderMeta(); render(); window.HIST=hist; renderHist(hist);
+  renderMeta(); render(); renderVerify(); window.HIST=hist; renderHist(hist);
 }).catch(e=>{document.getElementById('cards').innerHTML='<p class="empty">Încă nu există date. Prima scanare rulează în curând.</p>'});
 try{const t=localStorage.getItem('tab'); if(t) document.querySelector(`.tab[data-tab="${t}"]`)?.click()}catch(e){}
 </script>

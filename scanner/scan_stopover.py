@@ -22,7 +22,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta, timezone
 
 import gf
-from scan import DATA_DIR, DESTINATIONS, FIRST_DEPARTURE, LAST_DEPARTURE, ORIGINS, STAY_NIGHTS, TRIP_DAYS
+from scan import (DATA_DIR, DESTINATIONS, FIRST_DEPARTURE, LAST_DEPARTURE, MAX_DURATION_MIN, MAX_STOPS, ORIGINS,
+                  STAY_NIGHTS, TRIP_DAYS)
 
 HUBS = {
     "MIL": "Milano",
@@ -47,11 +48,8 @@ STOP_OUT_DAYS = (1, 2)
 STOP_RET_DAYS = (2, 3)
 
 MAX_POSITIONING_MIN = 12 * 60
-MAX_LONGHAUL_MIN = 30 * 60
+MAX_LONGHAUL_MIN = MAX_DURATION_MIN
 
-# Prețurile low-cost de pe Google Flights nu includ bagajul de cală.
-LOW_COST = ("Wizz", "Ryanair", "easyJet", "Pegasus", "flydubai", "Air Arabia", "Vueling",
-            "Transavia", "Eurowings", "AJet", "Volotea", "SkyUp", "HiSky")
 BAG_FEE_PER_LEG = 100  # estimare: 2 bagaje de cală de 20 kg pe un zbor low-cost
 
 KEEP_PER_GROUP = 25  # cele mai bune combinații pentru fiecare (oraș de plecare, țară)
@@ -60,7 +58,7 @@ WORKERS = 3
 
 def is_low_cost(airlines):
     names = [a.strip() for a in (airlines or "").split(",") if a.strip()]
-    return bool(names) and all(any(lc.lower() in n.lower() for lc in LOW_COST) for n in names)
+    return bool(names) and all(any(lc.lower() in n.lower() for lc in gf.LOW_COST) for n in names)
 
 
 def leg(r, **extra):
@@ -91,9 +89,9 @@ def tasks():
 def run(task):
     kind, a, b, d, n = task
     if kind == "lh":
-        r = gf.query([(a, b, d), (b, a, d + timedelta(days=n))], "round-trip", MAX_LONGHAUL_MIN, keep=1, stay_nights=STAY_NIGHTS)
+        r = gf.query([(a, b, d), (b, a, d + timedelta(days=n))], "round-trip", MAX_LONGHAUL_MIN, keep=1, stay_nights=STAY_NIGHTS, max_stops=MAX_STOPS)
     else:
-        r = gf.query([(a, b, d)], "one-way", MAX_POSITIONING_MIN, keep=1)
+        r = gf.query([(a, b, d)], "one-way", MAX_POSITIONING_MIN, keep=1, max_stops=MAX_STOPS)
     return task, r
 
 
@@ -189,6 +187,7 @@ def main():
         "hubs": HUBS,
         "bag_fee_per_leg": BAG_FEE_PER_LEG,
         "stay_nights": STAY_NIGHTS,
+        "max_stops": MAX_STOPS,
         "stats": {
             "searches": len(all_tasks),
             "errors": errors,

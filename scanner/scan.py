@@ -5,7 +5,7 @@ Caută pe Google Flights (prin biblioteca fast-flights) toate combinațiile:
   către Maldive, Bali, Thailanda, Mauritius
   plecare 26 dec 2026 – 18 ian 2027, 7 nopți de cazare la destinație
   2 adulți + 2 copii (3 și 5 ani)
-și păstrează doar zborurile cu durata dus de maxim 25 de ore.
+și păstrează doar zborurile dus de maxim 20 de ore, cu cel mult o escală.
 
 Cele 7 nopți se numără de la aterizare: plecare 10 ian, aterizare 11 ian, retur 18 ian.
 De aceea căutăm returul la 7, 8 și 9 zile de la plecare și păstrăm doar zborurile
@@ -43,7 +43,8 @@ LAST_DEPARTURE = date(2027, 1, 18)
 STAY_NIGHTS = 7
 # zile între plecare și retur: aterizare în aceeași zi, a doua zi sau a treia zi
 TRIP_DAYS = (STAY_NIGHTS, STAY_NIGHTS + 1, STAY_NIGHTS + 2)
-MAX_DURATION_MIN = 25 * 60
+MAX_DURATION_MIN = 20 * 60
+MAX_STOPS = 1
 CURRENCY = gf.CURRENCY
 
 WORKERS = 3
@@ -54,7 +55,7 @@ DATA_DIR = ROOT / "docs" / "data"
 
 def search(origin, dest, dep, trip_days):
     ret = dep + timedelta(days=trip_days)
-    r = gf.query([(origin, dest, dep), (dest, origin, ret)], "round-trip", MAX_DURATION_MIN, stay_nights=STAY_NIGHTS)
+    r = gf.query([(origin, dest, dep), (dest, origin, ret)], "round-trip", MAX_DURATION_MIN, stay_nights=STAY_NIGHTS, max_stops=MAX_STOPS)
     return {
         "origin": origin,
         "dest": dest,
@@ -117,6 +118,7 @@ def main():
         "passengers": "2 adulți + 2 copii (3 și 5 ani)",
         "max_duration_h": MAX_DURATION_MIN // 60,
         "stay_nights": STAY_NIGHTS,
+        "max_stops": MAX_STOPS,
         "origins": ORIGINS,
         "destinations": DESTINATIONS,
         "stats": {"total": len(results), "with_price": len(ok), "errors": errors},

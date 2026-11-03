@@ -6,7 +6,8 @@ Site care arată cele mai ieftine zboruri dus-întors pentru o familie (2 adulț
 - **Destinații:** Maldive (MLE), Bali (DPS), Thailanda (BKK, HKT), Mauritius (MRU)
 - **Plecare:** 26 decembrie 2026 – 18 ianuarie 2027
 - **Cazare:** 7 nopți numărate de la aterizare (plecare 10 ian, aterizare 11 ian, retur 18 ian)
-- **Durata zborului dus:** maxim 25 de ore
+- **Zborul dus:** maxim 20 de ore, cu cel mult o escală
+- **Bagaje:** tab separat pentru transfer automat (un singur bilet) și pentru transfer manual (bilete separate)
 
 Un GitHub Action ([scan.yml](.github/workflows/scan.yml)) rulează [scanner/scan.py](scanner/scan.py) de două ori pe zi
 (pornește ≈07:30 și 19:30 ora României), caută pe Google Flights 1.440 de combinații și salvează rezultatele în

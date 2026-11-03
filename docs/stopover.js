@@ -1,7 +1,7 @@
 // Tab-ul „Cu oprire 1–2 zile”: combinații cu bilete separate printr-un oraș-hub.
 (() => {
   const S = {country: 'Toate', origins: new Set(), hubs: null, bags: true, shown: 30};
-  let SD, DIRECT_BEST = {};
+  let SD, DIRECT_BEST = {}, DIRECT_FROM = {};
 
   const $ = id => document.getElementById(id);
   const price = c => S.bags ? c.total : c.tickets;
@@ -45,6 +45,7 @@
         <div class="det"><b>${ORIGIN_NAME(best.origin)}</b> → <b>${hubName(best.hub)}</b> → ${best.dest}</div>
         <div class="det"><b>${fmtDate(best.depart)}</b> → acasă <b>${fmtDate(best.home)}</b></div>
         <div class="det">${nightsTxt(best.stop_out)} în ${hubName(best.hub)} · aterizare ${best.dest} <b>${fmtDate(best.legs[1].arrival_date)}</b>, retur <b>${fmtDate(best.legs[1].return_date)}</b> (${best.nights} nopți de cazare)</div>
+        <div><span class="bag manual">🖐️ Muți bagajele singur</span></div>
         <a class="btn" href="#c-${SD.combos.indexOf(best)}">Vezi itinerariul ↓</a>`;
       card.querySelector('a.btn').onclick = e => {
         S.country = country; S.hubs = new Set([best.hub]); render();
@@ -85,7 +86,7 @@
     const extra = l.low_cost ? `<small>low-cost: fără bagaj de cală${S.bags ? ` (+~${fmtEUR(l.bag_fee)} estimat)` : ''}</small>` : '';
     return `<div class="lg">
       <div class="d">${fmtDate(l.date)}${l.return_date ? ' → ' + fmtDate(l.return_date) : ''}</div>
-      <div class="what"><b>${label}</b> · ${l.airlines || '—'}<small>${fmtDur(l.duration_min)} · ${stopsTxt(l.stops)}${l.departure ? ' · pleacă ' + l.departure.split(' on ')[0] : ''}</small>${extra}</div>
+      <div class="what"><b>${label}</b> · ${l.airlines || '—'}<small>${fmtDur(l.duration_min)} · ${stopsTxt(l.stops)}${l.bag_transfer === 'verify' ? ' · <span class="bag manual">escală cu transfer nesigur</span>' : ''}${l.departure ? ' · pleacă ' + l.departure.split(' on ')[0] : ''}</small>${extra}</div>
       <div class="p">${fmtEUR(l.price)}<a href="${l.link}" target="_blank" rel="noopener">Google Flights ↗</a></div>
     </div>`;
   }
@@ -103,14 +104,14 @@
         <div class="combo-head">
           <div><div class="route">${FLAG[c.country]} ${ORIGIN_NAME(c.origin)} → ${hubName(c.hub)} → ${c.country} (${c.dest})</div>
             <div class="pp">${fmtDate(c.depart)} – ${fmtDate(c.home)} · ${c.nights} nopți de cazare la destinație${diff > 0 ? ` · <span class="save">−${fmtEUR(diff)} față de bilet întreg</span>` : ''}</div></div>
-          <div class="tot">${fmtEUR(price(c))}<small>${S.bags && c.bags ? `bilete ${fmtEUR(c.tickets)} + bagaje ~${fmtEUR(c.bags)}` : 'total 4 persoane'}</small></div>
+          <div class="tot"><span class="bag manual">🖐️ 2 transferuri manuale</span> ${fmtEUR(price(c))}<small>${S.bags && c.bags ? `bilete ${fmtEUR(c.tickets)} + bagaje ~${fmtEUR(c.bags)}` : 'total 4 persoane'}</small></div>
         </div>
         <div class="legs">
           ${legHtml(a, `${a.origin} → ${hubName(c.hub)}`)}
-          <div class="stay">🏙️ <b>${nightsTxt(c.stop_out)}</b> în ${hubName(c.hub)}</div>
+          <div class="stay">🏙️ <b>${nightsTxt(c.stop_out)}</b> în ${hubName(c.hub)} · 🖐️ ridici bagajele și le predai din nou</div>
           ${legHtml(b, `${hubName(c.hub)} ⇄ ${c.dest} dus-întors`)}
           <div class="stay">🏝️ aterizare <b>${fmtDate(b.arrival_date)}</b>, retur <b>${fmtDate(b.return_date)}</b>: <b>${c.nights} nopți de cazare</b></div>
-          <div class="stay">🏙️ înapoi în ${hubName(c.hub)}, zbor spre casă după <b>${c.stop_ret} zile</b> de la plecarea din ${c.dest}</div>
+          <div class="stay">🏙️ înapoi în ${hubName(c.hub)}, zbor spre casă după <b>${c.stop_ret} zile</b> de la plecarea din ${c.dest} · 🖐️ ridici bagajele și le predai din nou</div>
           ${legHtml(r, `${hubName(c.hub)} → ${r.to}`)}
         </div>
       </article>`;
@@ -118,6 +119,20 @@
     $('s-more').innerHTML = rows.length > S.shown ? `<button class="chip" type="button">Arată mai multe (${rows.length - S.shown})</button>` : '';
     const more = $('s-more').querySelector('button');
     if (more) more.onclick = () => { S.shown += 30; renderList(); };
+  }
+
+  function renderCompare() {
+    const manual = {};
+    SD.combos.forEach(c => { if (!manual[c.country] || c.total < manual[c.country].total) manual[c.country] = c; });
+    const open = tab => `document.querySelector('.tab[data-tab=${tab}]').click()`;
+    $('compare').innerHTML = `<thead><tr><th>Destinație</th><th>🧳 Automat (un bilet)</th><th>🖐️ Manual (cu oprire)</th></tr></thead><tbody>` +
+      COUNTRIES.map(c => {
+        const a = DIRECT_BEST[c], m = manual[c];
+        return `<tr><td>${FLAG[c]} ${c}</td>
+          <td>${a ? `<a href="#" onclick="${open('direct')};return false">${fmtEUR(a)}</a><small>din ${ORIGIN_NAME(DIRECT_FROM[c])}</small>` : '—'}</td>
+          <td>${m ? `<a href="#" onclick="${open('stop')};return false">${fmtEUR(m.total)}</a><small>din ${ORIGIN_NAME(m.origin)}, prin ${hubName(m.hub)}, cu bagaje estimate</small>` : '—'}</td></tr>`;
+      }).join('') + '</tbody>';
+    $('compare-box').hidden = false;
   }
 
   function render() {
@@ -139,15 +154,16 @@
     fetch('data/results.json', {cache: 'no-store'}).then(r => r.json()).catch(() => null),
   ]).then(([sd, direct]) => {
     // Datele scanate după regulile vechi nu se mai afișează.
-    if (!sd.stay_nights) { $('s-cards').innerHTML = UPDATING; return; }
+    if (!sd.max_stops) { $('s-cards').innerHTML = UPDATING; return; }
     SD = sd;
     $('s-bagfee').textContent = sd.bag_fee_per_leg;
     if (direct) {
       ORIGINS_MAP = direct.origins;
-      if (direct.stay_nights) direct.results.forEach(r => { if (r.options && r.options.length) { const p = r.options[0].price; if (!DIRECT_BEST[r.country] || p < DIRECT_BEST[r.country]) DIRECT_BEST[r.country] = p; } });
+      if (direct.max_stops) direct.results.forEach(r => { const o = r.options.find(x => x.bag_transfer === 'auto'); if (o && (!DIRECT_BEST[r.country] || o.price < DIRECT_BEST[r.country])) { DIRECT_BEST[r.country] = o.price; DIRECT_FROM[r.country] = r.origin; } });
     }
     S.origins = new Set(Object.keys(ORIGINS_MAP));
     S.hubs = new Set(Object.keys(sd.hubs).filter(h => sd.combos.some(c => c.hub === h)));
     render();
+    renderCompare();
   }).catch(() => { $('s-cards').innerHTML = '<p class="empty">Încă nu există combinații. Prima scanare rulează în curând.</p>'; });
 })();

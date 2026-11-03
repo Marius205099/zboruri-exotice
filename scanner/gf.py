@@ -14,6 +14,12 @@ CURRENCY = "EUR"
 RETRIES = 2
 NONE_RETRIES = 1
 
+# Prețurile low-cost de pe Google Flights nu includ bagajul de cală.
+LOW_COST = ("Wizz", "Ryanair", "easyJet", "Pegasus", "flydubai", "Air Arabia", "Vueling",
+            "Transavia", "Eurowings", "AJet", "Volotea", "SkyUp", "HiSky")
+# Low-cost care transferă bagajele între zborurile de pe același bilet.
+THROUGH_LOW_COST = ("flydubai",)
+
 # Cookie de consimțământ Google, ca să nu primim pagina de cookie-uri din UE.
 COOKIES = {"SOCS": "CAESEwgDEgk0ODE3Nzk3MjQaAmVuIAEaBgiA_LyaBg"}
 
@@ -55,6 +61,17 @@ def arrival_date(text, departure):
     return d if d >= departure else d.replace(year=departure.year + 1)
 
 
+def bag_transfer(stops, airlines):
+    """'auto' pentru un bilet cu transfer de bagaje; 'verify' dacă escala implică un low-cost fără transfer sigur."""
+    if stops == 0:
+        return "auto"
+    for name in (airlines or "").split(","):
+        name = name.lower()
+        if any(lc.lower() in name for lc in LOW_COST) and not any(t.lower() in name for t in THROUGH_LOW_COST):
+            return "verify"
+    return "auto"
+
+
 def build_tfs(legs, trip):
     """legs: [(from, to, date), ...]"""
     return TFSData.from_interface(
@@ -69,11 +86,12 @@ def google_link(tfs):
     return f"https://www.google.com/travel/flights?tfs={tfs}&hl=ro&curr={CURRENCY}"
 
 
-def query(legs, trip, max_duration_min=None, keep=5, stay_nights=None):
+def query(legs, trip, max_duration_min=None, keep=5, stay_nights=None, max_stops=None):
     """Întoarce {status, link, price_level, options:[...]}; status: ok / none / too_long / error.
 
     Cu stay_nights, la dus-întors păstrează doar zborurile care aterizează exact cu atâtea
-    nopți înainte de zborul de întoarcere.
+    nopți înainte de zborul de întoarcere. Cu max_stops, păstrează doar zborurile dus
+    cu cel mult atâtea escale.
     """
     tfs = build_tfs(legs, trip)
     out = {"link": google_link(tfs)}
@@ -111,6 +129,9 @@ def query(legs, trip, max_duration_min=None, keep=5, stay_nights=None):
             continue
         if max_duration_min and minutes > max_duration_min:
             continue
+        stops = f.stops if isinstance(f.stops, int) else None
+        if max_stops is not None and (stops is None or stops > max_stops):
+            continue
         arrives = arrival_date(f.arrival, legs[0][2])
         if stay_nights and (not arrives or (legs[1][2] - arrives).days != stay_nights):
             continue
@@ -122,8 +143,9 @@ def query(legs, trip, max_duration_min=None, keep=5, stay_nights=None):
             {
                 "price": price,
                 "duration_min": minutes,
-                "stops": f.stops if isinstance(f.stops, int) else None,
+                "stops": stops,
                 "airlines": f.name,
+                "bag_transfer": bag_transfer(stops, f.name),
                 "departure": f.departure,
                 "arrival": f.arrival,
                 "arrival_date": arrives.isoformat() if arrives else None,
