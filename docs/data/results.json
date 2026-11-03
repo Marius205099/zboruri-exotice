@@ -1,6 +1,6 @@
 {
- "scanned_at": "2026-11-03T18:03:43+00:00",
- "duration_sec": 1258,
+ "scanned_at": "2026-11-03T20:03:51+00:00",
+ "duration_sec": 270,
  "currency": "EUR",
  "passengers": "2 adulți + 2 copii (3 și 5 ani)",
  "max_duration_h": 20,
@@ -36,7 +36,7 @@
    "price_level": "typical",
    "options": [
     {
-     "price": 3130,
+     "price": 3129,
      "duration_min": 825,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -46,7 +46,7 @@
      "arrival_date": "2027-01-14"
     },
     {
-     "price": 3130,
+     "price": 3129,
      "duration_min": 1195,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -56,7 +56,7 @@
      "arrival_date": "2027-01-14"
     },
     {
-     "price": 3823,
+     "price": 3821,
      "duration_min": 1130,
      "stops": 1,
      "airlines": "Air France",
@@ -66,7 +66,7 @@
      "arrival_date": "2027-01-14"
     },
     {
-     "price": 3872,
+     "price": 3870,
      "duration_min": 900,
      "stops": 1,
      "airlines": "Emirates",
@@ -76,7 +76,7 @@
      "arrival_date": "2027-01-14"
     },
     {
-     "price": 3986,
+     "price": 3984,
      "duration_min": 930,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -139,7 +139,7 @@
      "arrival_date": "2027-01-18"
     },
     {
-     "price": 4025,
+     "price": 4026,
      "duration_min": 800,
      "stops": 1,
      "airlines": "Air Serbia, Turkish Airlines",
@@ -182,7 +182,7 @@
      "arrival_date": "2027-01-13"
     },
     {
-     "price": 5409,
+     "price": 5410,
      "duration_min": 810,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -192,7 +192,7 @@
      "arrival_date": "2027-01-13"
     },
     {
-     "price": 5409,
+     "price": 5410,
      "duration_min": 1100,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -202,7 +202,7 @@
      "arrival_date": "2027-01-13"
     },
     {
-     "price": 21593,
+     "price": 21594,
      "duration_min": 1135,
      "stops": 1,
      "airlines": "Air Serbia, Edelweiss Air",
@@ -225,7 +225,7 @@
    "price_level": "typical",
    "options": [
     {
-     "price": 3418,
+     "price": 3416,
      "duration_min": 825,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -235,7 +235,7 @@
      "arrival_date": "2027-01-11"
     },
     {
-     "price": 3418,
+     "price": 3416,
      "duration_min": 1195,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -245,7 +245,7 @@
      "arrival_date": "2027-01-11"
     },
     {
-     "price": 4300,
+     "price": 4297,
      "duration_min": 900,
      "stops": 1,
      "airlines": "Emirates",
@@ -255,7 +255,7 @@
      "arrival_date": "2027-01-11"
     },
     {
-     "price": 4583,
+     "price": 4580,
      "duration_min": 930,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -265,7 +265,7 @@
      "arrival_date": "2027-01-11"
     },
     {
-     "price": 4762,
+     "price": 4760,
      "duration_min": 975,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -308,7 +308,7 @@
      "arrival_date": "2027-01-17"
     },
     {
-     "price": 4786,
+     "price": 4787,
      "duration_min": 810,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -318,7 +318,7 @@
      "arrival_date": "2027-01-17"
     },
     {
-     "price": 4786,
+     "price": 4787,
      "duration_min": 1100,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -341,7 +341,7 @@
    "price_level": "typical",
    "options": [
     {
-     "price": 3518,
+     "price": 3517,
      "duration_min": 925,
      "stops": 1,
      "airlines": "Finnair",
@@ -351,7 +351,7 @@
      "arrival_date": "2027-01-13"
     },
     {
-     "price": 3872,
+     "price": 3870,
      "duration_min": 900,
      "stops": 1,
      "airlines": "Emirates",
@@ -361,7 +361,7 @@
      "arrival_date": "2027-01-13"
     },
     {
-     "price": 3986,
+     "price": 3984,
      "duration_min": 930,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -371,7 +371,7 @@
      "arrival_date": "2027-01-13"
     },
     {
-     "price": 4900,
+     "price": 4898,
      "duration_min": 1195,
      "stops": 1,
      "airlines": "Korean Air",
@@ -381,7 +381,7 @@
      "arrival_date": "2027-01-13"
     },
     {
-     "price": 5102,
+     "price": 5099,
      "duration_min": 825,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -586,7 +586,7 @@
    "price_level": "typical",
    "options": [
     {
-     "price": 3660,
+     "price": 3659,
      "duration_min": 1195,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -596,7 +596,7 @@
      "arrival_date": "2027-01-08"
     },
     {
-     "price": 4079,
+     "price": 4076,
      "duration_min": 900,
      "stops": 1,
      "airlines": "Emirates",
@@ -606,7 +606,7 @@
      "arrival_date": "2027-01-08"
     },
     {
-     "price": 4274,
+     "price": 4273,
      "duration_min": 825,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -616,7 +616,7 @@
      "arrival_date": "2027-01-08"
     },
     {
-     "price": 4736,
+     "price": 4733,
      "duration_min": 925,
      "stops": 1,
      "airlines": "Finnair",
@@ -626,7 +626,7 @@
      "arrival_date": "2027-01-08"
     },
     {
-     "price": 4778,
+     "price": 4775,
      "duration_min": 1000,
      "stops": 1,
      "airlines": "Air France",
@@ -649,7 +649,7 @@
    "price_level": "typical",
    "options": [
     {
-     "price": 3660,
+     "price": 3659,
      "duration_min": 825,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -659,7 +659,7 @@
      "arrival_date": "2027-01-10"
     },
     {
-     "price": 3660,
+     "price": 3659,
      "duration_min": 1195,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -669,7 +669,7 @@
      "arrival_date": "2027-01-10"
     },
     {
-     "price": 4184,
+     "price": 4182,
      "duration_min": 900,
      "stops": 1,
      "airlines": "Emirates",
@@ -679,7 +679,7 @@
      "arrival_date": "2027-01-10"
     },
     {
-     "price": 4808,
+     "price": 4806,
      "duration_min": 930,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -689,7 +689,7 @@
      "arrival_date": "2027-01-10"
     },
     {
-     "price": 22155,
+     "price": 22144,
      "duration_min": 1195,
      "stops": 1,
      "airlines": "Korean Air",
@@ -712,7 +712,7 @@
    "price_level": "typical",
    "options": [
     {
-     "price": 3660,
+     "price": 3659,
      "duration_min": 825,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -722,7 +722,7 @@
      "arrival_date": "2027-01-15"
     },
     {
-     "price": 3660,
+     "price": 3659,
      "duration_min": 1195,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -732,7 +732,7 @@
      "arrival_date": "2027-01-15"
     },
     {
-     "price": 3872,
+     "price": 3870,
      "duration_min": 900,
      "stops": 1,
      "airlines": "Emirates",
@@ -742,7 +742,7 @@
      "arrival_date": "2027-01-15"
     },
     {
-     "price": 3940,
+     "price": 3938,
      "duration_min": 925,
      "stops": 1,
      "airlines": "Finnair",
@@ -752,7 +752,7 @@
      "arrival_date": "2027-01-15"
     },
     {
-     "price": 3986,
+     "price": 3984,
      "duration_min": 930,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -785,7 +785,7 @@
      "arrival_date": "2027-01-14"
     },
     {
-     "price": 3941,
+     "price": 3942,
      "duration_min": 810,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -795,7 +795,7 @@
      "arrival_date": "2027-01-14"
     },
     {
-     "price": 3941,
+     "price": 3942,
      "duration_min": 1100,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -815,7 +815,7 @@
      "arrival_date": "2027-01-14"
     },
     {
-     "price": 4357,
+     "price": 4358,
      "duration_min": 1015,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -838,7 +838,7 @@
    "price_level": "typical",
    "options": [
     {
-     "price": 3754,
+     "price": 3752,
      "duration_min": 825,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -848,7 +848,7 @@
      "arrival_date": "2027-01-12"
     },
     {
-     "price": 3872,
+     "price": 3870,
      "duration_min": 900,
      "stops": 1,
      "airlines": "Emirates",
@@ -858,7 +858,7 @@
      "arrival_date": "2027-01-12"
     },
     {
-     "price": 3986,
+     "price": 3984,
      "duration_min": 930,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -868,7 +868,7 @@
      "arrival_date": "2027-01-12"
     },
     {
-     "price": 4090,
+     "price": 4088,
      "duration_min": 1195,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -911,7 +911,7 @@
      "arrival_date": "2027-01-16"
     },
     {
-     "price": 4419,
+     "price": 4420,
      "duration_min": 925,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -921,7 +921,7 @@
      "arrival_date": "2027-01-16"
     },
     {
-     "price": 4684,
+     "price": 4685,
      "duration_min": 775,
      "stops": 1,
      "airlines": "Qatar Airways",
@@ -931,7 +931,7 @@
      "arrival_date": "2027-01-16"
     },
     {
-     "price": 4740,
+     "price": 4741,
      "duration_min": 995,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -1017,7 +1017,7 @@
    "price_level": "typical",
    "options": [
     {
-     "price": 3959,
+     "price": 3957,
      "duration_min": 900,
      "stops": 1,
      "airlines": "Emirates",
@@ -1027,7 +1027,7 @@
      "arrival_date": "2027-01-16"
     },
     {
-     "price": 4299,
+     "price": 4297,
      "duration_min": 930,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -1037,7 +1037,7 @@
      "arrival_date": "2027-01-16"
     },
     {
-     "price": 4669,
+     "price": 4667,
      "duration_min": 1060,
      "stops": 1,
      "airlines": "Finnair",
@@ -1047,7 +1047,7 @@
      "arrival_date": "2027-01-16"
     },
     {
-     "price": 5508,
+     "price": 5506,
      "duration_min": 975,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -1057,7 +1057,7 @@
      "arrival_date": "2027-01-16"
     },
     {
-     "price": 5695,
+     "price": 5693,
      "duration_min": 930,
      "stops": 1,
      "airlines": "Qatar Airways",
@@ -1080,7 +1080,7 @@
    "price_level": "typical",
    "options": [
     {
-     "price": 3959,
+     "price": 3957,
      "duration_min": 900,
      "stops": 1,
      "airlines": "Emirates",
@@ -1090,7 +1090,7 @@
      "arrival_date": "2027-01-18"
     },
     {
-     "price": 4073,
+     "price": 4071,
      "duration_min": 930,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -1100,7 +1100,7 @@
      "arrival_date": "2027-01-18"
     },
     {
-     "price": 4399,
+     "price": 4397,
      "duration_min": 975,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -1110,7 +1110,7 @@
      "arrival_date": "2027-01-18"
     },
     {
-     "price": 4608,
+     "price": 4605,
      "duration_min": 1130,
      "stops": 1,
      "airlines": "Air France",
@@ -1120,7 +1120,7 @@
      "arrival_date": "2027-01-18"
     },
     {
-     "price": 4783,
+     "price": 4781,
      "duration_min": 825,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -1252,7 +1252,7 @@
    "price_level": "typical",
    "options": [
     {
-     "price": 4045,
+     "price": 4043,
      "duration_min": 900,
      "stops": 1,
      "airlines": "Emirates",
@@ -1262,7 +1262,7 @@
      "arrival_date": "2027-01-17"
     },
     {
-     "price": 4159,
+     "price": 4157,
      "duration_min": 930,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -1272,7 +1272,7 @@
      "arrival_date": "2027-01-17"
     },
     {
-     "price": 5167,
+     "price": 5165,
      "duration_min": 825,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -1282,7 +1282,7 @@
      "arrival_date": "2027-01-17"
     },
     {
-     "price": 5508,
+     "price": 5506,
      "duration_min": 1195,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -1292,7 +1292,7 @@
      "arrival_date": "2027-01-17"
     },
     {
-     "price": 6037,
+     "price": 6035,
      "duration_min": 970,
      "stops": 1,
      "airlines": "Qatar Airways",
@@ -1315,7 +1315,7 @@
    "price_level": "typical",
    "options": [
     {
-     "price": 4078,
+     "price": 4076,
      "duration_min": 900,
      "stops": 1,
      "airlines": "Emirates",
@@ -1325,7 +1325,7 @@
      "arrival_date": "2027-01-19"
     },
     {
-     "price": 4192,
+     "price": 4190,
      "duration_min": 930,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -1335,7 +1335,7 @@
      "arrival_date": "2027-01-19"
     },
     {
-     "price": 5752,
+     "price": 5750,
      "duration_min": 825,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -1345,7 +1345,7 @@
      "arrival_date": "2027-01-19"
     },
     {
-     "price": 5752,
+     "price": 5750,
      "duration_min": 1195,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -1353,6 +1353,132 @@
      "departure": "1:55 PM on Mon, Jan 18",
      "arrival": "3:50 PM on Tue, Jan 19",
      "arrival_date": "2027-01-19"
+    }
+   ]
+  },
+  {
+   "origin": "BEG",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2027-01-06",
+   "return": "2027-01-14",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDZqBRIDQkVHcgUSA0hLVBoaEgoyMDI3LTAxLTE0agUSA0hLVHIFEgNCRUdCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "ok",
+   "price_level": "typical",
+   "options": [
+    {
+     "price": 4078,
+     "duration_min": 775,
+     "stops": 1,
+     "airlines": "Qatar Airways",
+     "bag_transfer": "auto",
+     "departure": "11:55 AM on Wed, Jan 6",
+     "arrival": "6:50 AM on Thu, Jan 7",
+     "arrival_date": "2027-01-07"
+    },
+    {
+     "price": 4078,
+     "duration_min": 1140,
+     "stops": 1,
+     "airlines": "Qatar Airways",
+     "bag_transfer": "auto",
+     "departure": "11:55 AM on Wed, Jan 6",
+     "arrival": "12:55 PM on Thu, Jan 7",
+     "arrival_date": "2027-01-07"
+    },
+    {
+     "price": 4511,
+     "duration_min": 1100,
+     "stops": 1,
+     "airlines": "Air Serbia, Air France",
+     "bag_transfer": "auto",
+     "departure": "6:30 AM on Wed, Jan 6",
+     "arrival": "6:50 AM on Thu, Jan 7",
+     "arrival_date": "2027-01-07"
+    },
+    {
+     "price": 4656,
+     "duration_min": 810,
+     "stops": 1,
+     "airlines": "Turkish Airlines",
+     "bag_transfer": "auto",
+     "departure": "8:20 PM on Wed, Jan 6",
+     "arrival": "3:50 PM on Thu, Jan 7",
+     "arrival_date": "2027-01-07"
+    },
+    {
+     "price": 4790,
+     "duration_min": 1100,
+     "stops": 1,
+     "airlines": "Turkish Airlines",
+     "bag_transfer": "auto",
+     "departure": "3:30 PM on Wed, Jan 6",
+     "arrival": "3:50 PM on Thu, Jan 7",
+     "arrival_date": "2027-01-07"
+    }
+   ]
+  },
+  {
+   "origin": "BUD",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2027-01-08",
+   "return": "2027-01-16",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDhqBRIDQlVEcgUSA0hLVBoaEgoyMDI3LTAxLTE2agUSA0hLVHIFEgNCVURCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "ok",
+   "price_level": "typical",
+   "options": [
+    {
+     "price": 4163,
+     "duration_min": 900,
+     "stops": 1,
+     "airlines": "Emirates",
+     "bag_transfer": "auto",
+     "departure": "3:10 PM on Fri, Jan 8",
+     "arrival": "12:10 PM on Sat, Jan 9",
+     "arrival_date": "2027-01-09"
+    },
+    {
+     "price": 4632,
+     "duration_min": 930,
+     "stops": 1,
+     "airlines": "Qatar Airways",
+     "bag_transfer": "auto",
+     "departure": "9:20 AM on Fri, Jan 8",
+     "arrival": "6:50 AM on Sat, Jan 9",
+     "arrival_date": "2027-01-09"
+    },
+    {
+     "price": 4786,
+     "duration_min": 930,
+     "stops": 1,
+     "airlines": "flydubai, Emirates",
+     "bag_transfer": "auto",
+     "departure": "10:20 PM on Fri, Jan 8",
+     "arrival": "7:50 PM on Sat, Jan 9",
+     "arrival_date": "2027-01-09"
+    },
+    {
+     "price": 4925,
+     "duration_min": 1060,
+     "stops": 1,
+     "airlines": "Finnair",
+     "bag_transfer": "auto",
+     "departure": "9:20 AM on Fri, Jan 8",
+     "arrival": "9:00 AM on Sat, Jan 9",
+     "arrival_date": "2027-01-09"
+    },
+    {
+     "price": 5819,
+     "duration_min": 975,
+     "stops": 1,
+     "airlines": "Turkish Airlines",
+     "bag_transfer": "auto",
+     "departure": "9:10 AM on Fri, Jan 8",
+     "arrival": "7:25 AM on Sat, Jan 9",
+     "arrival_date": "2027-01-09"
     }
    ]
   },
@@ -1378,7 +1504,7 @@
      "arrival_date": "2027-01-18"
     },
     {
-     "price": 4319,
+     "price": 4320,
      "duration_min": 805,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -1386,69 +1512,6 @@
      "departure": "9:25 PM on Sun, Jan 17",
      "arrival": "3:50 PM on Mon, Jan 18",
      "arrival_date": "2027-01-18"
-    }
-   ]
-  },
-  {
-   "origin": "BUD",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2027-01-08",
-   "return": "2027-01-16",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDhqBRIDQlVEcgUSA0hLVBoaEgoyMDI3LTAxLTE2agUSA0hLVHIFEgNCVURCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "ok",
-   "price_level": "typical",
-   "options": [
-    {
-     "price": 4165,
-     "duration_min": 900,
-     "stops": 1,
-     "airlines": "Emirates",
-     "bag_transfer": "auto",
-     "departure": "3:10 PM on Fri, Jan 8",
-     "arrival": "12:10 PM on Sat, Jan 9",
-     "arrival_date": "2027-01-09"
-    },
-    {
-     "price": 4635,
-     "duration_min": 930,
-     "stops": 1,
-     "airlines": "Qatar Airways",
-     "bag_transfer": "auto",
-     "departure": "9:20 AM on Fri, Jan 8",
-     "arrival": "6:50 AM on Sat, Jan 9",
-     "arrival_date": "2027-01-09"
-    },
-    {
-     "price": 4789,
-     "duration_min": 930,
-     "stops": 1,
-     "airlines": "flydubai, Emirates",
-     "bag_transfer": "auto",
-     "departure": "10:20 PM on Fri, Jan 8",
-     "arrival": "7:50 PM on Sat, Jan 9",
-     "arrival_date": "2027-01-09"
-    },
-    {
-     "price": 4928,
-     "duration_min": 1060,
-     "stops": 1,
-     "airlines": "Finnair",
-     "bag_transfer": "auto",
-     "departure": "9:20 AM on Fri, Jan 8",
-     "arrival": "9:00 AM on Sat, Jan 9",
-     "arrival_date": "2027-01-09"
-    },
-    {
-     "price": 5822,
-     "duration_min": 975,
-     "stops": 1,
-     "airlines": "Turkish Airlines",
-     "bag_transfer": "auto",
-     "departure": "9:10 AM on Fri, Jan 8",
-     "arrival": "7:25 AM on Sat, Jan 9",
-     "arrival_date": "2027-01-09"
     }
    ]
   },
@@ -1474,7 +1537,7 @@
      "arrival_date": "2027-01-04"
     },
     {
-     "price": 5731,
+     "price": 5730,
      "duration_min": 995,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -1497,7 +1560,7 @@
    "price_level": "typical",
    "options": [
     {
-     "price": 4193,
+     "price": 4190,
      "duration_min": 900,
      "stops": 1,
      "airlines": "Emirates",
@@ -1507,7 +1570,7 @@
      "arrival_date": "2027-01-06"
     },
     {
-     "price": 4958,
+     "price": 4956,
      "duration_min": 925,
      "stops": 1,
      "airlines": "Finnair",
@@ -1517,7 +1580,7 @@
      "arrival_date": "2027-01-06"
     },
     {
-     "price": 5043,
+     "price": 5041,
      "duration_min": 930,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -1527,7 +1590,7 @@
      "arrival_date": "2027-01-06"
     },
     {
-     "price": 5398,
+     "price": 5395,
      "duration_min": 1195,
      "stops": 1,
      "airlines": "Korean Air",
@@ -1537,7 +1600,7 @@
      "arrival_date": "2027-01-06"
     },
     {
-     "price": 6674,
+     "price": 6671,
      "duration_min": 825,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -1545,6 +1608,69 @@
      "departure": "8:05 PM on Tue, Jan 5",
      "arrival": "3:50 PM on Wed, Jan 6",
      "arrival_date": "2027-01-06"
+    }
+   ]
+  },
+  {
+   "origin": "BEG",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2027-01-04",
+   "return": "2027-01-12",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDRqBRIDQkVHcgUSA0hLVBoaEgoyMDI3LTAxLTEyagUSA0hLVHIFEgNCRUdCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "ok",
+   "price_level": "typical",
+   "options": [
+    {
+     "price": 4195,
+     "duration_min": 775,
+     "stops": 1,
+     "airlines": "Qatar Airways",
+     "bag_transfer": "auto",
+     "departure": "11:55 AM on Mon, Jan 4",
+     "arrival": "6:50 AM on Tue, Jan 5",
+     "arrival_date": "2027-01-05"
+    },
+    {
+     "price": 4525,
+     "duration_min": 1140,
+     "stops": 1,
+     "airlines": "Qatar Airways",
+     "bag_transfer": "auto",
+     "departure": "11:55 AM on Mon, Jan 4",
+     "arrival": "12:55 PM on Tue, Jan 5",
+     "arrival_date": "2027-01-05"
+    },
+    {
+     "price": 5134,
+     "duration_min": 925,
+     "stops": 1,
+     "airlines": "flydubai, Emirates",
+     "bag_transfer": "auto",
+     "departure": "10:25 PM on Mon, Jan 4",
+     "arrival": "7:50 PM on Tue, Jan 5",
+     "arrival_date": "2027-01-05"
+    },
+    {
+     "price": 6136,
+     "duration_min": 810,
+     "stops": 1,
+     "airlines": "Turkish Airlines",
+     "bag_transfer": "auto",
+     "departure": "8:20 PM on Mon, Jan 4",
+     "arrival": "3:50 PM on Tue, Jan 5",
+     "arrival_date": "2027-01-05"
+    },
+    {
+     "price": 6136,
+     "duration_min": 1100,
+     "stops": 1,
+     "airlines": "Turkish Airlines",
+     "bag_transfer": "auto",
+     "departure": "3:30 PM on Mon, Jan 4",
+     "arrival": "3:50 PM on Tue, Jan 5",
+     "arrival_date": "2027-01-05"
     }
    ]
   },
@@ -1613,7 +1739,7 @@
    "price_level": "typical",
    "options": [
     {
-     "price": 4275,
+     "price": 4273,
      "duration_min": 825,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -1623,7 +1749,7 @@
      "arrival_date": "2027-01-07"
     },
     {
-     "price": 4275,
+     "price": 4273,
      "duration_min": 1195,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -1633,7 +1759,7 @@
      "arrival_date": "2027-01-07"
     },
     {
-     "price": 4958,
+     "price": 4956,
      "duration_min": 925,
      "stops": 1,
      "airlines": "Finnair",
@@ -1643,7 +1769,7 @@
      "arrival_date": "2027-01-07"
     },
     {
-     "price": 5189,
+     "price": 5187,
      "duration_min": 930,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -1653,7 +1779,7 @@
      "arrival_date": "2027-01-07"
     },
     {
-     "price": 5234,
+     "price": 5231,
      "duration_min": 900,
      "stops": 1,
      "airlines": "Emirates",
@@ -1676,7 +1802,7 @@
    "price_level": "typical",
    "options": [
     {
-     "price": 4322,
+     "price": 4323,
      "duration_min": 810,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -1686,7 +1812,7 @@
      "arrival_date": "2027-01-08"
     },
     {
-     "price": 4456,
+     "price": 4457,
      "duration_min": 1100,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -1696,17 +1822,7 @@
      "arrival_date": "2027-01-08"
     },
     {
-     "price": 5331,
-     "duration_min": 995,
-     "stops": 1,
-     "airlines": "Turkish Airlines",
-     "bag_transfer": "auto",
-     "departure": "8:50 AM on Thu, Jan 7",
-     "arrival": "7:25 AM on Fri, Jan 8",
-     "arrival_date": "2027-01-08"
-    },
-    {
-     "price": 5791,
+     "price": 5202,
      "duration_min": 925,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -1716,7 +1832,17 @@
      "arrival_date": "2027-01-08"
     },
     {
-     "price": 6284,
+     "price": 5333,
+     "duration_min": 995,
+     "stops": 1,
+     "airlines": "Turkish Airlines",
+     "bag_transfer": "auto",
+     "departure": "8:50 AM on Thu, Jan 7",
+     "arrival": "7:25 AM on Fri, Jan 8",
+     "arrival_date": "2027-01-08"
+    },
+    {
+     "price": 6679,
      "duration_min": 1015,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -1724,6 +1850,69 @@
      "departure": "1:15 PM on Thu, Jan 7",
      "arrival": "12:10 PM on Fri, Jan 8",
      "arrival_date": "2027-01-08"
+    }
+   ]
+  },
+  {
+   "origin": "BEG",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2027-01-03",
+   "return": "2027-01-11",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDNqBRIDQkVHcgUSA0hLVBoaEgoyMDI3LTAxLTExagUSA0hLVHIFEgNCRUdCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "ok",
+   "price_level": "typical",
+   "options": [
+    {
+     "price": 4357,
+     "duration_min": 775,
+     "stops": 1,
+     "airlines": "Qatar Airways",
+     "bag_transfer": "auto",
+     "departure": "11:55 AM on Sun, Jan 3",
+     "arrival": "6:50 AM on Mon, Jan 4",
+     "arrival_date": "2027-01-04"
+    },
+    {
+     "price": 4685,
+     "duration_min": 1140,
+     "stops": 1,
+     "airlines": "Qatar Airways",
+     "bag_transfer": "auto",
+     "departure": "11:55 AM on Sun, Jan 3",
+     "arrival": "12:55 PM on Mon, Jan 4",
+     "arrival_date": "2027-01-04"
+    },
+    {
+     "price": 5358,
+     "duration_min": 925,
+     "stops": 1,
+     "airlines": "flydubai, Emirates",
+     "bag_transfer": "auto",
+     "departure": "10:25 PM on Sun, Jan 3",
+     "arrival": "7:50 PM on Mon, Jan 4",
+     "arrival_date": "2027-01-04"
+    },
+    {
+     "price": 5851,
+     "duration_min": 1015,
+     "stops": 1,
+     "airlines": "flydubai, Emirates",
+     "bag_transfer": "auto",
+     "departure": "1:15 PM on Sun, Jan 3",
+     "arrival": "12:10 PM on Mon, Jan 4",
+     "arrival_date": "2027-01-04"
+    },
+    {
+     "price": 6860,
+     "duration_min": 1100,
+     "stops": 1,
+     "airlines": "Turkish Airlines",
+     "bag_transfer": "auto",
+     "departure": "3:30 PM on Sun, Jan 3",
+     "arrival": "3:50 PM on Mon, Jan 4",
+     "arrival_date": "2027-01-04"
     }
    ]
   },
@@ -1739,7 +1928,7 @@
    "price_level": "typical",
    "options": [
     {
-     "price": 4439,
+     "price": 4437,
      "duration_min": 900,
      "stops": 1,
      "airlines": "Emirates",
@@ -1749,7 +1938,7 @@
      "arrival_date": "2027-01-05"
     },
     {
-     "price": 4722,
+     "price": 4719,
      "duration_min": 930,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -1759,7 +1948,7 @@
      "arrival_date": "2027-01-05"
     },
     {
-     "price": 6297,
+     "price": 6294,
      "duration_min": 1195,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -1769,7 +1958,7 @@
      "arrival_date": "2027-01-05"
     },
     {
-     "price": 6811,
+     "price": 6807,
      "duration_min": 825,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -1777,69 +1966,6 @@
      "departure": "8:05 PM on Mon, Jan 4",
      "arrival": "3:50 PM on Tue, Jan 5",
      "arrival_date": "2027-01-05"
-    }
-   ]
-  },
-  {
-   "origin": "BEG",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2027-01-06",
-   "return": "2027-01-14",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDZqBRIDQkVHcgUSA0hLVBoaEgoyMDI3LTAxLTE0agUSA0hLVHIFEgNCRUdCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "ok",
-   "price_level": "typical",
-   "options": [
-    {
-     "price": 4510,
-     "duration_min": 1100,
-     "stops": 1,
-     "airlines": "Air Serbia, Air France",
-     "bag_transfer": "auto",
-     "departure": "6:30 AM on Wed, Jan 6",
-     "arrival": "6:50 AM on Thu, Jan 7",
-     "arrival_date": "2027-01-07"
-    },
-    {
-     "price": 4542,
-     "duration_min": 775,
-     "stops": 1,
-     "airlines": "Qatar Airways",
-     "bag_transfer": "auto",
-     "departure": "11:55 AM on Wed, Jan 6",
-     "arrival": "6:50 AM on Thu, Jan 7",
-     "arrival_date": "2027-01-07"
-    },
-    {
-     "price": 4542,
-     "duration_min": 1140,
-     "stops": 1,
-     "airlines": "Qatar Airways",
-     "bag_transfer": "auto",
-     "departure": "11:55 AM on Wed, Jan 6",
-     "arrival": "12:55 PM on Thu, Jan 7",
-     "arrival_date": "2027-01-07"
-    },
-    {
-     "price": 4654,
-     "duration_min": 810,
-     "stops": 1,
-     "airlines": "Turkish Airlines",
-     "bag_transfer": "auto",
-     "departure": "8:20 PM on Wed, Jan 6",
-     "arrival": "3:50 PM on Thu, Jan 7",
-     "arrival_date": "2027-01-07"
-    },
-    {
-     "price": 4788,
-     "duration_min": 1100,
-     "stops": 1,
-     "airlines": "Turkish Airlines",
-     "bag_transfer": "auto",
-     "departure": "3:30 PM on Wed, Jan 6",
-     "arrival": "3:50 PM on Thu, Jan 7",
-     "arrival_date": "2027-01-07"
     }
    ]
   },
@@ -1863,69 +1989,6 @@
      "departure": "9:25 PM on Sat, Jan 16",
      "arrival": "3:50 PM on Sun, Jan 17",
      "arrival_date": "2027-01-17"
-    }
-   ]
-  },
-  {
-   "origin": "BEG",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2027-01-04",
-   "return": "2027-01-12",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDRqBRIDQkVHcgUSA0hLVBoaEgoyMDI3LTAxLTEyagUSA0hLVHIFEgNCRUdCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "ok",
-   "price_level": "typical",
-   "options": [
-    {
-     "price": 4684,
-     "duration_min": 775,
-     "stops": 1,
-     "airlines": "Qatar Airways",
-     "bag_transfer": "auto",
-     "departure": "11:55 AM on Mon, Jan 4",
-     "arrival": "6:50 AM on Tue, Jan 5",
-     "arrival_date": "2027-01-05"
-    },
-    {
-     "price": 4684,
-     "duration_min": 1140,
-     "stops": 1,
-     "airlines": "Qatar Airways",
-     "bag_transfer": "auto",
-     "departure": "11:55 AM on Mon, Jan 4",
-     "arrival": "12:55 PM on Tue, Jan 5",
-     "arrival_date": "2027-01-05"
-    },
-    {
-     "price": 5563,
-     "duration_min": 925,
-     "stops": 1,
-     "airlines": "flydubai, Emirates",
-     "bag_transfer": "auto",
-     "departure": "10:25 PM on Mon, Jan 4",
-     "arrival": "7:50 PM on Tue, Jan 5",
-     "arrival_date": "2027-01-05"
-    },
-    {
-     "price": 6056,
-     "duration_min": 1015,
-     "stops": 1,
-     "airlines": "flydubai, Emirates",
-     "bag_transfer": "auto",
-     "departure": "1:15 PM on Mon, Jan 4",
-     "arrival": "12:10 PM on Tue, Jan 5",
-     "arrival_date": "2027-01-05"
-    },
-    {
-     "price": 6367,
-     "duration_min": 810,
-     "stops": 1,
-     "airlines": "Turkish Airlines",
-     "bag_transfer": "auto",
-     "departure": "8:20 PM on Mon, Jan 4",
-     "arrival": "3:50 PM on Tue, Jan 5",
-     "arrival_date": "2027-01-05"
     }
    ]
   },
@@ -2019,69 +2082,6 @@
    ]
   },
   {
-   "origin": "BEG",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2027-01-03",
-   "return": "2027-01-11",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDNqBRIDQkVHcgUSA0hLVBoaEgoyMDI3LTAxLTExagUSA0hLVHIFEgNCRUdCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "ok",
-   "price_level": "typical",
-   "options": [
-    {
-     "price": 5043,
-     "duration_min": 775,
-     "stops": 1,
-     "airlines": "Qatar Airways",
-     "bag_transfer": "auto",
-     "departure": "11:55 AM on Sun, Jan 3",
-     "arrival": "6:50 AM on Mon, Jan 4",
-     "arrival_date": "2027-01-04"
-    },
-    {
-     "price": 5043,
-     "duration_min": 1140,
-     "stops": 1,
-     "airlines": "Qatar Airways",
-     "bag_transfer": "auto",
-     "departure": "11:55 AM on Sun, Jan 3",
-     "arrival": "12:55 PM on Mon, Jan 4",
-     "arrival_date": "2027-01-04"
-    },
-    {
-     "price": 5737,
-     "duration_min": 925,
-     "stops": 1,
-     "airlines": "flydubai, Emirates",
-     "bag_transfer": "auto",
-     "departure": "10:25 PM on Sun, Jan 3",
-     "arrival": "7:50 PM on Mon, Jan 4",
-     "arrival_date": "2027-01-04"
-    },
-    {
-     "price": 5952,
-     "duration_min": 1100,
-     "stops": 1,
-     "airlines": "Turkish Airlines",
-     "bag_transfer": "auto",
-     "departure": "3:30 PM on Sun, Jan 3",
-     "arrival": "3:50 PM on Mon, Jan 4",
-     "arrival_date": "2027-01-04"
-    },
-    {
-     "price": 6232,
-     "duration_min": 1015,
-     "stops": 1,
-     "airlines": "flydubai, Emirates",
-     "bag_transfer": "auto",
-     "departure": "1:15 PM on Sun, Jan 3",
-     "arrival": "12:10 PM on Mon, Jan 4",
-     "arrival_date": "2027-01-04"
-    }
-   ]
-  },
-  {
    "origin": "BUD",
    "dest": "HKT",
    "country": "Phuket",
@@ -2093,7 +2093,7 @@
    "price_level": "high",
    "options": [
     {
-     "price": 5136,
+     "price": 5134,
      "duration_min": 930,
      "stops": 1,
      "airlines": "Qatar Airways",
@@ -2103,7 +2103,7 @@
      "arrival_date": "2027-01-02"
     },
     {
-     "price": 6190,
+     "price": 6187,
      "duration_min": 900,
      "stops": 1,
      "airlines": "Emirates",
@@ -2113,7 +2113,7 @@
      "arrival_date": "2027-01-02"
     },
     {
-     "price": 6190,
+     "price": 6187,
      "duration_min": 930,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -2123,7 +2123,7 @@
      "arrival_date": "2027-01-02"
     },
     {
-     "price": 7258,
+     "price": 7254,
      "duration_min": 1195,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -2133,7 +2133,7 @@
      "arrival_date": "2027-01-02"
     },
     {
-     "price": 7587,
+     "price": 7583,
      "duration_min": 1060,
      "stops": 1,
      "airlines": "Finnair",
@@ -2141,6 +2141,59 @@
      "departure": "9:20 AM on Fri, Jan 1",
      "arrival": "9:00 AM on Sat, Jan 2",
      "arrival_date": "2027-01-02"
+    }
+   ]
+  },
+  {
+   "origin": "BEG",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2027-01-05",
+   "return": "2027-01-13",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDVqBRIDQkVHcgUSA0hLVBoaEgoyMDI3LTAxLTEzagUSA0hLVHIFEgNCRUdCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "ok",
+   "price_level": "typical",
+   "options": [
+    {
+     "price": 5134,
+     "duration_min": 925,
+     "stops": 1,
+     "airlines": "flydubai, Emirates",
+     "bag_transfer": "auto",
+     "departure": "10:25 PM on Tue, Jan 5",
+     "arrival": "7:50 PM on Wed, Jan 6",
+     "arrival_date": "2027-01-06"
+    },
+    {
+     "price": 5724,
+     "duration_min": 810,
+     "stops": 1,
+     "airlines": "Turkish Airlines",
+     "bag_transfer": "auto",
+     "departure": "8:20 PM on Tue, Jan 5",
+     "arrival": "3:50 PM on Wed, Jan 6",
+     "arrival_date": "2027-01-06"
+    },
+    {
+     "price": 6021,
+     "duration_min": 1015,
+     "stops": 1,
+     "airlines": "flydubai, Emirates",
+     "bag_transfer": "auto",
+     "departure": "1:15 PM on Tue, Jan 5",
+     "arrival": "12:10 PM on Wed, Jan 6",
+     "arrival_date": "2027-01-06"
+    },
+    {
+     "price": 6136,
+     "duration_min": 1100,
+     "stops": 1,
+     "airlines": "Turkish Airlines",
+     "bag_transfer": "auto",
+     "departure": "3:30 PM on Tue, Jan 5",
+     "arrival": "3:50 PM on Wed, Jan 6",
+     "arrival_date": "2027-01-06"
     }
    ]
   },
@@ -2242,7 +2295,7 @@
    "price_level": "high",
    "options": [
     {
-     "price": 5691,
+     "price": 5688,
      "duration_min": 900,
      "stops": 1,
      "airlines": "Emirates",
@@ -2252,7 +2305,7 @@
      "arrival_date": "2027-01-04"
     },
     {
-     "price": 5691,
+     "price": 5688,
      "duration_min": 930,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -2262,7 +2315,7 @@
      "arrival_date": "2027-01-04"
     },
     {
-     "price": 6332,
+     "price": 6328,
      "duration_min": 825,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -2272,7 +2325,7 @@
      "arrival_date": "2027-01-04"
     },
     {
-     "price": 6332,
+     "price": 6328,
      "duration_min": 1195,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -2282,7 +2335,7 @@
      "arrival_date": "2027-01-04"
     },
     {
-     "price": 7474,
+     "price": 7470,
      "duration_min": 975,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -2290,59 +2343,6 @@
      "departure": "9:10 AM on Sun, Jan 3",
      "arrival": "7:25 AM on Mon, Jan 4",
      "arrival_date": "2027-01-04"
-    }
-   ]
-  },
-  {
-   "origin": "BEG",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2027-01-05",
-   "return": "2027-01-13",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDVqBRIDQkVHcgUSA0hLVBoaEgoyMDI3LTAxLTEzagUSA0hLVHIFEgNCRUdCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "ok",
-   "price_level": "typical",
-   "options": [
-    {
-     "price": 5722,
-     "duration_min": 810,
-     "stops": 1,
-     "airlines": "Turkish Airlines",
-     "bag_transfer": "auto",
-     "departure": "8:20 PM on Tue, Jan 5",
-     "arrival": "3:50 PM on Wed, Jan 6",
-     "arrival_date": "2027-01-06"
-    },
-    {
-     "price": 5791,
-     "duration_min": 925,
-     "stops": 1,
-     "airlines": "flydubai, Emirates",
-     "bag_transfer": "auto",
-     "departure": "10:25 PM on Tue, Jan 5",
-     "arrival": "7:50 PM on Wed, Jan 6",
-     "arrival_date": "2027-01-06"
-    },
-    {
-     "price": 6134,
-     "duration_min": 1100,
-     "stops": 1,
-     "airlines": "Turkish Airlines",
-     "bag_transfer": "auto",
-     "departure": "3:30 PM on Tue, Jan 5",
-     "arrival": "3:50 PM on Wed, Jan 6",
-     "arrival_date": "2027-01-06"
-    },
-    {
-     "price": 6284,
-     "duration_min": 1015,
-     "stops": 1,
-     "airlines": "flydubai, Emirates",
-     "bag_transfer": "auto",
-     "departure": "1:15 PM on Tue, Jan 5",
-     "arrival": "12:10 PM on Wed, Jan 6",
-     "arrival_date": "2027-01-06"
     }
    ]
   },
@@ -2388,7 +2388,7 @@
      "arrival_date": "2026-12-31"
     },
     {
-     "price": 6616,
+     "price": 6617,
      "duration_min": 1015,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -2398,7 +2398,7 @@
      "arrival_date": "2026-12-31"
     },
     {
-     "price": 6935,
+     "price": 6936,
      "duration_min": 810,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -2406,6 +2406,59 @@
      "departure": "8:20 PM on Wed, Dec 30",
      "arrival": "3:50 PM on Thu, Dec 31",
      "arrival_date": "2026-12-31"
+    }
+   ]
+  },
+  {
+   "origin": "BEG",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2027-01-02",
+   "return": "2027-01-10",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDJqBRIDQkVHcgUSA0hLVBoaEgoyMDI3LTAxLTEwagUSA0hLVHIFEgNCRUdCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "ok",
+   "price_level": "high",
+   "options": [
+    {
+     "price": 5817,
+     "duration_min": 925,
+     "stops": 1,
+     "airlines": "flydubai, Emirates",
+     "bag_transfer": "auto",
+     "departure": "10:25 PM on Sat, Jan 2",
+     "arrival": "7:50 PM on Sun, Jan 3",
+     "arrival_date": "2027-01-03"
+    },
+    {
+     "price": 6508,
+     "duration_min": 1015,
+     "stops": 1,
+     "airlines": "flydubai, Emirates",
+     "bag_transfer": "auto",
+     "departure": "1:15 PM on Sat, Jan 2",
+     "arrival": "12:10 PM on Sun, Jan 3",
+     "arrival_date": "2027-01-03"
+    },
+    {
+     "price": 7250,
+     "duration_min": 810,
+     "stops": 1,
+     "airlines": "Turkish Airlines",
+     "bag_transfer": "auto",
+     "departure": "8:20 PM on Sat, Jan 2",
+     "arrival": "3:50 PM on Sun, Jan 3",
+     "arrival_date": "2027-01-03"
+    },
+    {
+     "price": 7250,
+     "duration_min": 1100,
+     "stops": 1,
+     "airlines": "Turkish Airlines",
+     "bag_transfer": "auto",
+     "departure": "3:30 PM on Sat, Jan 2",
+     "arrival": "3:50 PM on Sun, Jan 3",
+     "arrival_date": "2027-01-03"
     }
    ]
   },
@@ -2421,7 +2474,7 @@
    "price_level": "high",
    "options": [
     {
-     "price": 5874,
+     "price": 5876,
      "duration_min": 775,
      "stops": 1,
      "airlines": "Qatar Airways",
@@ -2431,7 +2484,7 @@
      "arrival_date": "2027-01-02"
     },
     {
-     "price": 5876,
+     "price": 5878,
      "duration_min": 800,
      "stops": 1,
      "airlines": "Air Serbia, Turkish Airlines",
@@ -2441,7 +2494,7 @@
      "arrival_date": "2027-01-02"
     },
     {
-     "price": 5952,
+     "price": 5954,
      "duration_min": 995,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -2451,7 +2504,7 @@
      "arrival_date": "2027-01-02"
     },
     {
-     "price": 6367,
+     "price": 6369,
      "duration_min": 810,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -2461,7 +2514,7 @@
      "arrival_date": "2027-01-02"
     },
     {
-     "price": 6367,
+     "price": 6369,
      "duration_min": 1100,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -2484,7 +2537,7 @@
    "price_level": "typical",
    "options": [
     {
-     "price": 6238,
+     "price": 6235,
      "duration_min": 900,
      "stops": 1,
      "airlines": "Emirates",
@@ -2494,7 +2547,7 @@
      "arrival_date": "2027-01-01"
     },
     {
-     "price": 6362,
+     "price": 6359,
      "duration_min": 930,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -2504,7 +2557,7 @@
      "arrival_date": "2027-01-01"
     },
     {
-     "price": 6397,
+     "price": 6394,
      "duration_min": 970,
      "stops": 1,
      "airlines": "Qatar Airways",
@@ -2514,7 +2567,7 @@
      "arrival_date": "2027-01-01"
     },
     {
-     "price": 8120,
+     "price": 8116,
      "duration_min": 1195,
      "stops": 1,
      "airlines": "Korean Air",
@@ -2524,7 +2577,7 @@
      "arrival_date": "2027-01-01"
     },
     {
-     "price": 8180,
+     "price": 8175,
      "duration_min": 1000,
      "stops": 1,
      "airlines": "Air France",
@@ -2547,7 +2600,7 @@
    "price_level": "typical",
    "options": [
     {
-     "price": 6431,
+     "price": 6430,
      "duration_min": 995,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -2557,7 +2610,7 @@
      "arrival_date": "2027-01-02"
     },
     {
-     "price": 6693,
+     "price": 6692,
      "duration_min": 805,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -2565,59 +2618,6 @@
      "departure": "9:25 PM on Fri, Jan 1",
      "arrival": "3:50 PM on Sat, Jan 2",
      "arrival_date": "2027-01-02"
-    }
-   ]
-  },
-  {
-   "origin": "BEG",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2027-01-02",
-   "return": "2027-01-10",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDJqBRIDQkVHcgUSA0hLVBoaEgoyMDI3LTAxLTEwagUSA0hLVHIFEgNCRUdCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "ok",
-   "price_level": "high",
-   "options": [
-    {
-     "price": 6536,
-     "duration_min": 925,
-     "stops": 1,
-     "airlines": "flydubai, Emirates",
-     "bag_transfer": "auto",
-     "departure": "10:25 PM on Sat, Jan 2",
-     "arrival": "7:50 PM on Sun, Jan 3",
-     "arrival_date": "2027-01-03"
-    },
-    {
-     "price": 7227,
-     "duration_min": 1015,
-     "stops": 1,
-     "airlines": "flydubai, Emirates",
-     "bag_transfer": "auto",
-     "departure": "1:15 PM on Sat, Jan 2",
-     "arrival": "12:10 PM on Sun, Jan 3",
-     "arrival_date": "2027-01-03"
-    },
-    {
-     "price": 7248,
-     "duration_min": 810,
-     "stops": 1,
-     "airlines": "Turkish Airlines",
-     "bag_transfer": "auto",
-     "departure": "8:20 PM on Sat, Jan 2",
-     "arrival": "3:50 PM on Sun, Jan 3",
-     "arrival_date": "2027-01-03"
-    },
-    {
-     "price": 7248,
-     "duration_min": 1100,
-     "stops": 1,
-     "airlines": "Turkish Airlines",
-     "bag_transfer": "auto",
-     "departure": "3:30 PM on Sat, Jan 2",
-     "arrival": "3:50 PM on Sun, Jan 3",
-     "arrival_date": "2027-01-03"
     }
    ]
   },
@@ -2633,7 +2633,7 @@
    "price_level": "typical",
    "options": [
     {
-     "price": 6590,
+     "price": 6587,
      "duration_min": 925,
      "stops": 1,
      "airlines": "Finnair",
@@ -2643,7 +2643,7 @@
      "arrival_date": "2026-12-31"
     },
     {
-     "price": 7034,
+     "price": 7030,
      "duration_min": 930,
      "stops": 1,
      "airlines": "Qatar Airways",
@@ -2653,7 +2653,7 @@
      "arrival_date": "2026-12-31"
     },
     {
-     "price": 7474,
+     "price": 7470,
      "duration_min": 1195,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -2663,7 +2663,7 @@
      "arrival_date": "2026-12-31"
     },
     {
-     "price": 7496,
+     "price": 7492,
      "duration_min": 900,
      "stops": 1,
      "airlines": "Emirates",
@@ -2673,7 +2673,7 @@
      "arrival_date": "2026-12-31"
     },
     {
-     "price": 7887,
+     "price": 7883,
      "duration_min": 825,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -2729,7 +2729,7 @@
      "arrival_date": "2026-12-28"
     },
     {
-     "price": 6855,
+     "price": 6856,
      "duration_min": 995,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -2749,7 +2749,7 @@
      "arrival_date": "2026-12-28"
     },
     {
-     "price": 7782,
+     "price": 7783,
      "duration_min": 925,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -2782,7 +2782,7 @@
    "price_level": "typical",
    "options": [
     {
-     "price": 6711,
+     "price": 6710,
      "duration_min": 995,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -2792,7 +2792,7 @@
      "arrival_date": "2026-12-28"
     },
     {
-     "price": 7201,
+     "price": 7200,
      "duration_min": 805,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -2800,6 +2800,69 @@
      "departure": "9:25 PM on Sun, Dec 27",
      "arrival": "3:50 PM on Mon, Dec 28",
      "arrival_date": "2026-12-28"
+    }
+   ]
+  },
+  {
+   "origin": "BEG",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2026-12-31",
+   "return": "2027-01-08",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMzFqBRIDQkVHcgUSA0hLVBoaEgoyMDI3LTAxLTA4agUSA0hLVHIFEgNCRUdCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "ok",
+   "price_level": "typical",
+   "options": [
+    {
+     "price": 6825,
+     "duration_min": 925,
+     "stops": 1,
+     "airlines": "flydubai, Emirates",
+     "bag_transfer": "auto",
+     "departure": "10:25 PM on Thu, Dec 31",
+     "arrival": "7:50 PM on Fri, Jan 1",
+     "arrival_date": "2027-01-01"
+    },
+    {
+     "price": 7021,
+     "duration_min": 1015,
+     "stops": 1,
+     "airlines": "flydubai, Emirates",
+     "bag_transfer": "auto",
+     "departure": "1:15 PM on Thu, Dec 31",
+     "arrival": "12:10 PM on Fri, Jan 1",
+     "arrival_date": "2027-01-01"
+    },
+    {
+     "price": 7170,
+     "duration_min": 810,
+     "stops": 1,
+     "airlines": "Turkish Airlines",
+     "bag_transfer": "auto",
+     "departure": "8:20 PM on Thu, Dec 31",
+     "arrival": "3:50 PM on Fri, Jan 1",
+     "arrival_date": "2027-01-01"
+    },
+    {
+     "price": 7170,
+     "duration_min": 995,
+     "stops": 1,
+     "airlines": "Turkish Airlines",
+     "bag_transfer": "auto",
+     "departure": "8:50 AM on Thu, Dec 31",
+     "arrival": "7:25 AM on Fri, Jan 1",
+     "arrival_date": "2027-01-01"
+    },
+    {
+     "price": 7170,
+     "duration_min": 1100,
+     "stops": 1,
+     "airlines": "Turkish Airlines",
+     "bag_transfer": "auto",
+     "departure": "3:30 PM on Thu, Dec 31",
+     "arrival": "3:50 PM on Fri, Jan 1",
+     "arrival_date": "2027-01-01"
     }
    ]
   },
@@ -2815,7 +2878,7 @@
    "price_level": "typical",
    "options": [
     {
-     "price": 6933,
+     "price": 6932,
      "duration_min": 805,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -2838,7 +2901,7 @@
    "price_level": "high",
    "options": [
     {
-     "price": 7087,
+     "price": 7083,
      "duration_min": 930,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -2848,7 +2911,7 @@
      "arrival_date": "2027-01-03"
     },
     {
-     "price": 8400,
+     "price": 8396,
      "duration_min": 1195,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -2858,7 +2921,7 @@
      "arrival_date": "2027-01-03"
     },
     {
-     "price": 9029,
+     "price": 9025,
      "duration_min": 825,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -2868,7 +2931,7 @@
      "arrival_date": "2027-01-03"
     },
     {
-     "price": 9047,
+     "price": 9043,
      "duration_min": 900,
      "stops": 1,
      "airlines": "Emirates",
@@ -2878,7 +2941,7 @@
      "arrival_date": "2027-01-03"
     },
     {
-     "price": 21568,
+     "price": 21557,
      "duration_min": 1195,
      "stops": 1,
      "airlines": "Korean Air",
@@ -2901,7 +2964,7 @@
    "price_level": "high",
    "options": [
     {
-     "price": 7166,
+     "price": 7162,
      "duration_min": 925,
      "stops": 1,
      "airlines": "Finnair",
@@ -2911,7 +2974,7 @@
      "arrival_date": "2026-12-30"
     },
     {
-     "price": 7728,
+     "price": 7724,
      "duration_min": 900,
      "stops": 1,
      "airlines": "Emirates",
@@ -2921,7 +2984,7 @@
      "arrival_date": "2026-12-30"
     },
     {
-     "price": 8400,
+     "price": 8396,
      "duration_min": 825,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -2931,7 +2994,7 @@
      "arrival_date": "2026-12-30"
     },
     {
-     "price": 8400,
+     "price": 8396,
      "duration_min": 1195,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -2941,7 +3004,7 @@
      "arrival_date": "2026-12-30"
     },
     {
-     "price": 8854,
+     "price": 8850,
      "duration_min": 1050,
      "stops": 1,
      "airlines": "Air France",
@@ -2949,69 +3012,6 @@
      "departure": "6:00 AM on Tue, Dec 29",
      "arrival": "5:30 AM on Wed, Dec 30",
      "arrival_date": "2026-12-30"
-    }
-   ]
-  },
-  {
-   "origin": "BEG",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2026-12-31",
-   "return": "2027-01-08",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMzFqBRIDQkVHcgUSA0hLVBoaEgoyMDI3LTAxLTA4agUSA0hLVHIFEgNCRUdCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "ok",
-   "price_level": "typical",
-   "options": [
-    {
-     "price": 7168,
-     "duration_min": 810,
-     "stops": 1,
-     "airlines": "Turkish Airlines",
-     "bag_transfer": "auto",
-     "departure": "8:20 PM on Thu, Dec 31",
-     "arrival": "3:50 PM on Fri, Jan 1",
-     "arrival_date": "2027-01-01"
-    },
-    {
-     "price": 7168,
-     "duration_min": 995,
-     "stops": 1,
-     "airlines": "Turkish Airlines",
-     "bag_transfer": "auto",
-     "departure": "8:50 AM on Thu, Dec 31",
-     "arrival": "7:25 AM on Fri, Jan 1",
-     "arrival_date": "2027-01-01"
-    },
-    {
-     "price": 7168,
-     "duration_min": 1100,
-     "stops": 1,
-     "airlines": "Turkish Airlines",
-     "bag_transfer": "auto",
-     "departure": "3:30 PM on Thu, Dec 31",
-     "arrival": "3:50 PM on Fri, Jan 1",
-     "arrival_date": "2027-01-01"
-    },
-    {
-     "price": 7434,
-     "duration_min": 925,
-     "stops": 1,
-     "airlines": "flydubai, Emirates",
-     "bag_transfer": "auto",
-     "departure": "10:25 PM on Thu, Dec 31",
-     "arrival": "7:50 PM on Fri, Jan 1",
-     "arrival_date": "2027-01-01"
-    },
-    {
-     "price": 7434,
-     "duration_min": 1015,
-     "stops": 1,
-     "airlines": "flydubai, Emirates",
-     "bag_transfer": "auto",
-     "departure": "1:15 PM on Thu, Dec 31",
-     "arrival": "12:10 PM on Fri, Jan 1",
-     "arrival_date": "2027-01-01"
     }
    ]
   },
@@ -3037,7 +3037,7 @@
      "arrival_date": "2026-12-30"
     },
     {
-     "price": 7660,
+     "price": 7661,
      "duration_min": 810,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -3047,7 +3047,7 @@
      "arrival_date": "2026-12-30"
     },
     {
-     "price": 7660,
+     "price": 7661,
      "duration_min": 1100,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -3057,7 +3057,7 @@
      "arrival_date": "2026-12-30"
     },
     {
-     "price": 7856,
+     "price": 7857,
      "duration_min": 1015,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -3090,7 +3090,7 @@
    "price_level": "high",
    "options": [
     {
-     "price": 7463,
+     "price": 7464,
      "duration_min": 925,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -3100,7 +3100,7 @@
      "arrival_date": "2026-12-29"
     },
     {
-     "price": 7856,
+     "price": 7857,
      "duration_min": 1015,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -3130,7 +3130,7 @@
      "arrival_date": "2026-12-29"
     },
     {
-     "price": 8103,
+     "price": 8104,
      "duration_min": 810,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -3176,7 +3176,7 @@
    "price_level": "high",
    "options": [
     {
-     "price": 7771,
+     "price": 7768,
      "duration_min": 975,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -3186,7 +3186,7 @@
      "arrival_date": "2026-12-28"
     },
     {
-     "price": 8400,
+     "price": 8396,
      "duration_min": 825,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -3196,7 +3196,7 @@
      "arrival_date": "2026-12-28"
     },
     {
-     "price": 8400,
+     "price": 8396,
      "duration_min": 1195,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -3206,7 +3206,7 @@
      "arrival_date": "2026-12-28"
     },
     {
-     "price": 8630,
+     "price": 8626,
      "duration_min": 900,
      "stops": 1,
      "airlines": "Emirates",
@@ -3216,7 +3216,7 @@
      "arrival_date": "2026-12-28"
     },
     {
-     "price": 8630,
+     "price": 8626,
      "duration_min": 930,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -3239,7 +3239,7 @@
    "price_level": "typical",
    "options": [
     {
-     "price": 7861,
+     "price": 7860,
      "duration_min": 805,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -3262,7 +3262,7 @@
    "price_level": "typical",
    "options": [
     {
-     "price": 8239,
+     "price": 8235,
      "duration_min": 930,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -3272,7 +3272,7 @@
      "arrival_date": "2026-12-29"
     },
     {
-     "price": 9029,
+     "price": 9025,
      "duration_min": 825,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -3282,7 +3282,7 @@
      "arrival_date": "2026-12-29"
     },
     {
-     "price": 9029,
+     "price": 9025,
      "duration_min": 1195,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -3292,7 +3292,7 @@
      "arrival_date": "2026-12-29"
     },
     {
-     "price": 9117,
+     "price": 9113,
      "duration_min": 900,
      "stops": 1,
      "airlines": "Emirates",
@@ -3302,7 +3302,7 @@
      "arrival_date": "2026-12-29"
     },
     {
-     "price": 9903,
+     "price": 9898,
      "duration_min": 1000,
      "stops": 1,
      "airlines": "Air France",
@@ -3325,7 +3325,7 @@
    "price_level": "typical",
    "options": [
     {
-     "price": 8593,
+     "price": 8594,
      "duration_min": 925,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -3335,7 +3335,7 @@
      "arrival_date": "2026-12-27"
     },
     {
-     "price": 8698,
+     "price": 8699,
      "duration_min": 810,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -3345,7 +3345,7 @@
      "arrival_date": "2026-12-27"
     },
     {
-     "price": 8698,
+     "price": 8699,
      "duration_min": 1100,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -3355,7 +3355,7 @@
      "arrival_date": "2026-12-27"
     },
     {
-     "price": 9284,
+     "price": 9285,
      "duration_min": 1015,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -3378,7 +3378,7 @@
    "price_level": "high",
    "options": [
     {
-     "price": 9029,
+     "price": 9025,
      "duration_min": 1195,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -3388,7 +3388,7 @@
      "arrival_date": "2026-12-27"
     },
     {
-     "price": 9097,
+     "price": 9092,
      "duration_min": 900,
      "stops": 1,
      "airlines": "Emirates",
@@ -3398,7 +3398,7 @@
      "arrival_date": "2026-12-27"
     },
     {
-     "price": 9493,
+     "price": 9488,
      "duration_min": 930,
      "stops": 1,
      "airlines": "flydubai, Emirates",
@@ -3408,7 +3408,7 @@
      "arrival_date": "2026-12-27"
     },
     {
-     "price": 9811,
+     "price": 9806,
      "duration_min": 825,
      "stops": 1,
      "airlines": "Turkish Airlines",
@@ -3418,7 +3418,7 @@
      "arrival_date": "2026-12-27"
     },
     {
-     "price": 14665,
+     "price": 14657,
      "duration_min": 1195,
      "stops": 1,
      "airlines": "Korean Air",
@@ -3428,17 +3428,6 @@
      "arrival_date": "2026-12-27"
     }
    ]
-  },
-  {
-   "origin": "TSR",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2026-12-26",
-   "return": "2027-01-02",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMjZqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTAyagUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "none",
-   "options": []
   },
   {
    "origin": "TSR",
@@ -3463,15 +3452,14 @@
    "options": []
   },
   {
-   "origin": "CLJ",
+   "origin": "TSR",
    "dest": "HKT",
    "country": "Phuket",
    "depart": "2026-12-26",
    "return": "2027-01-02",
    "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMjZqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTAyagUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "too_long",
-   "price_level": "typical",
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMjZqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTAyagUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "none",
    "options": []
   },
   {
@@ -3494,6 +3482,18 @@
    "return": "2027-01-02",
    "nights": 7,
    "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMjZqBRIDQlVEcgUSA0hLVBoaEgoyMDI3LTAxLTAyagUSA0hLVHIFEgNCVURCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "too_long",
+   "price_level": "high",
+   "options": []
+  },
+  {
+   "origin": "BEG",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2026-12-26",
+   "return": "2027-01-02",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMjZqBRIDQkVHcgUSA0hLVBoaEgoyMDI3LTAxLTAyagUSA0hLVHIFEgNCRUdCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "too_long",
    "price_level": "high",
    "options": []
@@ -3523,15 +3523,15 @@
    "options": []
   },
   {
-   "origin": "BEG",
+   "origin": "CLJ",
    "dest": "HKT",
    "country": "Phuket",
    "depart": "2026-12-26",
    "return": "2027-01-02",
    "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMjZqBRIDQkVHcgUSA0hLVBoaEgoyMDI3LTAxLTAyagUSA0hLVHIFEgNCRUdCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMjZqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTAyagUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "too_long",
-   "price_level": "high",
+   "price_level": "typical",
    "options": []
   },
   {
@@ -3557,14 +3557,15 @@
    "options": []
   },
   {
-   "origin": "TSR",
+   "origin": "CLJ",
    "dest": "HKT",
    "country": "Phuket",
    "depart": "2026-12-27",
-   "return": "2027-01-05",
+   "return": "2027-01-03",
    "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMjdqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTA1agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "none",
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMjdqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTAzagUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "too_long",
+   "price_level": "typical",
    "options": []
   },
   {
@@ -3580,18 +3581,6 @@
    "options": []
   },
   {
-   "origin": "CLJ",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2026-12-27",
-   "return": "2027-01-03",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMjdqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTAzagUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "too_long",
-   "price_level": "typical",
-   "options": []
-  },
-  {
    "origin": "BUD",
    "dest": "HKT",
    "country": "Phuket",
@@ -3601,6 +3590,17 @@
    "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMjdqBRIDQlVEcgUSA0hLVBoaEgoyMDI3LTAxLTAzagUSA0hLVHIFEgNCVURCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "too_long",
    "price_level": "high",
+   "options": []
+  },
+  {
+   "origin": "TSR",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2026-12-27",
+   "return": "2027-01-05",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMjdqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTA1agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "none",
    "options": []
   },
   {
@@ -3651,6 +3651,18 @@
    "options": []
   },
   {
+   "origin": "CLJ",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2026-12-28",
+   "return": "2027-01-04",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMjhqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTA0agUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "too_long",
+   "price_level": "typical",
+   "options": []
+  },
+  {
    "origin": "TSR",
    "dest": "HKT",
    "country": "Phuket",
@@ -3670,30 +3682,6 @@
    "nights": 7,
    "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMjhqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTA2agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "none",
-   "options": []
-  },
-  {
-   "origin": "CLJ",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2026-12-28",
-   "return": "2027-01-04",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMjhqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTA0agUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "too_long",
-   "price_level": "typical",
-   "options": []
-  },
-  {
-   "origin": "CLJ",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2026-12-28",
-   "return": "2027-01-05",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMjhqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTA1agUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "too_long",
-   "price_level": "typical",
    "options": []
   },
   {
@@ -3757,6 +3745,18 @@
    "options": []
   },
   {
+   "origin": "CLJ",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2026-12-28",
+   "return": "2027-01-05",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMjhqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTA1agUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "too_long",
+   "price_level": "typical",
+   "options": []
+  },
+  {
    "origin": "TSR",
    "dest": "HKT",
    "country": "Phuket",
@@ -3764,28 +3764,6 @@
    "return": "2027-01-05",
    "nights": 7,
    "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMjlqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTA1agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "none",
-   "options": []
-  },
-  {
-   "origin": "TSR",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2026-12-29",
-   "return": "2027-01-06",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMjlqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTA2agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "none",
-   "options": []
-  },
-  {
-   "origin": "TSR",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2026-12-29",
-   "return": "2027-01-07",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMjlqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTA3agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "none",
    "options": []
   },
@@ -3799,6 +3777,17 @@
    "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMjlqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTA1agUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "too_long",
    "price_level": "typical",
+   "options": []
+  },
+  {
+   "origin": "TSR",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2026-12-29",
+   "return": "2027-01-06",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMjlqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTA2agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "none",
    "options": []
   },
   {
@@ -3835,6 +3824,17 @@
    "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMjlqBRIDQlVEcgUSA0hLVBoaEgoyMDI3LTAxLTA3agUSA0hLVHIFEgNCVURCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "too_long",
    "price_level": "high",
+   "options": []
+  },
+  {
+   "origin": "TSR",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2026-12-29",
+   "return": "2027-01-07",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMjlqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTA3agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "none",
    "options": []
   },
   {
@@ -3880,17 +3880,6 @@
    "return": "2027-01-07",
    "nights": 7,
    "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMzBqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTA3agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "none",
-   "options": []
-  },
-  {
-   "origin": "TSR",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2026-12-30",
-   "return": "2027-01-08",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMzBqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTA4agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "none",
    "options": []
   },
@@ -3943,6 +3932,17 @@
    "options": []
   },
   {
+   "origin": "TSR",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2026-12-30",
+   "return": "2027-01-08",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMzBqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTA4agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "none",
+   "options": []
+  },
+  {
    "origin": "BUD",
    "dest": "HKT",
    "country": "Phuket",
@@ -3983,17 +3983,6 @@
    "dest": "HKT",
    "country": "Phuket",
    "depart": "2026-12-31",
-   "return": "2027-01-08",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMzFqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTA4agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "none",
-   "options": []
-  },
-  {
-   "origin": "TSR",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2026-12-31",
    "return": "2027-01-07",
    "nights": 7,
    "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMzFqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTA3agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
@@ -4005,9 +3994,9 @@
    "dest": "HKT",
    "country": "Phuket",
    "depart": "2026-12-31",
-   "return": "2027-01-09",
+   "return": "2027-01-08",
    "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMzFqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTA5agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMzFqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTA4agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "none",
    "options": []
   },
@@ -4060,6 +4049,17 @@
    "options": []
   },
   {
+   "origin": "TSR",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2026-12-31",
+   "return": "2027-01-09",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjYtMTItMzFqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTA5agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "none",
+   "options": []
+  },
+  {
    "origin": "BEG",
    "dest": "HKT",
    "country": "Phuket",
@@ -4102,17 +4102,6 @@
    "return": "2027-01-09",
    "nights": 7,
    "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDFqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTA5agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "none",
-   "options": []
-  },
-  {
-   "origin": "TSR",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2027-01-01",
-   "return": "2027-01-10",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDFqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTEwagUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "none",
    "options": []
   },
@@ -4177,6 +4166,17 @@
    "options": []
   },
   {
+   "origin": "TSR",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2027-01-01",
+   "return": "2027-01-10",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDFqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTEwagUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "none",
+   "options": []
+  },
+  {
    "origin": "BEG",
    "dest": "HKT",
    "country": "Phuket",
@@ -4207,17 +4207,6 @@
    "return": "2027-01-10",
    "nights": 7,
    "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDJqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTEwagUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "none",
-   "options": []
-  },
-  {
-   "origin": "TSR",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2027-01-02",
-   "return": "2027-01-11",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDJqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTExagUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "none",
    "options": []
   },
@@ -4258,15 +4247,14 @@
    "options": []
   },
   {
-   "origin": "BUD",
+   "origin": "TSR",
    "dest": "HKT",
    "country": "Phuket",
    "depart": "2027-01-02",
    "return": "2027-01-11",
    "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDJqBRIDQlVEcgUSA0hLVBoaEgoyMDI3LTAxLTExagUSA0hLVHIFEgNCVURCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "too_long",
-   "price_level": "high",
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDJqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTExagUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "none",
    "options": []
   },
   {
@@ -4291,6 +4279,18 @@
    "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDJqBRIDQkVHcgUSA0hLVBoaEgoyMDI3LTAxLTExagUSA0hLVHIFEgNCRUdCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "too_long",
    "price_level": "typical",
+   "options": []
+  },
+  {
+   "origin": "BUD",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2027-01-02",
+   "return": "2027-01-11",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDJqBRIDQlVEcgUSA0hLVBoaEgoyMDI3LTAxLTExagUSA0hLVHIFEgNCVURCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "too_long",
+   "price_level": "high",
    "options": []
   },
   {
@@ -4363,6 +4363,18 @@
    "options": []
   },
   {
+   "origin": "BEG",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2027-01-03",
+   "return": "2027-01-10",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDNqBRIDQkVHcgUSA0hLVBoaEgoyMDI3LTAxLTEwagUSA0hLVHIFEgNCRUdCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "too_long",
+   "price_level": "typical",
+   "options": []
+  },
+  {
    "origin": "BUD",
    "dest": "HKT",
    "country": "Phuket",
@@ -4375,15 +4387,14 @@
    "options": []
   },
   {
-   "origin": "BEG",
+   "origin": "TSR",
    "dest": "HKT",
    "country": "Phuket",
-   "depart": "2027-01-03",
-   "return": "2027-01-10",
+   "depart": "2027-01-04",
+   "return": "2027-01-11",
    "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDNqBRIDQkVHcgUSA0hLVBoaEgoyMDI3LTAxLTEwagUSA0hLVHIFEgNCRUdCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "too_long",
-   "price_level": "typical",
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDRqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTExagUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "none",
    "options": []
   },
   {
@@ -4399,14 +4410,39 @@
    "options": []
   },
   {
-   "origin": "TSR",
+   "origin": "CLJ",
    "dest": "HKT",
    "country": "Phuket",
    "depart": "2027-01-04",
    "return": "2027-01-11",
    "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDRqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTExagUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "none",
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDRqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTExagUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "too_long",
+   "price_level": "typical",
+   "options": []
+  },
+  {
+   "origin": "CLJ",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2027-01-04",
+   "return": "2027-01-12",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDRqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTEyagUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "too_long",
+   "price_level": "typical",
+   "options": []
+  },
+  {
+   "origin": "CLJ",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2027-01-04",
+   "return": "2027-01-13",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDRqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTEzagUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "too_long",
+   "price_level": "typical",
    "options": []
   },
   {
@@ -4429,42 +4465,6 @@
    "nights": 7,
    "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDRqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTEzagUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "none",
-   "options": []
-  },
-  {
-   "origin": "CLJ",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2027-01-04",
-   "return": "2027-01-12",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDRqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTEyagUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "too_long",
-   "price_level": "typical",
-   "options": []
-  },
-  {
-   "origin": "CLJ",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2027-01-04",
-   "return": "2027-01-11",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDRqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTExagUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "too_long",
-   "price_level": "typical",
-   "options": []
-  },
-  {
-   "origin": "CLJ",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2027-01-04",
-   "return": "2027-01-13",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDRqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTEzagUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "too_long",
-   "price_level": "typical",
    "options": []
   },
   {
@@ -4496,11 +4496,11 @@
    "dest": "HKT",
    "country": "Phuket",
    "depart": "2027-01-04",
-   "return": "2027-01-11",
+   "return": "2027-01-13",
    "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDRqBRIDQkVHcgUSA0hLVBoaEgoyMDI3LTAxLTExagUSA0hLVHIFEgNCRUdCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDRqBRIDQkVHcgUSA0hLVBoaEgoyMDI3LTAxLTEzagUSA0hLVHIFEgNCRUdCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "too_long",
-   "price_level": "high",
+   "price_level": "typical",
    "options": []
   },
   {
@@ -4508,9 +4508,9 @@
    "dest": "HKT",
    "country": "Phuket",
    "depart": "2027-01-04",
-   "return": "2027-01-13",
+   "return": "2027-01-11",
    "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDRqBRIDQkVHcgUSA0hLVBoaEgoyMDI3LTAxLTEzagUSA0hLVHIFEgNCRUdCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDRqBRIDQkVHcgUSA0hLVBoaEgoyMDI3LTAxLTExagUSA0hLVHIFEgNCRUdCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "too_long",
    "price_level": "typical",
    "options": []
@@ -4534,17 +4534,6 @@
    "return": "2027-01-13",
    "nights": 7,
    "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDVqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTEzagUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "none",
-   "options": []
-  },
-  {
-   "origin": "TSR",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2027-01-05",
-   "return": "2027-01-14",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDVqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTE0agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "none",
    "options": []
   },
@@ -4609,6 +4598,17 @@
    "options": []
   },
   {
+   "origin": "TSR",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2027-01-05",
+   "return": "2027-01-14",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDVqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTE0agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "none",
+   "options": []
+  },
+  {
    "origin": "BEG",
    "dest": "HKT",
    "country": "Phuket",
@@ -4651,18 +4651,6 @@
    "nights": 7,
    "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDZqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTE1agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "none",
-   "options": []
-  },
-  {
-   "origin": "CLJ",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2027-01-06",
-   "return": "2027-01-13",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDZqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTEzagUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "too_long",
-   "price_level": "typical",
    "options": []
   },
   {
@@ -4738,14 +4726,15 @@
    "options": []
   },
   {
-   "origin": "TSR",
+   "origin": "CLJ",
    "dest": "HKT",
    "country": "Phuket",
-   "depart": "2027-01-07",
-   "return": "2027-01-14",
+   "depart": "2027-01-06",
+   "return": "2027-01-13",
    "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDdqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTE0agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "none",
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDZqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTEzagUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "too_long",
+   "price_level": "typical",
    "options": []
   },
   {
@@ -4756,6 +4745,17 @@
    "return": "2027-01-15",
    "nights": 7,
    "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDdqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTE1agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "none",
+   "options": []
+  },
+  {
+   "origin": "TSR",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2027-01-07",
+   "return": "2027-01-14",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDdqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTE0agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "none",
    "options": []
   },
@@ -4799,9 +4799,9 @@
    "dest": "HKT",
    "country": "Phuket",
    "depart": "2027-01-07",
-   "return": "2027-01-14",
+   "return": "2027-01-16",
    "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDdqBRIDQlVEcgUSA0hLVBoaEgoyMDI3LTAxLTE0agUSA0hLVHIFEgNCVURCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDdqBRIDQlVEcgUSA0hLVBoaEgoyMDI3LTAxLTE2agUSA0hLVHIFEgNCVURCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "too_long",
    "price_level": "typical",
    "options": []
@@ -4811,21 +4811,9 @@
    "dest": "HKT",
    "country": "Phuket",
    "depart": "2027-01-07",
-   "return": "2027-01-16",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDdqBRIDQlVEcgUSA0hLVBoaEgoyMDI3LTAxLTE2agUSA0hLVHIFEgNCVURCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "too_long",
-   "price_level": "typical",
-   "options": []
-  },
-  {
-   "origin": "BEG",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2027-01-07",
    "return": "2027-01-14",
    "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDdqBRIDQkVHcgUSA0hLVBoaEgoyMDI3LTAxLTE0agUSA0hLVHIFEgNCRUdCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDdqBRIDQlVEcgUSA0hLVBoaEgoyMDI3LTAxLTE0agUSA0hLVHIFEgNCVURCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "too_long",
    "price_level": "typical",
    "options": []
@@ -4843,6 +4831,18 @@
    "options": []
   },
   {
+   "origin": "BEG",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2027-01-07",
+   "return": "2027-01-14",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDdqBRIDQkVHcgUSA0hLVBoaEgoyMDI3LTAxLTE0agUSA0hLVHIFEgNCRUdCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "too_long",
+   "price_level": "typical",
+   "options": []
+  },
+  {
    "origin": "TSR",
    "dest": "HKT",
    "country": "Phuket",
@@ -4850,28 +4850,6 @@
    "return": "2027-01-15",
    "nights": 7,
    "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDhqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTE1agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "none",
-   "options": []
-  },
-  {
-   "origin": "TSR",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2027-01-08",
-   "return": "2027-01-16",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDhqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTE2agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "none",
-   "options": []
-  },
-  {
-   "origin": "TSR",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2027-01-08",
-   "return": "2027-01-17",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDhqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTE3agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "none",
    "options": []
   },
@@ -4885,6 +4863,17 @@
    "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDhqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTE1agUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "too_long",
    "price_level": "low",
+   "options": []
+  },
+  {
+   "origin": "TSR",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2027-01-08",
+   "return": "2027-01-16",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDhqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTE2agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "none",
    "options": []
   },
   {
@@ -4924,6 +4913,17 @@
    "options": []
   },
   {
+   "origin": "TSR",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2027-01-08",
+   "return": "2027-01-17",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDhqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTE3agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "none",
+   "options": []
+  },
+  {
    "origin": "BEG",
    "dest": "HKT",
    "country": "Phuket",
@@ -4952,9 +4952,9 @@
    "dest": "HKT",
    "country": "Phuket",
    "depart": "2027-01-09",
-   "return": "2027-01-16",
+   "return": "2027-01-17",
    "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDlqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTE2agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDlqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTE3agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "none",
    "options": []
   },
@@ -4963,9 +4963,9 @@
    "dest": "HKT",
    "country": "Phuket",
    "depart": "2027-01-09",
-   "return": "2027-01-17",
+   "return": "2027-01-16",
    "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDlqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTE3agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMDlqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTE2agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "none",
    "options": []
   },
@@ -5075,17 +5075,6 @@
    "options": []
   },
   {
-   "origin": "TSR",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2027-01-10",
-   "return": "2027-01-19",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTBqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTE5agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "none",
-   "options": []
-  },
-  {
    "origin": "CLJ",
    "dest": "HKT",
    "country": "Phuket",
@@ -5095,6 +5084,17 @@
    "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTBqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTE3agUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "too_long",
    "price_level": "low",
+   "options": []
+  },
+  {
+   "origin": "TSR",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2027-01-10",
+   "return": "2027-01-19",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTBqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTE5agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "none",
    "options": []
   },
   {
@@ -5180,6 +5180,18 @@
    "options": []
   },
   {
+   "origin": "CLJ",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2027-01-11",
+   "return": "2027-01-19",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTFqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTE5agUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "too_long",
+   "price_level": "low",
+   "options": []
+  },
+  {
    "origin": "TSR",
    "dest": "HKT",
    "country": "Phuket",
@@ -5198,32 +5210,7 @@
    "return": "2027-01-18",
    "nights": 7,
    "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTFqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTE4agUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "too_long",
-   "price_level": "low",
-   "options": []
-  },
-  {
-   "origin": "CLJ",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2027-01-11",
-   "return": "2027-01-19",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTFqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTE5agUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "too_long",
-   "price_level": "low",
-   "options": []
-  },
-  {
-   "origin": "CLJ",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2027-01-11",
-   "return": "2027-01-20",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTFqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTIwagUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "too_long",
-   "price_level": "typical",
+   "status": "none",
    "options": []
   },
   {
@@ -5239,13 +5226,13 @@
    "options": []
   },
   {
-   "origin": "BUD",
+   "origin": "CLJ",
    "dest": "HKT",
    "country": "Phuket",
    "depart": "2027-01-11",
    "return": "2027-01-20",
    "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTFqBRIDQlVEcgUSA0hLVBoaEgoyMDI3LTAxLTIwagUSA0hLVHIFEgNCVURCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTFqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTIwagUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "too_long",
    "price_level": "typical",
    "options": []
@@ -5263,13 +5250,13 @@
    "options": []
   },
   {
-   "origin": "BEG",
+   "origin": "BUD",
    "dest": "HKT",
    "country": "Phuket",
    "depart": "2027-01-11",
    "return": "2027-01-20",
    "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTFqBRIDQkVHcgUSA0hLVBoaEgoyMDI3LTAxLTIwagUSA0hLVHIFEgNCRUdCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTFqBRIDQlVEcgUSA0hLVBoaEgoyMDI3LTAxLTIwagUSA0hLVHIFEgNCVURCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "too_long",
    "price_level": "typical",
    "options": []
@@ -5286,25 +5273,15 @@
    "options": []
   },
   {
-   "origin": "TSR",
+   "origin": "BEG",
    "dest": "HKT",
    "country": "Phuket",
-   "depart": "2027-01-12",
+   "depart": "2027-01-11",
    "return": "2027-01-20",
    "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTJqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTIwagUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "none",
-   "options": []
-  },
-  {
-   "origin": "TSR",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2027-01-12",
-   "return": "2027-01-21",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTJqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTIxagUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "none",
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTFqBRIDQkVHcgUSA0hLVBoaEgoyMDI3LTAxLTIwagUSA0hLVHIFEgNCRUdCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "too_long",
+   "price_level": "typical",
    "options": []
   },
   {
@@ -5332,6 +5309,17 @@
    "options": []
   },
   {
+   "origin": "TSR",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2027-01-12",
+   "return": "2027-01-20",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTJqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTIwagUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "none",
+   "options": []
+  },
+  {
    "origin": "BUD",
    "dest": "HKT",
    "country": "Phuket",
@@ -5341,6 +5329,17 @@
    "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTJqBRIDQlVEcgUSA0hLVBoaEgoyMDI3LTAxLTE5agUSA0hLVHIFEgNCVURCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "too_long",
    "price_level": "typical",
+   "options": []
+  },
+  {
+   "origin": "TSR",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2027-01-12",
+   "return": "2027-01-21",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTJqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTIxagUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "none",
    "options": []
   },
   {
@@ -5402,17 +5401,6 @@
    "options": []
   },
   {
-   "origin": "TSR",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2027-01-13",
-   "return": "2027-01-22",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTNqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTIyagUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "none",
-   "options": []
-  },
-  {
    "origin": "CLJ",
    "dest": "HKT",
    "country": "Phuket",
@@ -5422,6 +5410,17 @@
    "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTNqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTIwagUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "too_long",
    "price_level": "low",
+   "options": []
+  },
+  {
+   "origin": "TSR",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2027-01-13",
+   "return": "2027-01-22",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTNqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTIyagUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "none",
    "options": []
   },
   {
@@ -5453,9 +5452,9 @@
    "dest": "HKT",
    "country": "Phuket",
    "depart": "2027-01-13",
-   "return": "2027-01-22",
+   "return": "2027-01-20",
    "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTNqBRIDQlVEcgUSA0hLVBoaEgoyMDI3LTAxLTIyagUSA0hLVHIFEgNCVURCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTNqBRIDQlVEcgUSA0hLVBoaEgoyMDI3LTAxLTIwagUSA0hLVHIFEgNCVURCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "too_long",
    "price_level": "typical",
    "options": []
@@ -5465,9 +5464,9 @@
    "dest": "HKT",
    "country": "Phuket",
    "depart": "2027-01-13",
-   "return": "2027-01-20",
+   "return": "2027-01-22",
    "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTNqBRIDQlVEcgUSA0hLVBoaEgoyMDI3LTAxLTIwagUSA0hLVHIFEgNCVURCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTNqBRIDQlVEcgUSA0hLVBoaEgoyMDI3LTAxLTIyagUSA0hLVHIFEgNCVURCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "too_long",
    "price_level": "typical",
    "options": []
@@ -5519,17 +5518,6 @@
    "options": []
   },
   {
-   "origin": "TSR",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2027-01-14",
-   "return": "2027-01-23",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTRqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTIzagUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "none",
-   "options": []
-  },
-  {
    "origin": "CLJ",
    "dest": "HKT",
    "country": "Phuket",
@@ -5539,6 +5527,17 @@
    "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTRqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTIxagUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "too_long",
    "price_level": "low",
+   "options": []
+  },
+  {
+   "origin": "TSR",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2027-01-14",
+   "return": "2027-01-23",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTRqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTIzagUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "none",
    "options": []
   },
   {
@@ -5729,17 +5728,6 @@
    "options": []
   },
   {
-   "origin": "TSR",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2027-01-16",
-   "return": "2027-01-25",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTZqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTI1agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "none",
-   "options": []
-  },
-  {
    "origin": "CLJ",
    "dest": "HKT",
    "country": "Phuket",
@@ -5749,6 +5737,17 @@
    "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTZqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTIzagUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "too_long",
    "price_level": "low",
+   "options": []
+  },
+  {
+   "origin": "TSR",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2027-01-16",
+   "return": "2027-01-25",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTZqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTI1agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "none",
    "options": []
   },
   {
@@ -5834,17 +5833,6 @@
    "options": []
   },
   {
-   "origin": "TSR",
-   "dest": "HKT",
-   "country": "Phuket",
-   "depart": "2027-01-17",
-   "return": "2027-01-26",
-   "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTdqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTI2agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "none",
-   "options": []
-  },
-  {
    "origin": "CLJ",
    "dest": "HKT",
    "country": "Phuket",
@@ -5854,6 +5842,17 @@
    "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTdqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTI0agUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "too_long",
    "price_level": "low",
+   "options": []
+  },
+  {
+   "origin": "TSR",
+   "dest": "HKT",
+   "country": "Phuket",
+   "depart": "2027-01-17",
+   "return": "2027-01-26",
+   "nights": 7,
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTdqBRIDVFNScgUSA0hLVBoaEgoyMDI3LTAxLTI2agUSA0hLVHIFEgNUU1JCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "status": "none",
    "options": []
   },
   {
@@ -5888,7 +5887,8 @@
    "return": "2027-01-26",
    "nights": 7,
    "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMTdqBRIDQlVEcgUSA0hLVBoaEgoyMDI3LTAxLTI2agUSA0hLVHIFEgNCVURCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
-   "status": "none",
+   "status": "too_long",
+   "price_level": "typical",
    "options": []
   },
   {
@@ -5965,11 +5965,11 @@
    "dest": "HKT",
    "country": "Phuket",
    "depart": "2027-01-18",
-   "return": "2027-01-27",
+   "return": "2027-01-26",
    "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMThqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTI3agUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMThqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTI2agUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "too_long",
-   "price_level": "typical",
+   "price_level": "low",
    "options": []
   },
   {
@@ -5977,11 +5977,11 @@
    "dest": "HKT",
    "country": "Phuket",
    "depart": "2027-01-18",
-   "return": "2027-01-26",
+   "return": "2027-01-27",
    "nights": 7,
-   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMThqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTI2agUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
+   "link": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDEtMThqBRIDQ0xKcgUSA0hLVBoaEgoyMDI3LTAxLTI3agUSA0hLVHIFEgNDTEpCBAEBAgJIAZgBAQ==&hl=ro&curr=EUR",
    "status": "too_long",
-   "price_level": "low",
+   "price_level": "typical",
    "options": []
   },
   {
