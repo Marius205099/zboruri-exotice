@@ -6,5 +6,6 @@ git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 git add docs/data
 git diff --cached --quiet && exit 0
 git commit -m "Scanare $(date -u +'%Y-%m-%d %H:%M') UTC"
-git pull --rebase
+# La conflict rămâne scanarea nouă: un job pornit din commit-ul care a declanșat rularea poate avea date mai vechi.
+git pull --rebase -X theirs
 git push
