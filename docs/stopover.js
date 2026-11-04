@@ -1,6 +1,6 @@
 // Tab-ul „Cu oprire 1–2 zile”: combinații cu bilete separate printr-un oraș-hub.
 (() => {
-  const S = {country: 'Toate', origins: new Set(), hubs: null, bags: true, shown: 30};
+  const S = {country: 'Toate', origins: new Set(), hubs: null, bags: true, shown: 30, month: '*'};
   let SD, DIRECT_BEST = {}, DIRECT_FROM = {};
 
   const $ = id => document.getElementById(id);
@@ -26,7 +26,7 @@
   function filtered(allCountries = false) {
     return SD.combos.filter(c =>
       (allCountries || S.country === 'Toate' || c.country === S.country) &&
-      S.origins.has(c.origin) && S.hubs.has(c.hub));
+      S.origins.has(c.origin) && S.hubs.has(c.hub) && (S.month === '*' || c.depart.startsWith(S.month)));
   }
 
   function renderCards() {
@@ -140,6 +140,7 @@
     const hubs = Object.keys(SD.hubs).filter(h => SD.combos.some(c => c.hub === h));
     chips($('s-country'), [['Toate', 'Toate'], ...COUNTRIES.map(c => [c, FLAG[c] + ' ' + c])], v => S.country === v, v => S.country = v);
     chips($('s-origin'), origins.map(o => [o, ORIGINS_MAP[o]]), v => S.origins.has(v), v => toggle(S.origins, v, origins));
+    chips($('s-month'), monthChips(SD.combos.map(c => c.depart)), v => S.month === v, v => S.month = v);
     chips($('s-hub'), [['*', 'Toate'], ...hubs.map(h => [h, hubName(h)])], v => v === '*' ? S.hubs.size === hubs.length : S.hubs.size !== hubs.length && S.hubs.has(v),
       v => v === '*' ? (S.hubs = new Set(hubs)) : toggle(S.hubs, v, hubs));
     chips($('s-bags'), [[true, 'Cu bagaje (estimat)'], [false, 'Doar bilete']], v => S.bags === v, v => S.bags = v);

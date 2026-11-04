@@ -4,14 +4,14 @@ Site care arată cele mai ieftine zboruri dus-întors pentru o familie (2 adulț
 
 - **Plecare din:** Timișoara (TSR), Cluj-Napoca (CLJ), Budapesta (BUD), Belgrad (BEG)
 - **Destinații:** Maldive (MLE), Bali (DPS), Thailanda (Phuket, HKT), Mauritius (MRU)
-- **Plecare:** 26 decembrie 2026 – 18 ianuarie 2027
+- **Plecare:** de azi până pe 10 ianuarie 2028, cu returul până pe 18 ianuarie 2028 (Google arată zboruri cu cel mult 330 de zile înainte, restul apar pe măsură ce se apropie)
 - **Cazare:** 7 nopți numărate de la aterizare (plecare 10 ian, aterizare 11 ian, retur 18 ian)
 - **Transfer automat (un singur bilet):** dus și retur de maxim 20 de ore fiecare, cu cel mult o escală
 - **Transfer manual (bilete separate):** cel mult o escală pe fiecare zbor, zborul lung poate depăși 20 de ore
 - **Tur și retur:** ambele sunt verificate și afișate pentru fiecare ofertă, iar prețul este al biletului cu acel retur
 
 Un GitHub Action ([scan.yml](.github/workflows/scan.yml)) rulează [scanner/scan.py](scanner/scan.py) de două ori pe zi
-(pornește ≈07:30 și 19:30 ora României), caută pe Google Flights 1.152 de combinații și salvează rezultatele în
+(pornește ≈07:30 și 19:30 ora României), împarte căutările pe 20 de joburi paralele și salvează rezultatele în
 `docs/data/`. Site-ul din `docs/` este publicat cu GitHub Pages.
 
 ## Combinații cu oprire 1–2 zile (bilete separate)
@@ -28,6 +28,6 @@ Rulare locală:
 
 ```bash
 pip install -r scanner/requirements.txt
-python scanner/scan.py        # toate combinațiile
-python scanner/scan.py 20     # doar primele 20, pentru test
+python scanner/scan.py 0 1        # toate combinațiile (partea 0 din 1)
+python scanner/scan.py merge      # scrie rezultatele în docs/data
 ```

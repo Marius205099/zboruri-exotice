@@ -12,7 +12,9 @@ apoi se combină toate variantele și se păstrează cele mai ieftine.
 Biletele sunt separate: fără transfer automat de bagaje și fără protecție dacă
 un zbor întârzie — de aceea fiecare combinație are cel puțin o noapte în hub.
 
-Rezultatul se scrie în docs/data/stopovers.json.
+Scanarea se împarte pe joburi paralele, ca în scan.py:
+  python scanner/scan_stopover.py 0 20     # partea 0 din 20, scrisă în parts/
+  python scanner/scan_stopover.py merge    # combină zborurile în docs/data/stopovers.json
 """
 
 import json
@@ -22,7 +24,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date, datetime, timedelta, timezone
 
 import gf
-from scan import DATA_DIR, DESTINATIONS, FIRST_DEPARTURE, LAST_DEPARTURE, MAX_STOPS, ORIGINS, STAY_NIGHTS, TRIP_DAYS
+from scan import (DATA_DIR, DESTINATIONS, LAST_DEPARTURE, LAST_RETURN, MAX_STOPS, ORIGINS, PARTS_DIR, STAY_NIGHTS,
+                  TIME_BUDGET_SEC, TRIP_DAYS, last_bookable)
 
 HUBS = {
     "MIL": "Milano",
@@ -52,7 +55,7 @@ LONGHAUL_TRIES = 3  # câte zboruri dus încercăm până găsim un retur cu cel
 
 BAG_FEE_PER_LEG = 100  # estimare: 2 bagaje de cală de 20 kg pe un zbor low-cost
 
-KEEP_PER_GROUP = 25  # cele mai bune combinații pentru fiecare (oraș de plecare, țară)
+KEEP_PER_MONTH = 5  # cele mai bune combinații pe lună, pentru fiecare (oraș de plecare, țară)
 WORKERS = 3
 
 
@@ -69,22 +72,27 @@ def leg(r, **extra):
 
 
 def tasks():
-    lh_first = FIRST_DEPARTURE + timedelta(days=min(STOP_OUT_DAYS))
-    lh_last = LAST_DEPARTURE + timedelta(days=max(STOP_OUT_DAYS))
-    lh_dates = [lh_first + timedelta(days=i) for i in range((lh_last - lh_first).days + 1)]
-    ret_dates = sorted({d + timedelta(days=n + s) for d in lh_dates for n in TRIP_DAYS for s in range(min(STOP_RET_NIGHTS), MAX_RETURN_DAYS + max(STOP_RET_NIGHTS) + 1)})
-    home_dates = [FIRST_DEPARTURE + timedelta(days=i) for i in range((LAST_DEPARTURE - FIRST_DEPARTURE).days + 1)]
+    today, last = date.today(), last_bookable()
+    longest = max(STOP_RET_NIGHTS)
+    days = lambda first, end: [first + timedelta(days=i) for i in range((end - first).days + 1)]  # noqa: E731
+    lh_first = today + timedelta(days=min(STOP_OUT_DAYS))
+    lh_dates = days(lh_first, LAST_DEPARTURE + timedelta(days=max(STOP_OUT_DAYS)))
+    ret_dates = days(lh_first + timedelta(days=min(TRIP_DAYS) + min(STOP_RET_NIGHTS)), last)
+    home_dates = days(today, min(LAST_DEPARTURE, last))
 
     for h in HUBS:
         for o in ORIGINS:
             for d in home_dates:
                 yield ("out", o, h, d, None)
             for d in ret_dates:
-                yield ("ret", h, o, d, None)
+                if d <= lh_dates[-1] + timedelta(days=max(TRIP_DAYS) + MAX_RETURN_DAYS + longest):
+                    yield ("ret", h, o, d, None)
         for dest in DESTINATIONS:
             for d in lh_dates:
                 for n in TRIP_DAYS:
-                    yield ("lh", h, dest, d, n)
+                    # după retur rămâne cel puțin o noapte în hub înainte de zborul spre casă
+                    if d + timedelta(days=n + min(STOP_RET_NIGHTS)) <= last:
+                        yield ("lh", h, dest, d, n)
 
 
 def run(task):
@@ -96,38 +104,71 @@ def run(task):
     return task, r
 
 
-def main():
-    limit = int(sys.argv[1]) if len(sys.argv) > 1 else None
-    all_tasks = list(tasks())[:limit]
+def run_shard(shard, total):
+    all_tasks = list(tasks())[shard::total]
     started = datetime.now(timezone.utc)
-    print(f"Scanez {len(all_tasks)} zboruri separate…", flush=True)
+    print(f"Partea {shard}/{total}: {len(all_tasks)} zboruri separate…", flush=True)
 
-    out, ret, lh = {}, {}, {}
-    errors = 0
+    found = []
+    done = errors = 0
     breaker = gf.Breaker()
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
         futures = [pool.submit(run, t) for t in all_tasks]
-        for i, fut in enumerate(as_completed(futures), 1):
-            (kind, a, b, d, n), r = fut.result()
-            errors += r["status"] == "error"
-            try:
+        try:
+            for fut in as_completed(futures):
+                (kind, a, b, d, n), r = fut.result()
+                done += 1
+                errors += r["status"] == "error"
                 breaker.record(r)
-            except gf.Blocked as e:
-                pool.shutdown(wait=False, cancel_futures=True)
-                print(f"::error::Scanare oprită, datele vechi rămân: {e}", flush=True)
-                return 1
-            if i % 100 == 0:
-                print(f"[{i}/{len(all_tasks)}] erori: {errors}", flush=True)
-            if not r["options"]:
-                continue
-            if kind == "out":
-                out[(a, b, d)] = leg(r, origin=a, to=b, date=d.isoformat())
-            elif kind == "ret":
-                ret[(a, b, d)] = leg(r, origin=a, to=b, date=d.isoformat())
+                if (datetime.now(timezone.utc) - started).total_seconds() > TIME_BUDGET_SEC:
+                    raise gf.Blocked("timpul alocat s-a terminat")
+                if done % 100 == 0:
+                    print(f"[{done}/{len(all_tasks)}] erori: {errors}", flush=True)
+                if not r["options"]:
+                    continue
+                if kind == "lh":
+                    item = leg(r, origin=a, to=b, date=d.isoformat(),
+                               return_date=(d + timedelta(days=n)).isoformat(),
+                               nights=STAY_NIGHTS, price_level=r.get("price_level"))
+                else:
+                    item = leg(r, origin=a, to=b, date=d.isoformat())
+                found.append({"kind": kind, "n": n, "leg": item})
+        except gf.Blocked as e:
+            pool.shutdown(wait=False, cancel_futures=True)
+            print(f"::warning::Partea {shard} oprită, salvez ce am găsit: {e}", flush=True)
+
+    PARTS_DIR.mkdir(exist_ok=True)
+    (PARTS_DIR / f"stopover-{shard}.json").write_text(json.dumps({
+        "started": started.isoformat(timespec="seconds"),
+        "duration_sec": int((datetime.now(timezone.utc) - started).total_seconds()),
+        "planned": len(all_tasks),
+        "done": done,
+        "errors": errors,
+        "found": found,
+    }, ensure_ascii=False))
+    print(f"Gata: {done} din {len(all_tasks)}, {errors} erori, {len(found)} zboruri")
+    return 0
+
+
+def merge():
+    parts = [json.loads(f.read_text()) for f in PARTS_DIR.glob("stopover-*.json")]
+    planned = len(list(tasks()))
+    done = sum(p["done"] for p in parts)
+    errors = sum(p["errors"] for p in parts)
+    if done - errors < 0.5 * planned:
+        print(f"::error::Doar {done - errors} căutări reușite din {planned}, păstrez rezultatele anterioare.")
+        return 1
+
+    out, ret, lh = {}, {}, {}
+    for p in parts:
+        for f in p["found"]:
+            x, d = f["leg"], date.fromisoformat(f["leg"]["date"])
+            if f["kind"] == "out":
+                out[(x["origin"], x["to"], d)] = x
+            elif f["kind"] == "ret":
+                ret[(x["origin"], x["to"], d)] = x
             else:
-                lh[(a, b, d, n)] = leg(r, origin=a, to=b, date=d.isoformat(),
-                                       return_date=(d + timedelta(days=n)).isoformat(),
-                                       nights=STAY_NIGHTS, price_level=r.get("price_level"))
+                lh[(x["origin"], x["to"], d, f["n"])] = x
 
     # Combinăm: casă → hub (+1–2 nopți) → destinație (7 nopți de la aterizare) → hub (+1–2 nopți) → casă
     groups = defaultdict(list)
@@ -140,7 +181,7 @@ def main():
                     continue
                 for s_ret in STOP_RET_NIGHTS:
                     last = ret.get((h, o, lands + timedelta(days=s_ret)))
-                    if not last:
+                    if not last or date.fromisoformat(last["date"]) > LAST_RETURN:
                         continue
                     legs = [first, long_leg, last]
                     tickets = sum(x["price"] for x in legs)
@@ -161,29 +202,23 @@ def main():
                         "legs": legs,
                     })
 
-    # Păstrăm cele mai bune combinații pe (oraș de plecare, țară), plus cele mai bune 2
-    # pentru fiecare (oraș de plecare, hub, destinație), ca tabelul de hub-uri să fie complet.
-    combos, kept = [], set()
+    # Păstrăm cele mai bune combinații pe lună pentru fiecare (oraș de plecare, țară), plus cele
+    # mai bune 2 pentru fiecare (oraș de plecare, hub, destinație), ca tabelul de hub-uri să fie complet.
+    combos = []
     for items in groups.values():
         items.sort(key=lambda c: c["total"])
-        per_route = defaultdict(int)
-        for i, c in enumerate(items):
-            key = (c["hub"], c["dest"])
-            if i < KEEP_PER_GROUP or per_route[key] < 2:
-                if id(c) not in kept:
-                    kept.add(id(c))
-                    combos.append(c)
-            per_route[key] += 1
+        per_route, per_month = defaultdict(int), defaultdict(int)
+        for c in items:
+            route, month = (c["hub"], c["dest"]), c["depart"][:7]
+            if per_month[month] < KEEP_PER_MONTH or per_route[route] < 2:
+                combos.append(c)
+            per_month[month] += 1
+            per_route[route] += 1
     combos.sort(key=lambda c: c["total"])
 
-    out_path = DATA_DIR / "stopovers.json"
-    if len(all_tasks) > 50 and errors > 0.8 * len(all_tasks) and out_path.exists():
-        print(f"Prea multe erori ({errors}/{len(all_tasks)}), păstrez rezultatele anterioare.")
-        return 1
-
     payload = {
-        "scanned_at": started.isoformat(timespec="seconds"),
-        "duration_sec": int((datetime.now(timezone.utc) - started).total_seconds()),
+        "scanned_at": min(p["started"] for p in parts),
+        "duration_sec": max(p["duration_sec"] for p in parts),
         "currency": gf.CURRENCY,
         "hubs": HUBS,
         "bag_fee_per_leg": BAG_FEE_PER_LEG,
@@ -191,7 +226,8 @@ def main():
         "max_stops": MAX_STOPS,
         "return_checked": True,
         "stats": {
-            "searches": len(all_tasks),
+            "searches": planned,
+            "searched": done,
             "errors": errors,
             "positioning_found": len(out) + len(ret),
             "longhaul_found": len(lh),
@@ -200,10 +236,10 @@ def main():
         "combos": combos,
     }
     DATA_DIR.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":")))
-    print(f"Gata: {payload['stats']} în {payload['duration_sec']}s")
+    (DATA_DIR / "stopovers.json").write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":")))
+    print(f"Gata: {payload['stats']}, {len(combos)} combinații păstrate")
     return 0
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(merge() if sys.argv[1] == "merge" else run_shard(int(sys.argv[1]), int(sys.argv[2])))

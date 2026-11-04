@@ -19,28 +19,92 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  scan:
+  direct:
+    name: Bilete întregi ${{ matrix.shard }}
     runs-on: ubuntu-latest
     timeout-minutes: 330
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: pip
           cache-dependency-path: scanner/requirements.txt
-
       - run: pip install -r scanner/requirements.txt
+      - run: python scanner/scan.py ${{ matrix.shard }} 20
+      - uses: actions/upload-artifact@v4
+        with:
+          name: direct-${{ matrix.shard }}
+          path: parts/direct-*.json
+          retention-days: 1
 
-      - name: Scanează zborurile cu bilet întreg
-        run: python scanner/scan.py
+  save-direct:
+    name: Salvează biletele întregi
+    needs: direct
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scanner/requirements.txt
+      - run: pip install -r scanner/requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: direct-*
+          path: parts
+          merge-multiple: true
+      - run: python scanner/scan.py merge
+      - run: bash scanner/save_results.sh
 
-      - name: Salvează biletele întregi
-        run: bash scanner/save_results.sh
+  stopover:
+    name: Combinații ${{ matrix.shard }}
+    needs: save-direct
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scanner/requirements.txt
+      - run: pip install -r scanner/requirements.txt
+      - run: python scanner/scan_stopover.py ${{ matrix.shard }} 20
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stopover-${{ matrix.shard }}
+          path: parts/stopover-*.json
+          retention-days: 1
 
-      - name: Scanează combinațiile cu oprire 1–2 zile
-        run: python scanner/scan_stopover.py
-
-      - name: Salvează combinațiile
-        run: bash scanner/save_results.sh
+  save-stopover:
+    name: Salvează combinațiile
+    needs: stopover
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scanner/requirements.txt
+      - run: pip install -r scanner/requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: stopover-*
+          path: parts
+          merge-multiple: true
+      - run: python scanner/scan_stopover.py merge
+      - run: bash scanner/save_results.sh

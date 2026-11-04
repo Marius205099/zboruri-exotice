@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Zboruri exotice de iarnă</title>
-<meta name="description" content="Prețuri scanate de două ori pe zi: Timișoara, Cluj, Budapesta, Belgrad → Maldive, Bali, Thailanda (Phuket), Mauritius. plecare 26 dec 2026 – 18 ian 2027, 7 nopți de cazare, maxim 20 de ore și o escală, cu transfer automat sau manual de bagaje.">
+<title>Zboruri exotice</title>
+<meta name="description" content="Prețuri scanate de două ori pe zi: Timișoara, Cluj, Budapesta, Belgrad → Maldive, Bali, Thailanda (Phuket), Mauritius. plecare până pe 10 ian 2028, retur până pe 18 ian 2028, 7 nopți de cazare, maxim 20 de ore și o escală, cu transfer automat sau manual de bagaje.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌴</text></svg>">
 <style>
 :root{
@@ -45,6 +45,7 @@ h2{font-size:19px;margin:36px 0 12px}
 .flabel{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);min-width:96px}
 .chip{border:1px solid var(--line);background:var(--surface-2);color:var(--text);border-radius:999px;padding:5px 12px;font-size:14px;cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.gridwrap.tall{max-height:70vh;overflow-y:auto}
 .gridwrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:14px}
 table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
 th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line);font-size:14px;white-space:nowrap}
@@ -100,7 +101,7 @@ svg text{fill:var(--muted);font-size:11px}
 <body>
 <div class="wrap">
 <header>
-  <h1>🌴 Zboruri exotice de iarnă</h1>
+  <h1>🌴 Zboruri exotice</h1>
   <p class="sub">Timișoara · Cluj-Napoca · Budapesta · Belgrad → Maldive · Bali · Thailanda (Phuket) · Mauritius</p>
   <div class="meta" id="meta"></div>
 </header>
@@ -125,6 +126,7 @@ svg text{fill:var(--muted);font-size:11px}
 <div class="filters">
   <div class="frow"><span class="flabel">Destinație</span><div id="s-country" class="frow"></div></div>
   <div class="frow"><span class="flabel">Plecare din</span><div id="s-origin" class="frow"></div></div>
+  <div class="frow"><span class="flabel">Luna plecării</span><div id="s-month" class="frow"></div></div>
   <div class="frow"><span class="flabel">Oraș de oprire</span><div id="s-hub" class="frow"></div></div>
   <div class="frow"><span class="flabel">Preț</span><div id="s-bags" class="frow"></div></div>
 </div>
@@ -164,11 +166,12 @@ svg text{fill:var(--muted);font-size:11px}
 <div class="filters">
   <div class="frow"><span class="flabel">Destinație</span><div id="f-country" class="frow"></div></div>
   <div class="frow"><span class="flabel">Plecare din</span><div id="f-origin" class="frow"></div></div>
+  <div class="frow"><span class="flabel">Luna plecării</span><div id="f-month" class="frow"></div></div>
   <div class="frow"><span class="flabel">Escale max</span><div id="f-stops" class="frow"></div></div>
 </div>
 
 <h2 id="heat-title">Calendar prețuri</h2>
-<div class="gridwrap"><table class="heat" id="heat"></table></div>
+<div class="gridwrap tall"><table class="heat" id="heat"></table></div>
 <div class="legend" id="legend"></div>
 
 <h2>Toate ofertele găsite <span class="tag" id="count"></span></h2>
@@ -179,7 +182,8 @@ svg text{fill:var(--muted);font-size:11px}
 
 <h2>Cum funcționează</h2>
 <div class="note"><ul>
-  <li>Un robot caută pe Google Flights de două ori pe zi toate combinațiile: 4 aeroporturi × 4 destinații × 24 de zile de plecare (26 dec – 18 ian). Scanarea începe în jur de 07:30 și 19:30, ora României, și durează câteva ore.</li>
+  <li>Un robot caută pe Google Flights de două ori pe zi toate combinațiile: 4 aeroporturi × 4 destinații × fiecare zi de plecare, de azi până pe 10 ianuarie 2028, cu returul până pe 18 ianuarie 2028. Scanarea începe în jur de 07:30 și 19:30, ora României, și durează câteva ore.</li>
+  <li>Google Flights arată zboruri cu cel mult <b>330 de zile înainte</b>, unele companii chiar mai puțin. Datele mai îndepărtate apar automat pe site pe măsură ce se apropie.</li>
   <li><b>7 nopți de cazare, numărate de la aterizare.</b> Exemplu: plecare 10 ian, aterizare 11 ian în Phuket, retur 18 ian. Dacă aterizezi în aceeași zi sau cu două zile mai târziu, returul se mută corespunzător.</li>
   <li>Prețurile sunt <b>totale pentru 4 persoane</b> (2 adulți + 2 copii de 3 și 5 ani), dus-întors, clasa economic, în EUR.</li>
   <li>Se păstrează doar biletele cu <b>dus și retur de maxim 20 de ore fiecare, cu cel mult o escală</b>. Prețul afișat este cel al biletului cu turul și returul arătate, iar linkul le deschide pe amândouă în Google Flights.</li>
@@ -201,7 +205,7 @@ document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
   if(b.dataset.tab==='direct' && window.HIST) renderHist(window.HIST);
 });
 const fmtEUR = n => n.toLocaleString('ro-RO') + ' €';
-const RO_DAY = new Intl.DateTimeFormat('ro-RO', {weekday:'short', day:'numeric', month:'short'});
+const RO_DAY = new Intl.DateTimeFormat('ro-RO', {weekday:'short', day:'numeric', month:'short', year:'numeric'});
 const fmtDate = s => RO_DAY.format(new Date(s + 'T12:00:00'));
 const fmtDur = m => `${Math.floor(m/60)}h ${String(m%60).padStart(2,'0')}m`;
 const stopsTxt = s => s === 0 ? 'direct' : s === 1 ? '1 escală' : s == null ? '?' : `${s} escale`;
@@ -209,7 +213,9 @@ const LEVEL = {low:'preț mic', typical:'preț obișnuit', high:'preț mare'};
 const COUNTRIES = ['Maldive','Bali','Thailanda','Mauritius'];
 const FLAG = {Maldive:'🇲🇻', Bali:'🇮🇩', Thailanda:'🇹🇭', Mauritius:'🇲🇺'};
 
-const state = {country:'Toate', origins:new Set(), stops:1};
+const state = {country:'Toate', origins:new Set(), stops:1, month:'*'};
+const RO_MONTH = new Intl.DateTimeFormat('ro-RO',{month:'short',year:'numeric'});
+const monthChips = dates => [['*','Toate'],...[...new Set(dates.map(d=>d.slice(0,7)))].sort().map(m=>[m,RO_MONTH.format(new Date(m+'-15T12:00:00'))])];
 const UPDATING='<p class="empty">Se scanează prețurile cu turul și returul verificate. Rezultatele apar aici în cel mult câteva ore.</p>';
 let DATA, ROWS = [];
 
@@ -227,7 +233,7 @@ function chips(container, items, isOn, onClick){
 function filtered(allCountries=false){
   return ROWS.filter(r => r.best &&
     ((allCountries || state.country==='Toate' || r.country===state.country) &&
-    state.origins.has(r.origin)));
+    state.origins.has(r.origin) && (state.month==='*' || r.depart.startsWith(state.month))));
 }
 
 function bestOption(r){
@@ -251,10 +257,13 @@ function renderMeta(){
   const t = new Date(DATA.scanned_at);
   const when = t.toLocaleString('ro-RO',{timeZone:'Europe/Bucharest',day:'numeric',month:'long',hour:'2-digit',minute:'2-digit'});
   const s = DATA.stats;
+  const departs = DATA.results.filter(r=>r.options.length).map(r=>r.depart).sort();
+  const first = departs[0], last = departs[departs.length-1];
   document.getElementById('meta').innerHTML =
     `<span class="pill">Ultima scanare: <b>${when}</b></span>`+
     `<span class="pill">👨‍👩‍👧‍👦 <b>2 adulți + 2 copii</b> (3 și 5 ani)</span>`+
-    `<span class="pill">Plecare <b>26 dec – 18 ian</b>, <b>7 nopți de cazare</b></span>`+
+    `<span class="pill">Plecare <b>până pe 10 ian. 2028</b>, retur <b>până pe 18 ian. 2028</b>, <b>7 nopți de cazare</b></span>`+
+    `<span class="pill">Prețuri găsite pentru plecări <b>${fmtDate(first)} – ${fmtDate(last)}</b></span>`+
     `<span class="pill">Dus și retur <b>≤ 20 h, max 1 escală</b></span>`+
     `<span class="pill"><b>${s.with_price}</b> oferte găsite</span>`;
 }
@@ -287,7 +296,7 @@ function heatClass(p, min, max){
 
 function renderHeat(rows){
   const t=document.getElementById('heat');
-  const dates=[...new Set(DATA.results.map(r=>r.depart))].sort();
+  const dates=[...new Set(DATA.results.map(r=>r.depart))].filter(d=>state.month==='*'||d.startsWith(state.month)).sort();
   const countries=state.country==='Toate'?COUNTRIES:[state.country];
   document.getElementById('heat-title').textContent = 'Calendar prețuri — ' + (state.country==='Toate'?'toate destinațiile':state.country) + ' (cel mai mic preț pe zi de plecare)';
   const cell={};
@@ -346,6 +355,7 @@ function renderVerify(){
 function render(){
   chips(document.getElementById('f-country'), [['Toate','Toate'],...COUNTRIES.map(c=>[c,FLAG[c]+' '+c])], v=>state.country===v, v=>state.country=v);
   chips(document.getElementById('f-origin'), Object.entries(DATA.origins), v=>state.origins.has(v), v=>{state.origins.has(v)&&state.origins.size>1?state.origins.delete(v):state.origins.add(v)});
+  chips(document.getElementById('f-month'), monthChips(DATA.results.map(r=>r.depart)), v=>state.month===v, v=>state.month=v);
   chips(document.getElementById('f-stops'), [[0,'Direct'],[1,'Max 1']], v=>state.stops===v, v=>state.stops=v);
   ROWS.forEach(r=>r.best=bestOption(r));
   const rows=filtered();
