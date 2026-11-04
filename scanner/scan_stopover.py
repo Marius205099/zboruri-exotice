@@ -19,11 +19,10 @@ import json
 import sys
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 
 import gf
-from scan import (DATA_DIR, DESTINATIONS, FIRST_DEPARTURE, LAST_DEPARTURE, MAX_DURATION_MIN, MAX_STOPS, ORIGINS,
-                  STAY_NIGHTS, TRIP_DAYS)
+from scan import DATA_DIR, DESTINATIONS, FIRST_DEPARTURE, LAST_DEPARTURE, MAX_STOPS, ORIGINS, STAY_NIGHTS, TRIP_DAYS
 
 HUBS = {
     "MIL": "Milano",
@@ -43,12 +42,13 @@ HUBS = {
 
 # nopți în hub la plecare (zborul spre hub e scurt, ajungi în aceeași zi)
 STOP_OUT_DAYS = (1, 2)
-# zile între plecarea din destinația exotică și zborul spre casă;
-# zborurile lungi de noapte aterizează adesea a doua zi, deci 2–3 zile = 1–2 nopți în hub
-STOP_RET_DAYS = (2, 3)
+# nopți în hub la întoarcere, numărate de la aterizarea zborului de retur
+STOP_RET_NIGHTS = (1, 2)
+# zile cu care returul poate ateriza după data plecării (zboruri fără limită de durată)
+MAX_RETURN_DAYS = 2
 
 MAX_POSITIONING_MIN = 12 * 60
-MAX_LONGHAUL_MIN = MAX_DURATION_MIN
+LONGHAUL_TRIES = 3  # câte zboruri dus încercăm până găsim un retur cu cel mult o escală
 
 BAG_FEE_PER_LEG = 100  # estimare: 2 bagaje de cală de 20 kg pe un zbor low-cost
 
@@ -61,17 +61,18 @@ def is_low_cost(airlines):
     return bool(names) and all(any(lc.lower() in n.lower() for lc in gf.LOW_COST) for n in names)
 
 
-def leg(r, flights=1, **extra):
+def leg(r, **extra):
     o = r["options"][0]
-    low = is_low_cost(o["airlines"])
-    return {**extra, **o, "link": r["link"], "low_cost": low, "bag_fee": BAG_FEE_PER_LEG * flights if low else 0}
+    names = [o["airlines"]] + ([o["return_flight"]["airlines"]] if "return_flight" in o else [])
+    fee = BAG_FEE_PER_LEG * sum(is_low_cost(n) for n in names)
+    return {**extra, "link": r["link"], **o, "low_cost": fee > 0, "bag_fee": fee}
 
 
 def tasks():
     lh_first = FIRST_DEPARTURE + timedelta(days=min(STOP_OUT_DAYS))
     lh_last = LAST_DEPARTURE + timedelta(days=max(STOP_OUT_DAYS))
     lh_dates = [lh_first + timedelta(days=i) for i in range((lh_last - lh_first).days + 1)]
-    ret_dates = sorted({d + timedelta(days=n + s) for d in lh_dates for n in TRIP_DAYS for s in STOP_RET_DAYS})
+    ret_dates = sorted({d + timedelta(days=n + s) for d in lh_dates for n in TRIP_DAYS for s in range(min(STOP_RET_NIGHTS), MAX_RETURN_DAYS + max(STOP_RET_NIGHTS) + 1)})
     home_dates = [FIRST_DEPARTURE + timedelta(days=i) for i in range((LAST_DEPARTURE - FIRST_DEPARTURE).days + 1)]
 
     for h in HUBS:
@@ -89,7 +90,7 @@ def tasks():
 def run(task):
     kind, a, b, d, n = task
     if kind == "lh":
-        r = gf.query([(a, b, d), (b, a, d + timedelta(days=n))], "round-trip", MAX_LONGHAUL_MIN, keep=1, stay_nights=STAY_NIGHTS, max_stops=MAX_STOPS)
+        r = gf.query([(a, b, d), (b, a, d + timedelta(days=n))], "round-trip", keep=1, stay_nights=STAY_NIGHTS, max_stops=MAX_STOPS, tries=LONGHAUL_TRIES)
     else:
         r = gf.query([(a, b, d)], "one-way", MAX_POSITIONING_MIN, keep=1, max_stops=MAX_STOPS)
     return task, r
@@ -124,21 +125,21 @@ def main():
             elif kind == "ret":
                 ret[(a, b, d)] = leg(r, origin=a, to=b, date=d.isoformat())
             else:
-                lh[(a, b, d, n)] = leg(r, flights=2, origin=a, to=b, date=d.isoformat(),
+                lh[(a, b, d, n)] = leg(r, origin=a, to=b, date=d.isoformat(),
                                        return_date=(d + timedelta(days=n)).isoformat(),
                                        nights=STAY_NIGHTS, price_level=r.get("price_level"))
 
     # Combinăm: casă → hub (+1–2 nopți) → destinație (7 nopți de la aterizare) → hub (+1–2 nopți) → casă
     groups = defaultdict(list)
     for (h, dest, lh_dep, n), long_leg in lh.items():
-        lh_ret = lh_dep + timedelta(days=n)
+        lands = date.fromisoformat(long_leg["return_flight"]["arrival_date"])
         for o in ORIGINS:
             for s_out in STOP_OUT_DAYS:
                 first = out.get((o, h, lh_dep - timedelta(days=s_out)))
-                if not first:
+                if not first or date.fromisoformat(first["arrival_date"]) > lh_dep:
                     continue
-                for s_ret in STOP_RET_DAYS:
-                    last = ret.get((h, o, lh_ret + timedelta(days=s_ret)))
+                for s_ret in STOP_RET_NIGHTS:
+                    last = ret.get((h, o, lands + timedelta(days=s_ret)))
                     if not last:
                         continue
                     legs = [first, long_leg, last]
@@ -188,6 +189,7 @@ def main():
         "bag_fee_per_leg": BAG_FEE_PER_LEG,
         "stay_nights": STAY_NIGHTS,
         "max_stops": MAX_STOPS,
+        "return_checked": True,
         "stats": {
             "searches": len(all_tasks),
             "errors": errors,

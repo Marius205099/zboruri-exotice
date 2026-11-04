@@ -145,12 +145,12 @@ svg text{fill:var(--muted);font-size:11px}
 
 <h2>De știut</h2>
 <div class="note"><ul>
-  <li>Limitele se aplică fiecărui bilet: zborul lung are maxim <b>20 de ore și o escală</b> la dus, iar zborurile spre și dinspre orașul de oprire maxim 12 ore și o escală.</li>
+  <li>Limitele se aplică fiecărui bilet: zborul lung are cel mult <b>o escală</b> la dus și la retur și <b>poate depăși 20 de ore</b>, iar zborurile spre și dinspre orașul de oprire au maxim 12 ore și o escală. Verifică durata afișată la fiecare zbor.</li>
   <li>Prețurile sunt <b>totale pentru 4 persoane</b> (2 adulți + 2 copii), în EUR: zbor spre oraș + zbor lung dus-întors + zbor spre casă.</li>
   <li>La zborurile low-cost (Wizz Air, Ryanair, Pegasus etc.) prețul nu include bagaj de cală. Am adăugat o <b>estimare de <span id="s-bagfee">100</span> € pe zbor</b> pentru 2 bagaje de 20 kg — poți vedea prețul și fără.</li>
   <li><b>Nu sunt incluse</b> cazarea în orașul de oprire și transferurile între aeroporturi (ex. la Londra sau Milano zborul low-cost poate ateriza pe alt aeroport decât cel al zborului lung — verifică pe link).</li>
   <li>Londra: din 2025 cetățenii UE au nevoie de autorizația electronică <b>UK ETA</b>, inclusiv copiii. Dubai, Doha, Abu Dhabi, Istanbul: fără viză pentru cetățeni români.</li>
-  <li>Fiecare zbor are link separat spre Google Flights; rezervă-le separat, începând cu zborul lung.</li>
+  <li>Fiecare bilet are link separat spre Google Flights; rezervă-le separat, începând cu zborul lung.</li>
 </ul></div>
 </section>
 
@@ -182,7 +182,7 @@ svg text{fill:var(--muted);font-size:11px}
   <li>Un robot caută pe Google Flights de două ori pe zi toate combinațiile: 4 aeroporturi × 4 destinații × 24 de zile de plecare (26 dec – 18 ian). Scanarea începe în jur de 07:30 și 19:30, ora României, și durează câteva ore.</li>
   <li><b>7 nopți de cazare, numărate de la aterizare.</b> Exemplu: plecare 10 ian, aterizare 11 ian în Phuket, retur 18 ian. Dacă aterizezi în aceeași zi sau cu două zile mai târziu, returul se mută corespunzător.</li>
   <li>Prețurile sunt <b>totale pentru 4 persoane</b> (2 adulți + 2 copii de 3 și 5 ani), dus-întors, clasa economic, în EUR.</li>
-  <li>Se păstrează doar zborurile dus de <b>maxim 20 de ore, cu cel mult o escală</b>. Google Flights arată în scanare doar zborul dus, deci durata și escalele la întoarcere se verifică apăsând pe ofertă.</li>
+  <li>Se păstrează doar biletele cu <b>dus și retur de maxim 20 de ore fiecare, cu cel mult o escală</b>. Prețul afișat este cel al biletului cu turul și returul arătate, iar linkul le deschide pe amândouă în Google Flights.</li>
   <li>Prețurile se schimbă des — confirmă întotdeauna pe Google Flights / la compania aeriană înainte de rezervare.</li>
   <li>Thailanda = Phuket (HKT), cu returul tot din Phuket. Maldive = Malé (MLE). Bali = Denpasar (DPS). Mauritius = MRU.</li>
 </ul></div>
@@ -210,7 +210,7 @@ const COUNTRIES = ['Maldive','Bali','Thailanda','Mauritius'];
 const FLAG = {Maldive:'🇲🇻', Bali:'🇮🇩', Thailanda:'🇹🇭', Mauritius:'🇲🇺'};
 
 const state = {country:'Toate', origins:new Set(), stops:1};
-const UPDATING='<p class="empty">Se scanează prețurile pentru noile date (maxim 20 de ore și o escală). Rezultatele apar aici în cel mult câteva ore.</p>';
+const UPDATING='<p class="empty">Se scanează prețurile cu turul și returul verificate. Rezultatele apar aici în cel mult câteva ore.</p>';
 let DATA, ROWS = [];
 
 function el(tag, attrs={}, html=''){const e=document.createElement(tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));e.innerHTML=html;return e}
@@ -232,7 +232,19 @@ function filtered(allCountries=false){
 
 function bestOption(r){
   // cea mai ieftină opțiune care respectă filtrul de escale
-  return r.options.find(o => o.bag_transfer==='auto' && o.stops<=state.stops);
+  return r.options.find(o => o.bag_transfer==='auto' && o.stops<=state.stops && o.return_flight.stops<=state.stops);
+}
+
+// „Qatar Airways · QR 232 + QR 842 · 11:55 → 06:50 · 12h 55m · 1 escală (DOH)”
+function clock(s){
+  const m=/(\d+):(\d+)\s*(AM|PM)/.exec(s||''); if(!m) return s||'';
+  return String(m[1]%12+(m[3]==='PM'?12:0)).padStart(2,'0')+':'+m[2];
+}
+function flightTxt(f){
+  const via=f.via&&f.via.length?` (${f.via.join(', ')})`:'';
+  const day=s=>(s||'').split(' on ')[1];
+  const lands=day(f.departure)!==day(f.arrival)?` (${fmtDate(f.arrival_date)})`:'';
+  return `${f.airlines||'—'} · ${(f.flights||[]).join(' + ')} · ${clock(f.departure)} → ${clock(f.arrival)}${lands} · <b>${fmtDur(f.duration_min)}</b> · ${stopsTxt(f.stops)}${via}`;
 }
 
 function renderMeta(){
@@ -243,7 +255,7 @@ function renderMeta(){
     `<span class="pill">Ultima scanare: <b>${when}</b></span>`+
     `<span class="pill">👨‍👩‍👧‍👦 <b>2 adulți + 2 copii</b> (3 și 5 ani)</span>`+
     `<span class="pill">Plecare <b>26 dec – 18 ian</b>, <b>7 nopți de cazare</b></span>`+
-    `<span class="pill">Zbor dus <b>≤ 20 h, max 1 escală</b></span>`+
+    `<span class="pill">Dus și retur <b>≤ 20 h, max 1 escală</b></span>`+
     `<span class="pill"><b>${s.with_price}</b> oferte găsite</span>`;
 }
 
@@ -258,11 +270,11 @@ function renderCards(rows){
       <div class="price">${fmtEUR(o.price)}</div>
       <div class="pp">total 4 persoane · ≈ ${fmtEUR(Math.round(o.price/4))} / pers.</div>
       <div class="det"><b>${DATA.origins[best.origin]}</b> → ${DATA.destinations[best.dest].city} (${best.dest})</div>
-      <div class="det">Plecare <b>${fmtDate(best.depart)}</b> · aterizare <b>${fmtDate(o.arrival_date)}</b></div>
-      <div class="det">Retur <b>${fmtDate(best.return)}</b> · ${best.nights} nopți de cazare</div>
-      <div class="det">${o.airlines||'—'} · ${fmtDur(o.duration_min)} · ${stopsTxt(o.stops)}</div>
+      <div class="det">🛫 <b>Tur ${fmtDate(best.depart)}</b>, aterizare ${fmtDate(o.arrival_date)}<br>${flightTxt(o)}</div>
+      <div class="det">🛬 <b>Retur ${fmtDate(best.return)}</b>, aterizare ${fmtDate(o.return_flight.arrival_date)}<br>${flightTxt(o.return_flight)}</div>
+      <div class="det">${best.nights} nopți de cazare</div>
       <div><span class="bag auto">🧳 Bagaje transferate automat</span></div>
-      <a class="btn" href="${best.link}" target="_blank" rel="noopener">Vezi pe Google Flights ↗</a>`;
+      <a class="btn" href="${o.link}" target="_blank" rel="noopener">Vezi pe Google Flights ↗</a>`;
     box.appendChild(card);
   });
 }
@@ -287,7 +299,7 @@ function renderHeat(rows){
     h+=`<tr><td>${fmtDate(d)}</td>`;
     countries.forEach(c=>{
       const r=cell[d+'|'+c];
-      h+= r ? `<td class="cell ${heatClass(r.best.price,min,max)}"><a href="${r.link}" target="_blank" rel="noopener" title="${DATA.origins[r.origin]} → ${r.dest}, ${r.best.airlines}">${fmtEUR(r.best.price)}<small>${r.origin}→${r.dest} · retur ${fmtDate(r.return)}</small></a></td>`
+      h+= r ? `<td class="cell ${heatClass(r.best.price,min,max)}"><a href="${r.best.link}" target="_blank" rel="noopener" title="${DATA.origins[r.origin]} → ${r.dest}, ${r.best.airlines}; dus ${fmtDur(r.best.duration_min)}, retur ${fmtDur(r.best.return_flight.duration_min)}">${fmtEUR(r.best.price)}<small>${r.origin}→${r.dest} · retur ${fmtDate(r.return)}</small></a></td>`
              : `<td class="cell"><a style="color:var(--muted);font-weight:400">—</a></td>`;
     });
     h+='</tr>';
@@ -301,8 +313,8 @@ function renderList(rows){
   const sorted=[...rows].sort((a,b)=>a.best.price-b.best.price).slice(0,150);
   document.getElementById('count').textContent = rows.length + ' combinații';
   if(!sorted.length){t.innerHTML='<tbody><tr><td class="empty">Nicio ofertă pentru filtrele alese.</td></tr></tbody>';return}
-  t.innerHTML='<thead><tr><th>Preț (4 pers.)</th><th>Destinație</th><th>Din</th><th>Plecare</th><th>Aterizare</th><th>Retur</th><th>Durată dus</th><th>Escale</th><th>Companii</th><th></th></tr></thead><tbody>'+
-    sorted.map(r=>`<tr><td><b>${fmtEUR(r.best.price)}</b></td><td>${FLAG[r.country]} ${r.country} <span class="tag">${r.dest}</span></td><td>${DATA.origins[r.origin]}</td><td>${fmtDate(r.depart)}</td><td>${fmtDate(r.best.arrival_date)}</td><td>${fmtDate(r.return)}</td><td>${fmtDur(r.best.duration_min)}</td><td>${stopsTxt(r.best.stops)}</td><td>${r.best.airlines||'—'}</td><td><a href="${r.link}" target="_blank" rel="noopener">Google Flights ↗</a></td></tr>`).join('')+'</tbody>';
+  t.innerHTML='<thead><tr><th>Preț (4 pers.)</th><th>Destinație</th><th>Din</th><th>Plecare</th><th>Aterizare</th><th>Zbor dus</th><th>Retur</th><th>Zbor retur</th><th></th></tr></thead><tbody>'+
+    sorted.map(r=>`<tr><td><b>${fmtEUR(r.best.price)}</b></td><td>${FLAG[r.country]} ${r.country} <span class="tag">${r.dest}</span></td><td>${DATA.origins[r.origin]}</td><td>${fmtDate(r.depart)}</td><td>${fmtDate(r.best.arrival_date)}</td><td>${flightTxt(r.best)}</td><td>${fmtDate(r.return)}</td><td>${flightTxt(r.best.return_flight)}</td><td><a href="${r.best.link}" target="_blank" rel="noopener">Google Flights ↗</a></td></tr>`).join('')+'</tbody>';
 }
 
 function renderHist(hist){
@@ -327,8 +339,8 @@ function renderVerify(){
   const rows=DATA.results.flatMap(r=>r.options.filter(o=>o.bag_transfer==='verify').slice(0,1).map(o=>({...r,o}))).sort((a,b)=>a.o.price-b.o.price);
   document.getElementById('verify-box').hidden=!rows.length;
   document.getElementById('verify-count').textContent=rows.length+' oferte';
-  document.getElementById('verify').innerHTML='<thead><tr><th>Preț (4 pers.)</th><th>Rută</th><th>Plecare</th><th>Retur</th><th>Companii</th><th></th></tr></thead><tbody>'+
-    rows.slice(0,50).map(r=>`<tr><td><b>${fmtEUR(r.o.price)}</b></td><td>${r.origin} → ${r.dest}</td><td>${fmtDate(r.depart)}</td><td>${fmtDate(r.return)}</td><td>${r.o.airlines} <span class="bag manual">verifică</span></td><td><a href="${r.link}" target="_blank" rel="noopener">Google Flights ↗</a></td></tr>`).join('')+'</tbody>';
+  document.getElementById('verify').innerHTML='<thead><tr><th>Preț (4 pers.)</th><th>Rută</th><th>Plecare</th><th>Zbor dus</th><th>Retur</th><th>Zbor retur</th><th></th></tr></thead><tbody>'+
+    rows.slice(0,50).map(r=>`<tr><td><b>${fmtEUR(r.o.price)}</b></td><td>${r.origin} → ${r.dest}</td><td>${fmtDate(r.depart)}</td><td>${flightTxt(r.o)} <span class="bag manual">verifică</span></td><td>${fmtDate(r.return)}</td><td>${flightTxt(r.o.return_flight)}</td><td><a href="${r.o.link}" target="_blank" rel="noopener">Google Flights ↗</a></td></tr>`).join('')+'</tbody>';
 }
 
 function render(){
@@ -346,7 +358,7 @@ Promise.all([
   fetch('data/history.json',{cache:'no-store'}).then(r=>r.ok?r.json():[]).catch(()=>[])
 ]).then(([data,hist])=>{
   // Datele scanate după regulile vechi nu se mai afișează.
-  if(!data.max_stops){document.getElementById('cards').innerHTML=UPDATING;return}
+  if(!data.return_checked){document.getElementById('cards').innerHTML=UPDATING;return}
   DATA=data;
   ROWS=data.results.filter(r=>r.options && r.options.length);
   state.origins=new Set(Object.keys(data.origins));

@@ -5,7 +5,7 @@ Caută pe Google Flights (prin biblioteca fast-flights) toate combinațiile:
   către Maldive, Bali, Thailanda (Phuket), Mauritius
   plecare 26 dec 2026 – 18 ian 2027, 7 nopți de cazare la destinație
   2 adulți + 2 copii (3 și 5 ani)
-și păstrează doar zborurile dus de maxim 20 de ore, cu cel mult o escală.
+și păstrează doar biletele cu zbor dus și retur de maxim 20 de ore, cu cel mult o escală.
 
 Cele 7 nopți se numără de la aterizare: plecare 10 ian, aterizare 11 ian, retur 18 ian.
 De aceea căutăm returul la 7, 8 și 9 zile de la plecare și păstrăm doar zborurile
@@ -54,7 +54,7 @@ DATA_DIR = ROOT / "docs" / "data"
 
 def search(origin, dest, dep, trip_days):
     ret = dep + timedelta(days=trip_days)
-    r = gf.query([(origin, dest, dep), (dest, origin, ret)], "round-trip", MAX_DURATION_MIN, stay_nights=STAY_NIGHTS, max_stops=MAX_STOPS)
+    r = gf.query([(origin, dest, dep), (dest, origin, ret)], "round-trip", MAX_DURATION_MIN, stay_nights=STAY_NIGHTS, max_stops=MAX_STOPS, return_max_duration_min=MAX_DURATION_MIN)
     return {
         "origin": origin,
         "dest": dest,
@@ -118,6 +118,7 @@ def main():
         "max_duration_h": MAX_DURATION_MIN // 60,
         "stay_nights": STAY_NIGHTS,
         "max_stops": MAX_STOPS,
+        "return_checked": True,
         "origins": ORIGINS,
         "destinations": DESTINATIONS,
         "stats": {"total": len(results), "with_price": len(ok), "errors": errors},
@@ -127,12 +128,14 @@ def main():
 
     hist_path = DATA_DIR / "history.json"
     history = json.loads(hist_path.read_text()) if hist_path.exists() else []
-    entry = {"t": payload["scanned_at"], "best": {}}
+    # Prețurile fără retur verificat nu se pot compara cu cele noi.
+    history = [h for h in history if h.get("return_checked")]
+    entry = {"t": payload["scanned_at"], "return_checked": True, "best": {}}
     for r in ok:
         c = r["country"]
-        p = r["options"][0]["price"]
-        if c not in entry["best"] or p < entry["best"][c]:
-            entry["best"][c] = p
+        for o in r["options"]:
+            if o["bag_transfer"] == "auto" and (c not in entry["best"] or o["price"] < entry["best"][c]):
+                entry["best"][c] = o["price"]
     history.append(entry)
     hist_path.write_text(json.dumps(history[-120:], ensure_ascii=False))
 

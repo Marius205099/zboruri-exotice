@@ -86,7 +86,7 @@
     const extra = l.low_cost ? `<small>low-cost: fără bagaj de cală${S.bags ? ` (+~${fmtEUR(l.bag_fee)} estimat)` : ''}</small>` : '';
     return `<div class="lg">
       <div class="d">${fmtDate(l.date)}${l.return_date ? ' → ' + fmtDate(l.return_date) : ''}</div>
-      <div class="what"><b>${label}</b> · ${l.airlines || '—'}<small>${fmtDur(l.duration_min)} · ${stopsTxt(l.stops)}${l.bag_transfer === 'verify' ? ' · <span class="bag manual">escală cu transfer nesigur</span>' : ''}${l.departure ? ' · pleacă ' + l.departure.split(' on ')[0] : ''}</small>${extra}</div>
+      <div class="what"><b>${label}</b><small>${l.return_flight ? '🛫 Tur: ' : ''}${flightTxt(l)}</small>${l.return_flight ? `<small>🛬 Retur: ${flightTxt(l.return_flight)}</small>` : ''}${l.bag_transfer === 'verify' ? '<small><span class="bag manual">escală cu transfer nesigur</span></small>' : ''}${extra}</div>
       <div class="p">${fmtEUR(l.price)}<a href="${l.link}" target="_blank" rel="noopener">Google Flights ↗</a></div>
     </div>`;
   }
@@ -111,7 +111,7 @@
           <div class="stay">🏙️ <b>${nightsTxt(c.stop_out)}</b> în ${hubName(c.hub)} · 🖐️ ridici bagajele și le predai din nou</div>
           ${legHtml(b, `${hubName(c.hub)} ⇄ ${c.dest} dus-întors`)}
           <div class="stay">🏝️ aterizare <b>${fmtDate(b.arrival_date)}</b>, retur <b>${fmtDate(b.return_date)}</b>: <b>${c.nights} nopți de cazare</b></div>
-          <div class="stay">🏙️ înapoi în ${hubName(c.hub)}, zbor spre casă după <b>${c.stop_ret} zile</b> de la plecarea din ${c.dest} · 🖐️ ridici bagajele și le predai din nou</div>
+          <div class="stay">🏙️ aterizare în ${hubName(c.hub)} <b>${fmtDate(b.return_flight.arrival_date)}</b>, <b>${nightsTxt(c.stop_ret)}</b> acolo · 🖐️ ridici bagajele și le predai din nou</div>
           ${legHtml(r, `${hubName(c.hub)} → ${r.to}`)}
         </div>
       </article>`;
@@ -154,12 +154,12 @@
     fetch('data/results.json', {cache: 'no-store'}).then(r => r.json()).catch(() => null),
   ]).then(([sd, direct]) => {
     // Datele scanate după regulile vechi nu se mai afișează.
-    if (!sd.max_stops) { $('s-cards').innerHTML = UPDATING; return; }
+    if (!sd.return_checked) { $('s-cards').innerHTML = UPDATING; return; }
     SD = sd;
     $('s-bagfee').textContent = sd.bag_fee_per_leg;
     if (direct) {
       ORIGINS_MAP = direct.origins;
-      if (direct.max_stops) direct.results.forEach(r => { const o = r.options.find(x => x.bag_transfer === 'auto'); if (o && (!DIRECT_BEST[r.country] || o.price < DIRECT_BEST[r.country])) { DIRECT_BEST[r.country] = o.price; DIRECT_FROM[r.country] = r.origin; } });
+      if (direct.return_checked) direct.results.forEach(r => { const o = r.options.find(x => x.bag_transfer === 'auto'); if (o && (!DIRECT_BEST[r.country] || o.price < DIRECT_BEST[r.country])) { DIRECT_BEST[r.country] = o.price; DIRECT_FROM[r.country] = r.origin; } });
     }
     S.origins = new Set(Object.keys(ORIGINS_MAP));
     S.hubs = new Set(Object.keys(sd.hubs).filter(h => sd.combos.some(c => c.hub === h)));
