@@ -11,6 +11,8 @@ Cele 7 nopți se numără de la aterizare: plecare 10 ian, aterizare 11 ian, ret
 De aceea căutăm returul la 7, 8 și 9 zile de la plecare și păstrăm doar zborurile
 care aterizează exact cu 7 nopți înainte de retur.
 
+Pentru căutările fără rezultat prin cererea directă, pagina se citește într-un browser real (browser.py).
+
 Google arată zboruri cu cel mult 330 de zile înainte, deci datele mai îndepărtate
 intră automat în scanare pe măsură ce se apropie.
 
@@ -21,7 +23,6 @@ Perioada e lungă, așa că scanarea se împarte pe joburi paralele:
 
 import json
 import sys
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
@@ -51,7 +52,6 @@ MAX_DURATION_MIN = 20 * 60
 MAX_STOPS = 1
 CURRENCY = gf.CURRENCY
 
-WORKERS = 3
 KEEP_OPTIONS = 3
 TIME_BUDGET_SEC = 5 * 3600  # jobul e oprit de GitHub la 5,5 ore; salvăm ce avem înainte de asta
 
@@ -91,26 +91,29 @@ def all_combos():
 
 
 def run_shard(shard, total):
+    from browser import BrowserFetch  # doar aici: scan_stopover.py importă acest fișier fără browser
+
     combos = list(all_combos())[shard::total]
     started = datetime.now(timezone.utc)
     print(f"Partea {shard}/{total}: {len(combos)} combinații…", flush=True)
 
+    # Cererea directă e doar primul pas, așa că nu mai așteptăm să o repetăm când pagina e goală.
+    gf.NONE_RETRIES = 0
+    fetch = gf.fetch = BrowserFetch()
     results = []
     breaker = gf.Breaker()
-    with ThreadPoolExecutor(max_workers=WORKERS) as pool:
-        futures = [pool.submit(search, *c) for c in combos]
-        try:
-            for i, fut in enumerate(as_completed(futures), 1):
-                r = fut.result()
-                results.append(r)
-                best = r["options"][0]["price"] if r["options"] else "-"
-                print(f"[{i}/{len(combos)}] {r['origin']}->{r['dest']} {r['depart']}–{r['return']}: {r['status']} {best} {r.get('error', '')}", flush=True)
-                breaker.record(r)
-                if (datetime.now(timezone.utc) - started).total_seconds() > TIME_BUDGET_SEC:
-                    raise gf.Blocked("timpul alocat s-a terminat")
-        except gf.Blocked as e:
-            pool.shutdown(wait=False, cancel_futures=True)
-            print(f"::warning::Partea {shard} oprită, salvez ce am găsit: {e}", flush=True)
+    try:
+        for i, c in enumerate(combos, 1):
+            r = search(*c)
+            results.append(r)
+            best = r["options"][0]["price"] if r["options"] else "-"
+            print(f"[{i}/{len(combos)}] {r['origin']}->{r['dest']} {r['depart']}–{r['return']}: {r['status']} {best} {r.get('error', '')}", flush=True)
+            breaker.record(r)
+            if (datetime.now(timezone.utc) - started).total_seconds() > TIME_BUDGET_SEC:
+                raise gf.Blocked("timpul alocat s-a terminat")
+    except gf.Blocked as e:
+        print(f"::warning::Partea {shard} oprită, salvez ce am găsit: {e}", flush=True)
+    fetch.close()
 
     errors = sum(1 for r in results if r["status"] == "error")
     PARTS_DIR.mkdir(exist_ok=True)
@@ -120,9 +123,11 @@ def run_shard(shard, total):
         "planned": len(combos),
         "done": len(results),
         "errors": errors,
+        "browser_pages": fetch.pages,
+        "browser_refused": fetch.refused,
         "results": [{k: v for k, v in r.items() if k not in ("link", "status", "error")} for r in results if r["options"]],
     }, ensure_ascii=False))
-    print(f"Gata: {len(results)} din {len(combos)}, {errors} erori")
+    print(f"Gata: {len(results)} din {len(combos)}, {errors} erori, {fetch.pages} pagini în browser, {fetch.refused} refuzate")
     return 0
 
 
@@ -154,7 +159,14 @@ def merge():
         "bookable_until": last_bookable().isoformat(),
         "origins": ORIGINS,
         "destinations": DESTINATIONS,
-        "stats": {"total": planned, "searched": done, "with_price": len(results), "errors": errors},
+        "stats": {
+            "total": planned,
+            "searched": done,
+            "with_price": len(results),
+            "errors": errors,
+            "browser_pages": sum(p["browser_pages"] for p in parts),
+            "browser_refused": sum(p["browser_refused"] for p in parts),
+        },
         "results": results,
     }
     DATA_DIR.mkdir(parents=True, exist_ok=True)

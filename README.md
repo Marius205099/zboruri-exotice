@@ -10,6 +10,8 @@ Site care arată cele mai ieftine zboruri dus-întors pentru o familie (2 adulț
 - **Transfer manual (bilete separate):** cel mult o escală pe fiecare zbor, zborul lung poate depăși 20 de ore
 - **Tur și retur:** ambele sunt verificate și afișate pentru fiecare ofertă, iar prețul este al biletului cu acel retur
 
+Biletele întregi se citesc și printr-un browser real ([scanner/browser.py](scanner/browser.py)), când cererea directă nu găsește zboruri.
+
 Un GitHub Action ([scan.yml](.github/workflows/scan.yml)) rulează [scanner/scan.py](scanner/scan.py) de două ori pe zi
 (pornește ≈07:30 și 19:30 ora României), împarte căutările pe 20 de joburi paralele și salvează rezultatele în
 `docs/data/`. Site-ul din `docs/` este publicat cu GitHub Pages.
@@ -28,6 +30,7 @@ Rulare locală:
 
 ```bash
 pip install -r scanner/requirements.txt
+playwright install chromium
 python scanner/scan.py 0 1        # toate combinațiile (partea 0 din 1)
 python scanner/scan.py merge      # scrie rezultatele în docs/data
 ```
