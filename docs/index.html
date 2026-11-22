@@ -35,6 +35,7 @@ h2{font-size:19px;margin:36px 0 12px}
 .card .country{font-weight:650;font-size:16px;display:flex;justify-content:space-between;align-items:center}
 .card .price{font-size:28px;font-weight:700;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
 .card .pp{color:var(--muted);font-size:13px}
+.seen{display:inline-block;margin-left:4px;font-size:11px;font-weight:400;color:var(--muted);border:1px dashed var(--border);border-radius:6px;padding:0 5px}
 .card .det{font-size:13px;color:var(--muted)}
 .card .det b{color:var(--text);font-weight:600}
 .card a.btn{margin-top:auto}
@@ -253,6 +254,13 @@ function flightTxt(f){
   return `${f.airlines||'—'} · ${(f.flights||[]).join(' + ')} · ${clock(f.departure)} → ${clock(f.arrival)}${lands} · <b>${fmtDur(f.duration_min)}</b> · ${stopsTxt(f.stops)}${via}`;
 }
 
+// Oferta nu a mai apărut la ultima scanare (Google nu răspunde la fel de fiecare dată): arătăm când a fost văzută.
+function seen(r){
+  if(!r.checked_at || r.checked_at===DATA.scanned_at) return '';
+  const t=new Date(r.checked_at).toLocaleString('ro-RO',{timeZone:'Europe/Bucharest',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
+  return `<span class="seen" title="Nu a apărut la ultima scanare; verifică prețul pe Google Flights">văzut ${t}</span>`;
+}
+
 function renderMeta(){
   const t = new Date(DATA.scanned_at);
   const when = t.toLocaleString('ro-RO',{timeZone:'Europe/Bucharest',day:'numeric',month:'long',hour:'2-digit',minute:'2-digit'});
@@ -277,7 +285,7 @@ function renderCards(rows){
     const o=best.best;
     card.innerHTML=`<div class="country"><span>${FLAG[c]} ${c}</span>${best.price_level?`<span class="tag ${best.price_level}">${LEVEL[best.price_level]||best.price_level}</span>`:''}</div>
       <div class="price">${fmtEUR(o.price)}</div>
-      <div class="pp">total 4 persoane · ≈ ${fmtEUR(Math.round(o.price/4))} / pers.</div>
+      <div class="pp">total 4 persoane · ≈ ${fmtEUR(Math.round(o.price/4))} / pers. ${seen(best)}</div>
       <div class="det"><b>${DATA.origins[best.origin]}</b> → ${DATA.destinations[best.dest].city} (${best.dest})</div>
       <div class="det">🛫 <b>Tur ${fmtDate(best.depart)}</b>, aterizare ${fmtDate(o.arrival_date)}<br>${flightTxt(o)}</div>
       <div class="det">🛬 <b>Retur ${fmtDate(best.return)}</b>, aterizare ${fmtDate(o.return_flight.arrival_date)}<br>${flightTxt(o.return_flight)}</div>
@@ -308,7 +316,7 @@ function renderHeat(rows){
     h+=`<tr><td>${fmtDate(d)}</td>`;
     countries.forEach(c=>{
       const r=cell[d+'|'+c];
-      h+= r ? `<td class="cell ${heatClass(r.best.price,min,max)}"><a href="${r.best.link}" target="_blank" rel="noopener" title="${DATA.origins[r.origin]} → ${r.dest}, ${r.best.airlines}; dus ${fmtDur(r.best.duration_min)}, retur ${fmtDur(r.best.return_flight.duration_min)}">${fmtEUR(r.best.price)}<small>${r.origin}→${r.dest} · retur ${fmtDate(r.return)}</small></a></td>`
+      h+= r ? `<td class="cell ${heatClass(r.best.price,min,max)}"><a href="${r.best.link}" target="_blank" rel="noopener" title="${DATA.origins[r.origin]} → ${r.dest}, ${r.best.airlines}; dus ${fmtDur(r.best.duration_min)}, retur ${fmtDur(r.best.return_flight.duration_min)}">${fmtEUR(r.best.price)}<small>${r.origin}→${r.dest} · retur ${fmtDate(r.return)}</small>${seen(r)}</a></td>`
              : `<td class="cell"><a style="color:var(--muted);font-weight:400">—</a></td>`;
     });
     h+='</tr>';
@@ -323,7 +331,7 @@ function renderList(rows){
   document.getElementById('count').textContent = rows.length + ' combinații';
   if(!sorted.length){t.innerHTML='<tbody><tr><td class="empty">Nicio ofertă pentru filtrele alese.</td></tr></tbody>';return}
   t.innerHTML='<thead><tr><th>Preț (4 pers.)</th><th>Destinație</th><th>Din</th><th>Plecare</th><th>Aterizare</th><th>Zbor dus</th><th>Retur</th><th>Zbor retur</th><th></th></tr></thead><tbody>'+
-    sorted.map(r=>`<tr><td><b>${fmtEUR(r.best.price)}</b></td><td>${FLAG[r.country]} ${r.country} <span class="tag">${r.dest}</span></td><td>${DATA.origins[r.origin]}</td><td>${fmtDate(r.depart)}</td><td>${fmtDate(r.best.arrival_date)}</td><td>${flightTxt(r.best)}</td><td>${fmtDate(r.return)}</td><td>${flightTxt(r.best.return_flight)}</td><td><a href="${r.best.link}" target="_blank" rel="noopener">Google Flights ↗</a></td></tr>`).join('')+'</tbody>';
+    sorted.map(r=>`<tr><td><b>${fmtEUR(r.best.price)}</b>${seen(r)}</td><td>${FLAG[r.country]} ${r.country} <span class="tag">${r.dest}</span></td><td>${DATA.origins[r.origin]}</td><td>${fmtDate(r.depart)}</td><td>${fmtDate(r.best.arrival_date)}</td><td>${flightTxt(r.best)}</td><td>${fmtDate(r.return)}</td><td>${flightTxt(r.best.return_flight)}</td><td><a href="${r.best.link}" target="_blank" rel="noopener">Google Flights ↗</a></td></tr>`).join('')+'</tbody>';
 }
 
 function renderHist(hist){

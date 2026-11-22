@@ -23,6 +23,7 @@ Perioada e lungă, așa că scanarea se împarte pe joburi paralele:
 
 import json
 import sys
+import time
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
@@ -54,6 +55,10 @@ CURRENCY = gf.CURRENCY
 
 KEEP_OPTIONS = 3
 TIME_BUDGET_SEC = 5 * 3600  # jobul e oprit de GitHub la 5,5 ore; salvăm ce avem înainte de asta
+RETRY_PAUSE_SEC = 60  # pauză înainte de a relua căutările refuzate de Google
+# Google nu răspunde la fel la fiecare scanare: un zbor găsit acum poate lipsi la scanarea următoare.
+# Păstrăm oferta găsită recent, cu data ultimei verificări, cât timp plecarea e încă în perioadă.
+KEEP_SEEN_DAYS = 2
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "docs" / "data"
@@ -100,21 +105,35 @@ def run_shard(shard, total):
     # Cererea directă e doar primul pas, așa că nu mai așteptăm să o repetăm când pagina e goală.
     gf.NONE_RETRIES = 0
     fetch = gf.fetch = BrowserFetch()
-    results = []
+    results = {}
     breaker = gf.Breaker()
+
+    def out_of_time():
+        return (datetime.now(timezone.utc) - started).total_seconds() > TIME_BUDGET_SEC
+
     try:
         for i, c in enumerate(combos, 1):
-            r = search(*c)
-            results.append(r)
+            r = results[c] = search(*c)
             best = r["options"][0]["price"] if r["options"] else "-"
             print(f"[{i}/{len(combos)}] {r['origin']}->{r['dest']} {r['depart']}–{r['return']}: {r['status']} {best} {r.get('error', '')}", flush=True)
             breaker.record(r)
-            if (datetime.now(timezone.utc) - started).total_seconds() > TIME_BUDGET_SEC:
+            if out_of_time():
                 raise gf.Blocked("timpul alocat s-a terminat")
+
+        # Încă o încercare pentru căutările refuzate, după o pauză.
+        failed = [c for c, r in results.items() if r["status"] == "error"]
+        print(f"Reiau {len(failed)} căutări cu eroare…", flush=True)
+        time.sleep(RETRY_PAUSE_SEC if failed else 0)
+        for c in failed:
+            if out_of_time():
+                break
+            r = results[c] = search(*c)
+            print(f"[reluare] {r['origin']}->{r['dest']} {r['depart']}–{r['return']}: {r['status']} {r.get('error', '')}", flush=True)
     except gf.Blocked as e:
         print(f"::warning::Partea {shard} oprită, salvez ce am găsit: {e}", flush=True)
     fetch.close()
 
+    results = list(results.values())
     errors = sum(1 for r in results if r["status"] == "error")
     PARTS_DIR.mkdir(exist_ok=True)
     (PARTS_DIR / f"direct-{shard}.json").write_text(json.dumps({
@@ -131,6 +150,24 @@ def run_shard(shard, total):
     return 0
 
 
+def kept_from_last_scan(fresh, scanned_at):
+    """Ofertele din scanarea anterioară, verificate în ultimele KEEP_SEEN_DAYS zile, care lipsesc acum."""
+    path = DATA_DIR / "results.json"
+    if not path.exists():
+        return []
+    previous = json.loads(path.read_text())
+    key = lambda r: (r["origin"], r["dest"], r["depart"], r["return"])  # noqa: E731
+    found = {key(r) for r in fresh}
+    searchable = {(o, d, dep.isoformat(), (dep + timedelta(days=n)).isoformat()) for o, d, dep, n in all_combos()}
+    oldest = datetime.fromisoformat(scanned_at) - timedelta(days=KEEP_SEEN_DAYS)
+    kept = []
+    for r in previous.get("results", []):
+        checked = datetime.fromisoformat(r.get("checked_at", previous["scanned_at"]))
+        if key(r) not in found and key(r) in searchable and checked >= oldest:
+            kept.append({**r, "checked_at": checked.isoformat()})
+    return kept
+
+
 def merge():
     parts = [json.loads(f.read_text()) for f in PARTS_DIR.glob("direct-*.json")]
     planned = len(list(all_combos()))
@@ -142,11 +179,13 @@ def merge():
         print(f"::error::Doar {done - errors} căutări reușite din {planned}, păstrez rezultatele anterioare.")
         return 1
 
-    results = [r for p in parts for r in p["results"]]
+    scanned_at = min(p["started"] for p in parts)
+    fresh = [{**r, "checked_at": scanned_at} for p in parts for r in p["results"]]
+    results = fresh + kept_from_last_scan(fresh, scanned_at)
     results.sort(key=lambda r: r["options"][0]["price"])
 
     payload = {
-        "scanned_at": min(p["started"] for p in parts),
+        "scanned_at": scanned_at,
         "duration_sec": max(p["duration_sec"] for p in parts),
         "currency": CURRENCY,
         "passengers": "2 adulți + 2 copii (3 și 5 ani)",
@@ -163,6 +202,7 @@ def merge():
             "total": planned,
             "searched": done,
             "with_price": len(results),
+            "found_now": len(fresh),
             "errors": errors,
             "browser_pages": sum(p["browser_pages"] for p in parts),
             "browser_refused": sum(p["browser_refused"] for p in parts),
@@ -177,7 +217,7 @@ def merge():
     # Prețurile fără retur verificat nu se pot compara cu cele noi.
     history = [h for h in history if h.get("return_checked")]
     entry = {"t": payload["scanned_at"], "return_checked": True, "best": {}}
-    for r in results:
+    for r in fresh:
         c = r["country"]
         for o in r["options"]:
             if o["bag_transfer"] == "auto" and (c not in entry["best"] or o["price"] < entry["best"][c]):
@@ -185,7 +225,7 @@ def merge():
     history.append(entry)
     hist_path.write_text(json.dumps(history[-120:], ensure_ascii=False))
 
-    print(f"Gata: {len(results)} cu preț, {errors} erori, {done} din {planned} căutări")
+    print(f"Gata: {len(results)} cu preț ({len(fresh)} găsite acum), {errors} erori, {done} din {planned} căutări")
     return 0
 
 
